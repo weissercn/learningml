@@ -1,0 +1,54 @@
+Based on the article on https://python-packaging.readthedocs.io/en/latest/minimal.html
+
+This is an explanation how to create a repository that is installable by pip.
+
+First you need a directory structure like this:
+
+learningml/
+	learningml/
+		__init__.py
+		text.py
+	setup.py
+
+in __init__.py put:
+"
+from .text import joke
+"
+
+in test.py put:
+
+"
+def joke():
+	return ("This is a joke")
+
+"
+
+then put the following into setup.py
+
+"
+from setuptools import setup
+
+setup(name='learningml',
+      version='0.1',
+      description='This repository demonstrates how to make a project pip installable, write a Python module in C++ and use scikit-learn, keras and spearmint.',
+      url='https://github.com/weissercn/learningml',
+      author='Constantin Weisser',
+      author_email='weissercn@gmail.com',
+      license='MIT',
+      packages=['learningml'],
+      zip_safe=False)
+"
+
+to install use:
+python setup.py install
+
+
+To publish on Pypi, create a source distribution and upload it do:
+python setup.py register sdist upload
+
+In order for people to install your code they should type:
+pip install learningml
+
+
+
+
