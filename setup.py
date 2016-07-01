@@ -8,4 +8,10 @@ setup(name='learningml',
       author_email='weissercn@gmail.com',
       license='MIT',
       packages=['learningml'],
+      install_requires=[
+          'numpy',
+          'scipy',
+          'scikit-learn',
+          'keras',
+      ],
       zip_safe=False)
