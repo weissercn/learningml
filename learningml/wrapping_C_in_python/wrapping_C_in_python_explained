@@ -1,0 +1,72 @@
+For wrapping C++ in python first figure out you c and ld flags using https://csl.name/post/c-functions-python/ : 
+
+$python-config --ldflags
+-L/usr/local/Cellar/python/2.7.11/Frameworks/Python.framework/Versions/2.7/lib/python2.7/config -lpython2.7 -ldl -framework CoreFoundation
+
+$ python-config --cflags
+-I/usr/local/Cellar/python/2.7.11/Frameworks/Python.framework/Versions/2.7/include/python2.7 -I/usr/local/Cellar/python/2.7.11/Frameworks/Python.framework/Versions/2.7/include/python2.7 -fno-strict-aliasing -fno-common -dynamic -g -O2 -DNDEBUG -g -fwrapv -O3 -Wall -Wstrict-prototypes
+
+Then you follow the tutorial on this website \url{https://developer.apple.com/library/mac/technotes/tn2328/_index.html}  and write a file myModule.c:
+
+\begin{lstlisting}[language=C++,caption=myModule.C] 
+#include <Python.h>
+
+/*
+ * Function to be called from Python
+ */
+static PyObject* py_myFunction(PyObject* self, PyObject* args)
+{
+  char *s = "Hello from C!";
+  return Py_BuildValue("s", s); 
+}
+
+/*
+ * Another function to be called from Python
+ */
+static PyObject* py_myOtherFunction(PyObject* self, PyObject* args)
+{
+  double x, y;
+  PyArg_ParseTuple(args, "dd", &x, &y);
+  return Py_BuildValue("d", x*y);
+}
+
+/*
+ * Bind Python function names to our C functions
+ */
+static PyMethodDef myModule_methods[] = { 
+  {"myFunction", py_myFunction, METH_VARARGS},
+  {"myOtherFunction", py_myOtherFunction, METH_VARARGS},
+  {NULL, NULL}
+};
+
+/*
+ * Python calls this to let us initialize our module
+ */
+void initmyModule()
+{
+  (void) Py_InitModule("myModule", myModule_methods);
+}
+\end{lstlisting}
+
+This is then compiled by gcc -dynamiclib $(CFLAGS) -o myModule.so myModule.c $(LDFLAGS). If you are not using OSX you might have to change myModule.so into myModule.dylib.  In my case 
+
+\begin{lstlisting}
+gcc -dynamiclib -I/usr/local/Cellar/python/2.7.11/Frameworks/Python.framework/Versions/2.7/include/python2.7 -I/usr/local/Cellar/python/2.7.11/Frameworks/Python.framework/Versions/2.7/include/python2.7 -fno-strict-aliasing -fno-common -dynamic -g -O2 -DNDEBUG -g -fwrapv -O3 -Wall -Wstrict-prototypes -o myModule.so myModule.c -L/usr/local/Cellar/python/2.7.11/Frameworks/Python.framework/Versions/2.7/lib/python2.7/config -lpython2.7 -ldl -framework CoreFoundation
+\end{lstlisting}
+
+Then a new file (e.g. test.py) is created with contents
+
+ \begin{lstlisting}[language=python,caption=test.py]
+from myModule import *
+print "Result from myFunction:", myFunction()
+print "Result from myOtherFunction(4.0, 5.0):", myOtherFunction(4.0, 5.0)
+\end{lstlisting}
+
+Running this script (python test.py ) then gives the output
+
+ \begin{lstlisting}
+Result from myFunction: Hello from C!
+Result from myOtherFunction(4.0, 5.0): 20.0
+\end{lstlisting}
+
+
