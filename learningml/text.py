@@ -1,2 +1,2 @@
-def joke():
-	return("This is a joke")
+def testing_learningml():
+	return("You can access this simple function")
