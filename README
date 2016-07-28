@@ -1,1 +1,9 @@
-This repository demonstrates how to make a project pip installable, write a Python module in C++ and use scikit-learn, keras and spearmint.
+This repository demonstrates how to make a project pip installable, write a Python module in C++ and use scikit-learn and keras for goodness of fit problems in an arbitrary number of dimensions.
+
+In order to run some of the code, one has to define the bash variable learningml. In my case it is
+
+export learningml="/Users/weisser/MIT_Dropbox/MIT/Research/learningml/learningml"
+
+This has to be sourced.
+
+

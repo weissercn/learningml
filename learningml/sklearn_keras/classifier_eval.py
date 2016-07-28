@@ -13,7 +13,8 @@ from sklearn.svm import SVC
 from sklearn.preprocessing import StandardScaler
 from sklearn.cross_validation import StratifiedShuffleSplit
 from sklearn.grid_search import GridSearchCV
-from keras.utils import np_utils
+from keras.wrappers.scikit_learn import KerasClassifier
+from keras.utils import np_utils, visualize_util
 from scipy import stats
 import math
 
@@ -30,22 +31,24 @@ def make_keras_model(n_hidden_layers, dimof_middle, dimof_input):
 
         print("dimof_input : ",dimof_input, "dimof_output : ", dimof_output)
 
-        batch_size = 1
+        batch_size = 100
         dropout = 0.5
         countof_epoch = 5
 
         model = Sequential()
-        model.add(Dense(input_dim=dimof_input, output_dim=dimof_middle, init="glorot_uniform",activation='tanh'))
+        model.add(Dense(input_dim=dimof_input, output_dim=dimof_middle, init="glorot_uniform",activation='relu'))
         model.add(Dropout(dropout))
 
         for n in range(n_hidden_layers):
-                model.add(Dense(input_dim=dimof_middle, output_dim=dimof_middle, init="glorot_uniform",activation='tanh'))
+                model.add(Dense(input_dim=dimof_middle, output_dim=dimof_middle, init="glorot_uniform",activation='relu'))
                 model.add(Dropout(dropout))
 
         model.add(Dense(input_dim=dimof_middle, output_dim=dimof_output, init="glorot_uniform",activation='sigmoid'))
 
         #Compiling (might take longer)
-	model.compile(class_mode='binary',loss='binary_crossentropy', optimizer='sgd',metrics=["accuracy"])
+	model.compile(class_mode='binary',loss='binary_crossentropy', optimizer='adam',metrics=["accuracy"])
+
+	visualize_util.plot(model, to_file='model.png')
 
         return model
 
@@ -139,8 +142,8 @@ def classifier_eval(*args,**kwargs):
 
 	#Setting all parameters
 	name		= kwargs.get('name',"name")
-	sample1_name	= kwargs.get('sample1_name',"original")
-	sample2_name    = kwargs.get('sample2_name',"modified")
+	sample1_name	= kwargs.get('sample1_name',"first sample A")
+	sample2_name    = kwargs.get('sample2_name',"second sample B")
 	shuffling_seed	= kwargs.get('shuffling_seed',100)
 	comp_file_list	= kwargs.get('comp_file_list')
 	cv_n_iter	= kwargs.get('cv_n_iter',1)
@@ -255,24 +258,23 @@ if __name__ == "__main__":
 	from sklearn.svm import SVC 
 
 
-	for dim in range(2,3):
+	for dim in range(5,6):
 		comp_file_list=[]
 	    
 		####################################################################
 		# Gaussian samples operation
 		####################################################################
 
-		for i in range(5):
+		for i in range(100):
 			comp_file_list.append((os.environ['learningml']+"/sklearn_keras/data/gaussian_same_projection_on_each_axis/gaussian_same_projection_on_each_axis_redefined_{1}D_1000_0.6_0.2_0.1_{0}.txt".format(i,dim),os.environ['learningml']+"/sklearn_keras/data/gaussian_same_projection_on_each_axis/gaussian_same_projection_on_each_axis_redefined_{1}D_1000_0.6_0.2_0.075_{0}.txt".format(i,dim)))
 	    
-		#Earlier for SVM we had C=496.6 and gamma=0.00767
-
-		clf = SVC(C=290.4,gamma=0.0961,probability=True, cache_size=7000)
+		#clf = SVC(C=290.4,gamma=0.0961,probability=True, cache_size=7000)
+		clf = KerasClassifier(make_keras_model,n_hidden_layers=1,dimof_middle=300,dimof_input=dim)
 
 		####################################################################
 
 
-		classifier_eval(name=(str(dim)+"Dgaussian_same_projection_redefined__0_1__0_075_optimised_svm"),comp_file_list=comp_file_list,clf=clf, scoring="accuracy")
+		classifier_eval(name=(str(dim)+"Dgaussian_same_projection_redefined__0_1__0_075_optimised_svm"),comp_file_list=comp_file_list,clf=clf, scoring="standard")
 
 
 

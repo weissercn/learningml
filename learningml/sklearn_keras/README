@@ -1,0 +1,4 @@
+This folder shows you how to use neural networks and support vector machines to do higher dimensional goodness of fit tests. 
+
+To run it execute "python evaluation_of_optimised_classifiers/svm_gaussian_same_projection/svm_Gaussian_same_projection_evaluation_of_optimised_classifiers.py"
+or "python evaluation_of_optimised_classifiers/nn_gaussian_same_projection/nn_Gaussian_same_projection_evaluation_of_optimised_classifiers.py" 

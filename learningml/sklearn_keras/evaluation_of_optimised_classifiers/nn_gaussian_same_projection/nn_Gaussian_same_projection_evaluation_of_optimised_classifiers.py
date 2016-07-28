@@ -26,6 +26,6 @@ for dim in range(2,11):
         ####################################################################
 
 
-	classifier_eval.classifier_eval(name=(str(dim)+"Dgaussian_same_projection_redefined__0_1__0_1_optimised_keras_mode_2_binary"),comp_file_list=comp_file_list,clf=clf,)
+	classifier_eval.classifier_eval(name=(str(dim)+"Dgaussian_same_projection_redefined__0_1__0_1_optimised_keras_mode_2_binary"),comp_file_list=comp_file_list,clf=clf)
 
 
