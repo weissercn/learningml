@@ -1,0 +1,21 @@
+{
+    "language"        : "PYTHON",
+    "main-file"       : "classifier_eval_wrapper.py",
+    "experiment-name" : "svm_test_monash_pTmin_exp1",
+    "likelihood"      : "NOISELESS",
+    "variables" : {
+        "aC" : {
+            "type" : "FLOAT",
+            "size" : 1,
+            "min"  : 1,
+            "max"  : 1000
+        },
+        "agamma" : {
+            "type" : "FLOAT",
+            "size" : 1,
+            "min"  : 1e-06,
+            "max"  : 0.1
+        }
+    }
+}
+
