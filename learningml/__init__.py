@@ -1,7 +1,9 @@
-from .text import joke
+from .text import testing_learningml
 import sys
-sys.path.insert(0, './sklearn_keras')
-ys.path.insert(0, './klearn_keras/data/gaussian_same_projection_on_each_axis')
+import os
+os.environ["learningml"]=os.getcwd()
+sys.path.insert(0, './GoF')
+sys.path.insert(0, './GoF/data/gaussian_same_projection_on_each_axis')
 import classifier_eval
 
 
