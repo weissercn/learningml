@@ -3,7 +3,7 @@ from __future__ import print_function
 import sys
 import numpy as np
 from scipy import stats
-#import adaptive_binning_chisquared_2sam
+import adaptive_binning_chisquared_2sam
 
 def p_value_scoring_object(clf, X, y):
 	"""
@@ -35,57 +35,171 @@ def p_value_scoring_object(clf, X, y):
 	p_KS=-p_KS_stat[1]
 	return p_KS
 
-def p_value_scoring_object_binned_chisquared(clf, X, y, no_bins):
-        """
-        p_value_getter is a scoring callable that returns the negative p value from the KS test on the prediction probabilities for the particle and antiparticle samples.  
-        """
+def make_p_value_scoring_object_test(greeting):
+	def p_value_scoring_object_test(clf, X, y):
+		"""
+		p_value_getter is a scoring callable that returns the negative p value from the KS test on the prediction probabilities for the particle and antiparticle samples.  
+		"""
+		print("Greeting : ", greeting)
 
-        #Finding out the prediction probabilities
-        prob_pred=clf.predict_proba(X)[:,1]
-        #print(prob_pred)
+		#Finding out the prediction probabilities
+		prob_pred=clf.predict_proba(X)[:,1]
+		#print(prob_pred)
 
-        #This can be deleted if not using Keras
-        #For Keras turn cathegorical y back to normal y
-        if y.ndim==2:
-                if y.shape[0]!=1 and y.shape[1]!=1:
+		#This can be deleted if not using Keras
+		#For Keras turn cathegorical y back to normal y
+		if y.ndim==2:
+			if y.shape[0]!=1 and y.shape[1]!=1:
                         #Then we have a cathegorical vector
-                        y = y[:,1]
+                        	y = y[:,1]
 
-        #making sure the inputs are row vectors
-        y         = np.reshape(y,(1,y.shape[0]))
-        prob_pred = np.reshape(prob_pred,(1,prob_pred.shape[0]))
-	total_no  = prob_pred.shape[0]
-	print("total_no : ",total_no)
+		#making sure the inputs are row vectors
+		y         = np.reshape(y,(1,y.shape[0]))
+		prob_pred = np.reshape(prob_pred,(1,prob_pred.shape[0]))
 
-        #Separate prob into particle and antiparticle samples
-        prob_0    = prob_pred[np.logical_or.reduce([y==0])]
-        prob_1    = prob_pred[np.logical_or.reduce([y==1])]
-        
-	# Create transformation to turn distributions into uniform distributions if they aren't different
-	prob_pred_sorted = np.sort(prob_pred)
-	# Create cumulative distribution. Make every element a bin
-	prob_0_pos = np.searchsorted(prob_pred_sorted,prob_0)
-        prob_1_pos = np.searchsorted(prob_pred_sorted,prob_1)
-	#These are now the bin positions.
-	prob_0_pos_scaled = float(prob_0_pos)/float(total_no-1)
-	prob_1_pos_scaled = float(prob_1_pos)/float(total_no-1) 
+		#Separate prob into particle and antiparticle samples
+		prob_0    = prob_pred[np.logical_or.reduce([y==0])]
+		prob_1    = prob_pred[np.logical_or.reduce([y==1])]
+		#if __debug__:
+			#print("Plot")
+		p_KS_stat=stats.ks_2samp(prob_0,prob_1)
+		print(p_KS_stat)
+		p_KS=-p_KS_stat[1]
+		return p_KS
+	return p_value_scoring_object_test
 
-	print("prob_0_pos_scaled : ",prob_0_pos_scaled)
-	prob_0_pos_scaled = prob_0_pos_scaled[:,None]
-	prob_1_pos_scaled = prob_1_pos_scaled[:,None]
-	print("prob_0_pos_scaled : ",prob_0_pos_scaled)
+def make_p_value_scoring_object_binned_chisquared(no_bins,systematics_fraction,PLOT):
+	def p_value_scoring_object_binned_chisquared(clf, X, y): 
+		""" 
+		p_value_getter is a scoring callable that returns the negative p value from a binned chi2 test on the prediction probabilities for the particle and antiparticle samples. Both a number of bins and a list of number of bins can be entered. 
+		"""
+		#if not isinstance(single_no_bins_list, (list,tuple)): single_no_bins_list = [single_no_bins_list]
 
-	p_miranda_list = adaptive_binning_chisquared_2sam.chi2_regular_binning(prob_0_pos_scaled,prob_1_pos_scaled,[no_bins],0.01,True)
+		#no_bins= 2
 
-	#prob_0_hist = np.histogram(prob_0_pos, bins=np.linspace(0.0, 1.0, num=total_nu+1))
-	#prob_1_hist = np.histogram(prob_1_pos, bins=np.linspace(0.0, 1.0, num=total_nu+1))
+		print("no_bins : ",no_bins) 
+		#Finding out the prediction probabilities
+		prob_pred=clf.predict_proba(X)[:,1]
+		#print(prob_pred)
+
+		#This can be deleted if not using Keras
+		#For Keras turn cathegorical y back to normal y
+		if y.ndim==2:
+			if y.shape[0]!=1 and y.shape[1]!=1:
+				#Then we have a cathegorical vector
+				y = y[:,1]
+
+		#making sure the inputs are row vectors
+		y         = np.reshape(y,(1,y.shape[0]))
+		prob_pred = np.reshape(prob_pred,(1,prob_pred.shape[0]))
+		y = y[0]
+		prob_pred = prob_pred[0]
+		#print("\ny : ",y)
+		#print("\nprob_pred : ",prob_pred )
+
+		#Separate prob into particle and antiparticle samples
+		prob_0    = prob_pred[np.logical_or.reduce([y==0])]
+		prob_1    = prob_pred[np.logical_or.reduce([y==1])]
+		#print("prob_0 : ",prob_0)
+		total_no  = len(prob_0)+len(prob_1)
+		print("\ntotal_no : ",total_no)
+
+		prob_0, prob_1, prob_pred = list(prob_0), list(prob_1), list(prob_pred)
+		#print("prob_0 : ",prob_0)
+		# Create transformation to turn distributions into uniform distributions if they aren't different
+		prob_pred_sorted = np.sort(prob_pred)
+		# Create cumulative distribution. Make every element a bin
+		prob_0_pos = np.searchsorted(prob_pred_sorted,prob_0)
+		prob_1_pos = np.searchsorted(prob_pred_sorted,prob_1)
+		print("prob_0_pos : ", prob_0_pos)
+		prob_0_pos_float = [float(i) for i in prob_0_pos]
+		prob_1_pos_float = [float(i) for i in prob_1_pos]
+		#These are now the bin positions.
+		prob_0_pos_scaled = np.divide(prob_0_pos_float,float(total_no-1))
+		prob_1_pos_scaled = np.divide(prob_1_pos_float,float(total_no-1))
+
+		print("prob_0_pos_scaled : ",prob_0_pos_scaled)
+		prob_0_pos_scaled = prob_0_pos_scaled[:,None]
+		prob_1_pos_scaled = prob_1_pos_scaled[:,None]
+		print("prob_0_pos_scaled : ",prob_0_pos_scaled)
+
+		p_miranda_list = adaptive_binning_chisquared_2sam.chi2_regular_binning(prob_0_pos_scaled,prob_1_pos_scaled,[no_bins],systematics_fraction,PLOT)
+
+		#prob_0_hist = np.histogram(prob_0_pos, bins=np.linspace(0.0, 1.0, num=total_nu+1))
+		#prob_1_hist = np.histogram(prob_1_pos, bins=np.linspace(0.0, 1.0, num=total_nu+1))
 
 
-	#p_KS_stat=stats.ks_2samp(prob_0,prob_1)
-        #print(p_KS_stat)
-        #p_KS=-p_KS_stat[1]
-	p_miranda = -p_miranda_list[0]
-        return p_miranda
+		#p_KS_stat=stats.ks_2samp(prob_0,prob_1)
+		#print(p_KS_stat)
+		#p_KS=-p_KS_stat[1]
+
+		return - p_miranda_list[0]
+	return p_value_scoring_object_binned_chisquared
+
+
+def please_delete_this_function():
+		#def make_p_value_scoring_object_binned_chisquared(no_bins):
+		"""
+		This is a function that returns another function(p_value_scoring_object_binned_chisquared) for a certain number of bins. It does this by using function closure.
+		"""
+		#def p_value_scoring_object_binned_chisquared(clf, X, y):
+		"""
+		p_value_getter is a scoring callable that returns the negative p value from a binned chi2 test on the prediction probabilities for the particle and antiparticle samples. Both a number of bins and a list of number of bins can be entered. 
+		"""
+		#if not isinstance(single_no_bins_list, (list,tuple)): single_no_bins_list = [single_no_bins_list]
+
+		#Finding out the prediction probabilities
+		prob_pred=clf.predict_proba(X)[:,1]
+		#print(prob_pred)
+
+		#This can be deleted if not using Keras
+		#For Keras turn cathegorical y back to normal y
+		if y.ndim==2:
+			if y.shape[0]!=1 and y.shape[1]!=1:
+				#Then we have a cathegorical vector
+				y = y[:,1]
+
+		#making sure the inputs are row vectors
+		y         = np.reshape(y,(1,y.shape[0]))
+		prob_pred = np.reshape(prob_pred,(1,prob_pred.shape[0]))
+		total_no  = prob_pred.shape[0]
+		print("total_no : ",total_no)
+
+		#Separate prob into particle and antiparticle samples
+		prob_0    = prob_pred[np.logical_or.reduce([y==0])]
+		prob_1    = prob_pred[np.logical_or.reduce([y==1])]
+		
+		# Create transformation to turn distributions into uniform distributions if they aren't different
+		prob_pred_sorted = np.sort(prob_pred)
+		# Create cumulative distribution. Make every element a bin
+		prob_0_pos = np.searchsorted(prob_pred_sorted,prob_0)
+		prob_1_pos = np.searchsorted(prob_pred_sorted,prob_1)
+		#These are now the bin positions.
+		prob_0_pos_scaled = float(prob_0_pos)/float(total_no-1)
+		prob_1_pos_scaled = float(prob_1_pos)/float(total_no-1) 
+
+		print("prob_0_pos_scaled : ",prob_0_pos_scaled)
+		prob_0_pos_scaled = prob_0_pos_scaled[:,None]
+		prob_1_pos_scaled = prob_1_pos_scaled[:,None]
+		print("prob_0_pos_scaled : ",prob_0_pos_scaled)
+
+		p_miranda_list = adaptive_binning_chisquared_2sam.chi2_regular_binning(prob_0_pos_scaled,prob_1_pos_scaled,[no_bins],0.01,True)
+
+		#prob_0_hist = np.histogram(prob_0_pos, bins=np.linspace(0.0, 1.0, num=total_nu+1))
+		#prob_1_hist = np.histogram(prob_1_pos, bins=np.linspace(0.0, 1.0, num=total_nu+1))
+
+
+		#p_KS_stat=stats.ks_2samp(prob_0,prob_1)
+		#print(p_KS_stat)
+		#p_KS=-p_KS_stat[1]
+		
+		return - p_miranda_list[0]
+		#p_miranda_list = [i * -1 for i in p_miranda_list]
+		#if not isinstance(single_no_bins_list, (list,tuple)):	
+		#	return p_miranda_list[0]
+		#else:
+		#	return p_miranda_list
+		#<- return p_value_scoring_object_binned_chisquared
 
 def p_value_scoring_object_visualisation(clf, X, y): 
         """ 
@@ -115,7 +229,7 @@ def p_value_scoring_object_visualisation(clf, X, y):
         p_KS_stat=stats.ks_2samp(prob_0,prob_1)
 
 	#http://scikit-learn.org/stable/auto_examples/tree/plot_iris.html#example-tree-plot-iris-py
-	import matplotlib.pyplot as plt
+	#import matplotlib.pyplot as plt
 	n_classes =2 
         plot_colors = "br"
 
