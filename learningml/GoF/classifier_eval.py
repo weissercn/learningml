@@ -7,7 +7,7 @@ import sys
 import p_value_scoring_object
 import numpy as np
 import matplotlib
-matplotlib.use('AGG')  # Do this BEFORE importing matplotlib.pyplot
+#matplotlib.use('AGG')  # Do this BEFORE importing matplotlib.pyplot
 import matplotlib.pyplot as plt 
 from matplotlib.colors import Normalize
 import matplotlib.pyplot as plt
@@ -134,9 +134,12 @@ def plot_2D_opt_graph(expt,nclf):
 
 	filename= class_name+"_optimisation_values_"+name
 	data=np.loadtxt(filename+".txt",dtype='d')
-	x=data[:50,0]
-	y=data[:50,1]
-	z=data[:50,2]
+	number_of_iterations = data.shape[0]
+	if number_of_iterations > expt.number_of_iterations: number_of_iterations = expt.number_of_iterations 
+
+	x=data[:number_of_iterations,0]
+	y=data[:number_of_iterations,1]
+	z=data[:number_of_iterations,2]
 	avmin= np.min(z)
 	cm = plt.cm.get_cmap('RdYlBu')
 
@@ -271,15 +274,16 @@ def evaluate_job(expt,nclf,out_q):
 			comp_file_list.append((expt.file_name_patterns[0].format(dim,i),expt.file_name_patterns[1].format(dim,i)))
 		if nclf.name == "nn": aclf = nclf.clf_nn_dict[str(dim)]
 		else: aclf=nclf.clf
-		classifier_eval(name= nclf.name + "_" + expt.name_CPV.format(dim) , comp_file_list=comp_file_list, clf =aclf, verbose=False)
+		classifier_eval(name= nclf.name + "_" + expt.name_CPV.format(dim) , comp_file_list=comp_file_list, clf =aclf, verbose=False, scoring=expt.scoring)
+	print("after classifier eval")
 	if not expt.only_mod:
 		for dim in expt.evaluation_dimensions:
 			comp_file_list=[]
 			for i in range(100):
-				comp_file_list.append((expt.file_name_patterns[0].format(dim,i),expt.file_name_patterns[1].format(dim,i)))
+				comp_file_list.append((expt.file_name_patterns[0].format(dim,i),expt.file_name_patterns[0].format(dim,100+i)))
 			if nclf.name == "nn": aclf = nclf.clf_nn_dict[str(dim)]
 			else: aclf=nclf.clf
-			classifier_eval(name= nclf.name + "_" +expt.name_CPV.format(dim) , comp_file_list=comp_file_list, clf =aclf, verbose=False)
+			classifier_eval(name= nclf.name + "_" +expt.name_noCPV.format(dim) , comp_file_list=comp_file_list, clf =aclf, verbose=False)
 	os.chdir("..")
 	print(multiprocessing.current_process().name, " : ",nclf.name ," Finishing")
 
@@ -299,16 +303,20 @@ def worker(expt, nclf):
 #######################################################################################################################################################################################################
 
 class experiment(object):
-	def __init__(self, nclf_list=[nclf()], file_name_patterns= [ os.environ['learningml']+"/GoF/data/gaussian_same_projection_on_each_axis/gaussian_same_projection_on_each_axis_redefined_{0}D_1000_0.6_0.2_0.1_{1}.txt", os.environ['learningml']+"/GoF/data/gaussian_same_projection_on_each_axis/gaussian_same_projection_on_each_axis_redefined_{0}D_1000_0.6_0.2_0.075_{1}.txt" ], name_CPV= "{0}Dgaussian_same_projection_redefined__0_1__0_075_optimised", name_noCPV= "{0}Dgaussian_same_projection_redefined__0_1__0_1_noCPV_optimised", only_mod=False  , n_cores=7, **kwargs):
+	def __init__(self,**kwargs): 
 
-		self.nclf_list 		= nclf_list
-		self.file_name_patterns = file_name_patterns
-		self.only_mod 		= only_mod
-		self.n_cores 		= n_cores
-		self.name_CPV 		= name_CPV
-		self.name_noCPV		= name_noCPV
+		self.nclf_list 		= kwargs.get('nclf_list',[nclf()])
+		self.file_name_patterns = kwargs.get('file_name_patterns', [ os.environ['learningml']+"/GoF/data/gaussian_same_projection_on_each_axis/gauss_data/gaussian_same_projection_on_each_axis_redefined_{0}D_1000_0.6_0.2_0.1_{1}.txt", os.environ['learningml']+"/GoF/data/gaussian_same_projection_on_each_axis/gauss_data/gaussian_same_projection_on_each_axis_redefined_{0}D_1000_0.6_0.2_0.075_{1}.txt" ])
+		self.only_mod 		= kwargs.get('only_mod',False)
+		self.n_cores 		= kwargs.get('n_cores',7)
+		self.name_CPV 		= kwargs.get('name_CPV',"{0}Dgaussian_same_projection_redefined__0_1__0_075_optimised")
+		self.name_noCPV		= kwargs.get('name_noCPV',"{0}Dgaussian_same_projection_redefined__0_1__0_1_noCPV_optimised")
+		self.scoring		= kwargs.get('scoring',"standard")
 
-
+	def set_name_CPV(self,name_CPV):			self.name_CPV = name_CPV
+	def set_name_noCPV(self,name_noCPV): 			self.name_noCPV = name_noCPV
+	def set_nclf_list(self,nclf_list): 			self.nclf_list=nclf_list
+	def set_file_name_patterns(self,file_name_patterns): 	self.file_name_patterns = file_name_patterns
 
 
 	def optimise(self,optimisation_dimension=2, number_of_iterations=50,spearmint_directory="/Users/weisser/Documents/Spearmint-master/spearmint",**kwargs):
@@ -346,6 +354,7 @@ class experiment(object):
 		for nclf in self.nclf_list: print(nclf.name, " : ",nclf.clf)
 		print("\n","/"*100,"All OPTIMISATION jobs finished running","/"*100,"\n")
 		os.chdir("..")
+		return self.nclf_list
 
 	def evaluate(self,evaluation_dimensions=[2],**kwargs):
 
@@ -357,6 +366,7 @@ class experiment(object):
 
 		out_q = multiprocessing.Queue()
 
+		print("operating on file_name_patterns :" , self.file_name_patterns)
 		jobs = []
 		for nclf in self.nclf_list:
 			p = multiprocessing.Process(target=evaluate_job, args=(self,nclf,out_q,))
@@ -374,7 +384,7 @@ class experiment(object):
 
 	def write_classifier_eval_wrapper(self, nclf):
 		classifier_content = 'import os \nimport signal \nimport numpy as np \nimport math \nimport sys \nsys.path.insert(0,os.environ["learningml"]+"/GoF") \nimport os \nimport classifier_eval \nfrom sklearn.tree import DecisionTreeClassifier \nfrom sklearn.ensemble import AdaBoostClassifier \nfrom sklearn.svm import SVC \nfrom keras.wrappers.scikit_learn import KerasClassifier \nfrom rep.estimators import XGBoostClassifier \n# Write a function like this called "main" \ndef main(job_id, params): \n\tprint "Anything printed here will end up in the output directory for job ", job_id \n\tprint params \n\n'
-		classifier_content += '\tif job_id>{}:file = open(os.environ["learningml"]+"/GoF/evaluation_of_optimised_classifiers/automatisation_gaussian_same_projection/optimisation/{}/optimisation_done_flag", "a").close()\n\n'.format(self.number_of_iterations, nclf.name)
+		classifier_content += '\tif job_id>{}:file = open("optimisation_done_flag", "a").close()\n\n'.format(self.number_of_iterations)
 		#classifier_content += '\tassert (job_id<{}), "Final number of iterations reached" \n\n'.format(1+self.number_of_iterations)
 		#classifier_content += '\tif job_id>{}: \n\t\tprint("Killing parent process : ", os.getppid(),"\\n"*3) \n\t\tos.kill(os.getppid(), signal.SIGTERM) \n\n'.format(self.number_of_iterations)
 		classifier_content += '\tcomp_file_list= [("{}","{}")]\n\n'.format(self.file_name_patterns[0].format(self.optimisation_dimension,"optimisation_0"),self.file_name_patterns[1].format(self.optimisation_dimension,"optimisation_0"))
@@ -392,7 +402,7 @@ class experiment(object):
 						clf_repr_list[index] = rest
 		 
 			classifier_content += '\tclf = '+ ''.join(clf_repr_list)
-		classifier_content += '\n\n\tresult= classifier_eval.classifier_eval(name="{}",comp_file_list=comp_file_list,clf=clf,mode="spearmint_optimisation")\n\n'.format(nclf.name + "_" +self.name_CPV.format(self.optimisation_dimension))
+		classifier_content += '\n\n\tresult= classifier_eval.classifier_eval(name="{}",comp_file_list=comp_file_list,clf=clf,mode="spearmint_optimisation",scoring="{}")\n\n'.format(nclf.name + "_" +self.name_CPV.format(self.optimisation_dimension),self.scoring)
 		classifier_content += '\twith open("{}_optimisation_values_{}.txt", "a") as myfile: \n\t\tmyfile.write(str(params["{}"][0])+"\\t"+ str(params["{}"][0])+"\\t"+str(result)+"\\n") \n\treturn result'.format(nclf.name, self.name_CPV.format(self.optimisation_dimension), nclf.param_list[0], nclf.param_list[1])
 		with open('classifier_eval_wrapper.py', 'w') as f:
 			f.write(classifier_content)
@@ -426,10 +436,11 @@ def classifier_eval(*args,**kwargs):
 
 	#Setting the allowed values for the different modes
 	mode_allowed=		["evaluation","spearmint_optimisation"]
-	scoring_allowed= 	["standard","AD","visualisation","accuracy"]
+	scoring_allowed= 	["standard","AD","visualisation","accuracy","chi2"]
 
 	#Setting all parameters
 	name		= kwargs.get('name',"name")
+	print("name : ",name)
 	sample1_name	= kwargs.get('sample1_name',"original")
 	sample2_name    = kwargs.get('sample2_name',"modified")
 	shuffling_seed	= kwargs.get('shuffling_seed',100)
@@ -527,6 +538,8 @@ def classifier_eval(*args,**kwargs):
 			print("X[:,0].min() , ", X[:,0].min(), "X[:,0].max() : ", X[:,0].max())
 			scores = (-1)*cross_validation.cross_val_score(clf,X,y,cv=acv,scoring=p_value_scoring_object.p_value_scoring_object_visualisation)
 			os.rename("visualisation.png",name+"_visualisation.png")
+		elif scoring=="chi2":
+			scores = (-1)*cross_validation.cross_val_score(clf,X,y,cv=acv,scoring=p_value_scoring_object.p_value_scoring_object_binned_chisquared)
 		elif scoring=="accuracy":
 			scores = cross_validation.cross_val_score(clf,X,y,cv=acv,scoring='accuracy')
 		elif scoring=="standard":

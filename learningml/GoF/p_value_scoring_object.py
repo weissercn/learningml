@@ -3,7 +3,7 @@ from __future__ import print_function
 import sys
 import numpy as np
 from scipy import stats
-
+#import adaptive_binning_chisquared_2sam
 
 def p_value_scoring_object(clf, X, y):
 	"""
@@ -34,6 +34,58 @@ def p_value_scoring_object(clf, X, y):
 	print(p_KS_stat)
 	p_KS=-p_KS_stat[1]
 	return p_KS
+
+def p_value_scoring_object_binned_chisquared(clf, X, y, no_bins):
+        """
+        p_value_getter is a scoring callable that returns the negative p value from the KS test on the prediction probabilities for the particle and antiparticle samples.  
+        """
+
+        #Finding out the prediction probabilities
+        prob_pred=clf.predict_proba(X)[:,1]
+        #print(prob_pred)
+
+        #This can be deleted if not using Keras
+        #For Keras turn cathegorical y back to normal y
+        if y.ndim==2:
+                if y.shape[0]!=1 and y.shape[1]!=1:
+                        #Then we have a cathegorical vector
+                        y = y[:,1]
+
+        #making sure the inputs are row vectors
+        y         = np.reshape(y,(1,y.shape[0]))
+        prob_pred = np.reshape(prob_pred,(1,prob_pred.shape[0]))
+	total_no  = prob_pred.shape[0]
+	print("total_no : ",total_no)
+
+        #Separate prob into particle and antiparticle samples
+        prob_0    = prob_pred[np.logical_or.reduce([y==0])]
+        prob_1    = prob_pred[np.logical_or.reduce([y==1])]
+        
+	# Create transformation to turn distributions into uniform distributions if they aren't different
+	prob_pred_sorted = np.sort(prob_pred)
+	# Create cumulative distribution. Make every element a bin
+	prob_0_pos = np.searchsorted(prob_pred_sorted,prob_0)
+        prob_1_pos = np.searchsorted(prob_pred_sorted,prob_1)
+	#These are now the bin positions.
+	prob_0_pos_scaled = float(prob_0_pos)/float(total_no-1)
+	prob_1_pos_scaled = float(prob_1_pos)/float(total_no-1) 
+
+	print("prob_0_pos_scaled : ",prob_0_pos_scaled)
+	prob_0_pos_scaled = prob_0_pos_scaled[:,None]
+	prob_1_pos_scaled = prob_1_pos_scaled[:,None]
+	print("prob_0_pos_scaled : ",prob_0_pos_scaled)
+
+	p_miranda_list = adaptive_binning_chisquared_2sam.chi2_regular_binning(prob_0_pos_scaled,prob_1_pos_scaled,[no_bins],0.01,True)
+
+	#prob_0_hist = np.histogram(prob_0_pos, bins=np.linspace(0.0, 1.0, num=total_nu+1))
+	#prob_1_hist = np.histogram(prob_1_pos, bins=np.linspace(0.0, 1.0, num=total_nu+1))
+
+
+	#p_KS_stat=stats.ks_2samp(prob_0,prob_1)
+        #print(p_KS_stat)
+        #p_KS=-p_KS_stat[1]
+	p_miranda = -p_miranda_list[0]
+        return p_miranda
 
 def p_value_scoring_object_visualisation(clf, X, y): 
         """ 
