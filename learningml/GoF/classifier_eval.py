@@ -131,7 +131,10 @@ def plot_2D_opt_graph(expt,nclf):
 	class_name = nclf.name
 	name = expt.name_CPV.format(expt.optimisation_dimension)
 
-	filename= class_name+"_optimisation_values_"+name
+	if expt.scoring=="chi2":        self_name_CPV= expt.name_CPV+ "_chi2scoring_" + str(expt.optimisation_no_bins)
+	else:                           self_name_CPV= expt.name_CPV
+
+	filename= nclf.name +"_"+ self_name_CPV.format(expt.optimisation_dimension)+"_optimisation_values"
 	data=np.loadtxt(filename+".txt",dtype='d')
 	number_of_iterations = data.shape[0]
 	if number_of_iterations > expt.number_of_iterations: number_of_iterations = expt.number_of_iterations 
@@ -156,13 +159,19 @@ def plot_2D_opt_graph(expt,nclf):
 	#print("\n",nclf.name," values of max : ",val_max,"\n")
 	ax1.scatter(x[index],y[index],c=z[index], norm=colors.LogNorm(),s=50, cmap=cm,vmin=avmin,vmax=1)
 
-	cb=fig.colorbar(sc,ticks=[1,1E-1,1E-2,1E-3,1E-4,1E-5,1E-6,1E-7,1E-8,1E-9,1E-10,1E-11,1E-12,1E-13,1E-14,1E-15])
-	cb.ax.set_yticklabels(['1','1E-1','1E-2','1E-3','1E-4','1E-5','1E-6','1E-7','1E-8','1E-9','1E-10','1E-11','1E-12','1E-13','1E-14','1E-15'])
+	avmin_power = int(math.floor(math.log10(avmin)))
+	ticks, ticklabels = [1],['1']
+	for i in range(1,-avmin_power+1):
+		ticks.append(np.power(10.,float(-i)))
+		ticklabels.append('1E-'+str(i))
+
+	cb=fig.colorbar(sc,ticks=ticks)
+	cb.ax.set_yticklabels(ticklabels)
 	cb.set_label('p value')
 
 	ax1.set_xlabel(nclf.param_list[0])
 	ax1.set_ylabel(nclf.param_list[1])
-	ax1.set_title('optimisation of hyperparameters for '+class_name+' '+name)
+	ax1.set_title('hyperparam opt '+class_name+"\n"+expt.title_CPV)
 	print(nclf.name," saving to "+filename+".png \n")
 	fig.savefig(filename+".png")
 
@@ -319,13 +328,18 @@ class experiment(object):
 		self.file_name_patterns = kwargs.get('file_name_patterns', [ os.environ['learningml']+"/GoF/data/gaussian_same_projection_on_each_axis/gauss_data/gaussian_same_projection_on_each_axis_redefined_{0}D_1000_0.6_0.2_0.1_{1}.txt", os.environ['learningml']+"/GoF/data/gaussian_same_projection_on_each_axis/gauss_data/gaussian_same_projection_on_each_axis_redefined_{0}D_1000_0.6_0.2_0.075_{1}.txt" ])
 		self.only_mod 		= kwargs.get('only_mod',False)
 		self.n_cores 		= kwargs.get('n_cores',7)
-		self.name_CPV 		= kwargs.get('name_CPV',"{0}Dgaussian_same_projection_redefined__0_1__0_075_optimised")
-		self.name_noCPV		= kwargs.get('name_noCPV',"{0}Dgaussian_same_projection_redefined__0_1__0_1_noCPV_optimised")
+		self.name_CPV 		= kwargs.get('name_CPV',"{0}Dname_CPV")
+		self.name_noCPV		= kwargs.get('name_noCPV',"{0}Dname_noCPV")
 		self.title_CPV		= kwargs.get('title_CPV','title_CPV')
 		self.title_noCPV	= kwargs.get('title_noCPV','title_noCPV')
 		self.scoring		= kwargs.get('scoring',"standard")
 		self.single_no_bins_list= kwargs.get('single_no_bins_list',[2])
 		self.systematics_fraction= kwargs.get('systematics_fraction',0.01)
+
+		self.name_CPV		= self.name_CPV+ "_syst_"+str(self.systematics_fraction).replace(".","_") + "_"
+
+		self.title_CPV		= self.title_CPV + " syst" + str(self.systematics_fraction)
+		self.title_noCPV          = self.title_noCPV + " syst" + str(self.systematics_fraction)	
 
 	def set_name_CPV(self,name_CPV):			self.name_CPV = name_CPV
 	def set_name_noCPV(self,name_noCPV): 			self.name_noCPV = name_noCPV
@@ -339,9 +353,7 @@ class experiment(object):
 		self.number_of_iterations	= kwargs.get('number_of_iterations',50)
 		self.optimisation_no_bins 	= kwargs.get('optimisation_no_bins',self.single_no_bins_list[0])
 		self.spearmint_directory 	= kwargs.get('spearmint_directory', "/Users/weisser/Documents/Spearmint-master/spearmint")	
-
-		self.number_of_iterations = number_of_iterations
-		self.optimisation_dimension = optimisation_dimension
+		
 		opt_dir = "optimisation"
 		if not os.path.exists(opt_dir):
 			os.makedirs(opt_dir)
@@ -421,8 +433,10 @@ class experiment(object):
 						clf_repr_list[index] = rest
 		 
 			classifier_content += '\tclf = '+ ''.join(clf_repr_list)
-		classifier_content += '\n\n\tresult= classifier_eval.classifier_eval(name="{}",comp_file_list=comp_file_list,clf=clf,mode="spearmint_optimisation",scoring="{}", no_bins={}, systematics_fraction={})\n\n'.format(nclf.name + "_" +self.name_CPV.format(self.optimisation_dimension),self.scoring,self.optimisation_no_bins,self.systematics_fraction)
-		classifier_content += '\twith open("{}_optimisation_values_{}.txt", "a") as myfile: \n\t\tmyfile.write(str(params["{}"][0])+"\\t"+ str(params["{}"][0])+"\\t"+str(result)+"\\n") \n\treturn result'.format(nclf.name, self.name_CPV.format(self.optimisation_dimension), nclf.param_list[0], nclf.param_list[1])
+		classifier_content += '\n\n\tresult= classifier_eval.classifier_eval(name="{}",title="{}",comp_file_list=comp_file_list,clf=clf,mode="spearmint_optimisation",scoring="{}", no_bins={}, systematics_fraction={})\n\n'.format(nclf.name + "_" +self.name_CPV.format(self.optimisation_dimension)+"_optimisation",nclf.name+" "+self.title_CPV,self.scoring,self.optimisation_no_bins,self.systematics_fraction)
+		if self.scoring=="chi2": 	self_name_CPV= self.name_CPV+ "_chi2scoring_" + str(self.optimisation_no_bins)
+		else:				self_name_CPV= self.name_CPV
+		classifier_content += '\twith open("{}_optimisation_values.txt", "a") as myfile: \n\t\tmyfile.write(str(params["{}"][0])+"\\t"+ str(params["{}"][0])+"\\t"+str(result)+"\\n") \n\treturn result'.format(nclf.name +"_"+ self_name_CPV.format(self.optimisation_dimension), nclf.param_list[0], nclf.param_list[1])
 		with open('classifier_eval_wrapper.py', 'w') as f:
 			f.write(classifier_content)
 
