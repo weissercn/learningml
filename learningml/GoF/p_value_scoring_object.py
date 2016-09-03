@@ -68,7 +68,7 @@ def make_p_value_scoring_object_test(greeting):
 		return p_KS
 	return p_value_scoring_object_test
 
-def make_p_value_scoring_object_binned_chisquared(no_bins,systematics_fraction,PLOT):
+def make_p_value_scoring_object_binned_chisquared(no_bins,systematics_fraction,title,name,PLOT):
 	def p_value_scoring_object_binned_chisquared(clf, X, y): 
 		""" 
 		p_value_getter is a scoring callable that returns the negative p value from a binned chi2 test on the prediction probabilities for the particle and antiparticle samples. Both a number of bins and a list of number of bins can be entered. 
@@ -123,7 +123,7 @@ def make_p_value_scoring_object_binned_chisquared(no_bins,systematics_fraction,P
 		prob_1_pos_scaled = prob_1_pos_scaled[:,None]
 		print("prob_0_pos_scaled : ",prob_0_pos_scaled)
 
-		p_miranda_list = adaptive_binning_chisquared_2sam.chi2_regular_binning(prob_0_pos_scaled,prob_1_pos_scaled,[no_bins],systematics_fraction,PLOT)
+		p_miranda = adaptive_binning_chisquared_2sam.chi2_regular_binning(prob_0_pos_scaled,prob_1_pos_scaled,no_bins,systematics_fraction,title,name,PLOT)
 
 		#prob_0_hist = np.histogram(prob_0_pos, bins=np.linspace(0.0, 1.0, num=total_nu+1))
 		#prob_1_hist = np.histogram(prob_1_pos, bins=np.linspace(0.0, 1.0, num=total_nu+1))
@@ -133,7 +133,7 @@ def make_p_value_scoring_object_binned_chisquared(no_bins,systematics_fraction,P
 		#print(p_KS_stat)
 		#p_KS=-p_KS_stat[1]
 
-		return - p_miranda_list[0]
+		return - p_miranda
 	return p_value_scoring_object_binned_chisquared
 
 

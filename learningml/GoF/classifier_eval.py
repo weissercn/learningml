@@ -277,9 +277,9 @@ def evaluate_job(expt,nclf,out_q):
 		else: aclf=nclf.clf
 		if expt.scoring=='chi2':
 			for no_bins in expt.single_no_bins_list:
-				classifier_eval(name= nclf.name + "_" + expt.name_CPV.format(dim) , comp_file_list=comp_file_list, clf =aclf, verbose=False, scoring=expt.scoring, no_bins=no_bins, systematics_fraction=expt.systematics_fraction)
+				classifier_eval(name= nclf.name + "_" + expt.name_CPV.format(dim) , comp_file_list=comp_file_list, clf =aclf, verbose=False, scoring=expt.scoring, no_bins=no_bins, systematics_fraction=expt.systematics_fraction, title=expt.title_CPV+" "+ str(dim)+"D" )
 		else:
-			classifier_eval(name= nclf.name + "_" + expt.name_CPV.format(dim) , comp_file_list=comp_file_list, clf =aclf, verbose=False, scoring=expt.scoring)
+			classifier_eval(name= nclf.name + "_" + expt.name_CPV.format(dim) , comp_file_list=comp_file_list, clf =aclf, verbose=False, scoring=expt.scoring, title=expt.title_noCPV+" "+ str(dim)+"D")
 	if not expt.only_mod:
 		print(nclf.name,"Running NoCPV ")
 		for dim in expt.evaluation_dimensions:
@@ -290,9 +290,9 @@ def evaluate_job(expt,nclf,out_q):
 			else: aclf=nclf.clf
 			if expt.scoring=='chi2':
 				for no_bins in expt.single_no_bins_list:
-					classifier_eval(name= nclf.name + "_" +expt.name_noCPV.format(dim) , comp_file_list=comp_file_list, clf =aclf, verbose=False, scoring=expt.scoring, no_bins=no_bins, systematics_fraction=expt.systematics_fraction)
+					classifier_eval(name= nclf.name + "_" +expt.name_noCPV.format(dim) , comp_file_list=comp_file_list, clf =aclf, verbose=False, scoring=expt.scoring, no_bins=no_bins, systematics_fraction=expt.systematics_fraction, title=expt.title+" "+ str(dim)+"D")
 			else:
-				classifier_eval(name= nclf.name + "_" +expt.name_noCPV.format(dim) , comp_file_list=comp_file_list, clf =aclf, verbose=False, scoring=expt.scoring)
+				classifier_eval(name= nclf.name + "_" +expt.name_noCPV.format(dim) , comp_file_list=comp_file_list, clf =aclf, verbose=False, scoring=expt.scoring, title=expt.title+" "+ str(dim)+"D")
 
 	os.chdir("..")
 	print(multiprocessing.current_process().name, " : ",nclf.name ," Finishing")
@@ -321,6 +321,8 @@ class experiment(object):
 		self.n_cores 		= kwargs.get('n_cores',7)
 		self.name_CPV 		= kwargs.get('name_CPV',"{0}Dgaussian_same_projection_redefined__0_1__0_075_optimised")
 		self.name_noCPV		= kwargs.get('name_noCPV',"{0}Dgaussian_same_projection_redefined__0_1__0_1_noCPV_optimised")
+		self.title_CPV		= kwargs.get('title_CPV','title_CPV')
+		self.title_noCPV	= kwargs.get('title_noCPV','title_noCPV')
 		self.scoring		= kwargs.get('scoring',"standard")
 		self.single_no_bins_list= kwargs.get('single_no_bins_list',[2])
 		self.systematics_fraction= kwargs.get('systematics_fraction',0.01)
@@ -457,6 +459,7 @@ def classifier_eval(*args,**kwargs):
 
 	#Setting all parameters
 	name		= kwargs.get('name',"name")
+	title		= kwargs.get('title','title')
 	sample1_name	= kwargs.get('sample1_name',"original")
 	sample2_name    = kwargs.get('sample2_name',"modified")
 	shuffling_seed	= kwargs.get('shuffling_seed',100)
@@ -563,8 +566,9 @@ def classifier_eval(*args,**kwargs):
 			os.rename("visualisation.png",name+"_visualisation.png")
 		elif scoring=="chi2":
 			#We have to use function closure
-			scores = (-1)*cross_validation.cross_val_score(clf,X,y,cv=acv,scoring=p_value_scoring_object.make_p_value_scoring_object_binned_chisquared(no_bins,systematics_fraction,not counter ))
-			if not counter:  os.rename("1D_" + str(no_bins)+"_bins" +"_bin_definitions_1D.png",name+"_bin_definitions_1D.png")
+			scoring_function = p_value_scoring_object.make_p_value_scoring_object_binned_chisquared(no_bins,systematics_fraction,title,name,not counter )
+			scores = (-1)*cross_validation.cross_val_score(clf,X,y,cv=acv,scoring=scoring_function)
+			#if not counter:  os.rename("1D_" + str(no_bins)+"_bins" +"_bin_definitions_1D.png",name+"_bin_definitions_1D.png")
 		elif scoring=="chi2_2bin":
                         scores_chi2_list=[]
                         #We have to use function closure
