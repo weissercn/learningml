@@ -93,6 +93,7 @@ def make_p_value_scoring_object_binned_chisquared(no_bins,systematics_fraction,t
 		y         = np.reshape(y,(1,y.shape[0]))
 		prob_pred = np.reshape(prob_pred,(1,prob_pred.shape[0]))
 		y = y[0]
+		print("prob_pred : ", prob_pred)
 		prob_pred = prob_pred[0]
 		#print("\ny : ",y)
 		#print("\nprob_pred : ",prob_pred )
@@ -269,6 +270,7 @@ def p_value_scoring_object_visualisation(clf, X, y):
 	plt.xlabel("x")
 	plt.ylabel("y")
 	plt.savefig("visualisation.png")
+	plt.close()
 
 	#plt.figure()
 	#plt.pcolor(xx,yy,Z)

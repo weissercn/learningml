@@ -17,6 +17,7 @@ from sklearn import cross_validation
 from sklearn import tree
 from sklearn.ensemble import AdaBoostClassifier
 from rep.estimators import XGBoostClassifier
+from rep.estimators import SklearnClassifier
 from sklearn.svm import SVC
 from keras.wrappers.scikit_learn import KerasClassifier
 from sklearn.preprocessing import StandardScaler
@@ -145,6 +146,7 @@ def plot_2D_opt_graph(expt,nclf):
 	y=data[:number_of_iterations,1]
 	z=data[:number_of_iterations,2]
 	avmin= np.min(z)
+	avmin_nonzero = np.min([e for i, e in enumerate(z) if e != 0])
 	cm = plt.cm.get_cmap('RdYlBu')
 
 	fig= plt.figure()
@@ -159,9 +161,12 @@ def plot_2D_opt_graph(expt,nclf):
 	#print("\n",nclf.name," values of max : ",val_max,"\n")
 	ax1.scatter(x[index],y[index],c=z[index], norm=colors.LogNorm(),s=50, cmap=cm,vmin=avmin,vmax=1)
 
-	avmin_power = int(math.floor(math.log10(avmin)))
+        with open(filename+"_best.txt",'w') as best_file:
+                best_file.write(str(x[index])+'\t'+str(y[index])+'\t'+str(z[index])+'\n')
+
+	avmin_power = int(math.floor(math.log10(avmin_nonzero)))
 	ticks, ticklabels = [1],['1']
-	for i in range(1,-avmin_power+1):
+	for i in range(1,-avmin_power):
 		ticks.append(np.power(10.,float(-i)))
 		ticklabels.append('1E-'+str(i))
 
@@ -174,6 +179,7 @@ def plot_2D_opt_graph(expt,nclf):
 	ax1.set_title('hyperparam opt '+class_name+"\n"+expt.title_CPV)
 	print(nclf.name," saving to "+filename+".png \n")
 	fig.savefig(filename+".png")
+	plt.close(fig)
 
 	return val_max
 
@@ -271,8 +277,8 @@ def evaluate_job(expt,nclf,out_q):
 	os.chdir(nclf.name)
 	for param_index, param in enumerate(nclf.param_list):
 		if nclf.name == "nn":
-			for dim in expt.evaluation_dimensions:
-				nclf.clf_nn_dict[str(dim)] = KerasClassifier(build_fn=make_keras_model,n_hidden_layers=nclf.param_opt[0],dimof_middle=nclf.param_opt[1],dimof_input=dim)
+			for dim_index, dim in enumerate(expt.evaluation_dimensions):
+				nclf.clf_nn_dict[str(dim)] = KerasClassifier(build_fn=make_keras_model,n_hidden_layers=nclf.param_opt[0],dimof_middle=nclf.param_opt[1],dimof_input=expt.keras_evaluation_dimensions[dim_index])
 		else:
 			#print("nclf.param_list :",nclf.param_list)
 			#print("nclf.param_opt :",nclf.param_opt)
@@ -299,7 +305,7 @@ def evaluate_job(expt,nclf,out_q):
 			else: aclf=nclf.clf
 			if expt.scoring=='chi2':
 				for no_bins in expt.single_no_bins_list:
-					classifier_eval(name= nclf.name + "_" +expt.name_noCPV.format(dim) , comp_file_list=comp_file_list, clf =aclf, verbose=False, scoring=expt.scoring, no_bins=no_bins, systematics_fraction=expt.systematics_fraction, title=expt.title+" "+ str(dim)+"D")
+					classifier_eval(name= nclf.name + "_" +expt.name_noCPV.format(dim) , comp_file_list=comp_file_list, clf =aclf, verbose=False, scoring=expt.scoring, no_bins=no_bins, systematics_fraction=expt.systematics_fraction, title=expt.title_noCPV+" "+ str(dim)+"D")
 			else:
 				classifier_eval(name= nclf.name + "_" +expt.name_noCPV.format(dim) , comp_file_list=comp_file_list, clf =aclf, verbose=False, scoring=expt.scoring, title=expt.title+" "+ str(dim)+"D")
 
@@ -332,6 +338,7 @@ class experiment(object):
 		self.name_noCPV		= kwargs.get('name_noCPV',"{0}Dname_noCPV")
 		self.title_CPV		= kwargs.get('title_CPV','title_CPV')
 		self.title_noCPV	= kwargs.get('title_noCPV','title_noCPV')
+		self.directory_name	= kwargs.get('directory_name',"")
 		self.scoring		= kwargs.get('scoring',"standard")
 		self.single_no_bins_list= kwargs.get('single_no_bins_list',[2])
 		self.systematics_fraction= kwargs.get('systematics_fraction',0.01)
@@ -339,8 +346,8 @@ class experiment(object):
 		self.name_CPV		= self.name_CPV+ "_syst_"+str(self.systematics_fraction).replace(".","_") + "_"
 
 		self.title_CPV		= self.title_CPV + " syst" + str(self.systematics_fraction)
-		self.title_noCPV          = self.title_noCPV + " syst" + str(self.systematics_fraction)	
-
+		self.title_noCPV        = self.title_noCPV + " syst" + str(self.systematics_fraction)	
+	
 	def set_name_CPV(self,name_CPV):			self.name_CPV = name_CPV
 	def set_name_noCPV(self,name_noCPV): 			self.name_noCPV = name_noCPV
 	def set_nclf_list(self,nclf_list): 			self.nclf_list=nclf_list
@@ -350,11 +357,12 @@ class experiment(object):
 	def optimise(self,**kwargs):
 
 		self.optimisation_dimension 	= kwargs.get('optimisation_dimension',2)
+		self.keras_optimisation_dimension = kwargs.get('keras_optimisation_dimension',self.optimisation_dimension)
 		self.number_of_iterations	= kwargs.get('number_of_iterations',50)
 		self.optimisation_no_bins 	= kwargs.get('optimisation_no_bins',self.single_no_bins_list[0])
 		self.spearmint_directory 	= kwargs.get('spearmint_directory', "/Users/weisser/Documents/Spearmint-master/spearmint")	
 		
-		opt_dir = "optimisation"
+		opt_dir = "optimisation"+self.directory_name
 		if not os.path.exists(opt_dir):
 			os.makedirs(opt_dir)
 		os.chdir(opt_dir)
@@ -390,7 +398,9 @@ class experiment(object):
 
 		self.evaluation_dimensions = evaluation_dimensions
 		self.number_of_evaluations = number_of_evaluations
-		eval_dir = "evaluation"
+		self.keras_evaluation_dimensions = kwargs.get('keras_evaluation_dimensions', self.number_of_evaluations)
+
+		eval_dir = "evaluation"+self.directory_name
 		if not os.path.exists(eval_dir):
                         os.makedirs(eval_dir)
 		os.chdir(eval_dir)
@@ -420,7 +430,7 @@ class experiment(object):
 		#classifier_content += '\tif job_id>{}: \n\t\tprint("Killing parent process : ", os.getppid(),"\\n"*3) \n\t\tos.kill(os.getppid(), signal.SIGTERM) \n\n'.format(self.number_of_iterations)
 		classifier_content += '\tcomp_file_list= [("{}","{}")]\n\n'.format(self.file_name_patterns[0].format(self.optimisation_dimension,"optimisation_0"),self.file_name_patterns[1].format(self.optimisation_dimension,"optimisation_0"))
 		if nclf.name == "nn":
-			classifier_content += '\tclf = KerasClassifier(classifier_eval.make_keras_model,n_hidden_layers=params["n_hidden_layers"],dimof_middle=params["dimof_middle"],dimof_input={})'.format(self.optimisation_dimension)
+			classifier_content += '\tclf = KerasClassifier(classifier_eval.make_keras_model,n_hidden_layers=params["n_hidden_layers"],dimof_middle=params["dimof_middle"],dimof_input={})'.format(self.keras_optimisation_dimension)
 		else:
 			clf_repr_list =  repr(nclf.clf).split()
 			for param in nclf.param_list:
@@ -433,7 +443,7 @@ class experiment(object):
 						clf_repr_list[index] = rest
 		 
 			classifier_content += '\tclf = '+ ''.join(clf_repr_list)
-		classifier_content += '\n\n\tresult= classifier_eval.classifier_eval(name="{}",title="{}",comp_file_list=comp_file_list,clf=clf,mode="spearmint_optimisation",scoring="{}", no_bins={}, systematics_fraction={})\n\n'.format(nclf.name + "_" +self.name_CPV.format(self.optimisation_dimension)+"_optimisation",nclf.name+" "+self.title_CPV,self.scoring,self.optimisation_no_bins,self.systematics_fraction)
+		classifier_content += '\n\n\tresult= classifier_eval.classifier_eval(name="{}",title="{}",comp_file_list=comp_file_list,clf=clf,mode="spearmint_optimisation",scoring="{}", no_bins={}, systematics_fraction={})\n\n'.format(nclf.name + "_" +self.name_CPV.format(self.optimisation_dimension),nclf.name+" "+self.title_CPV,self.scoring,self.optimisation_no_bins,self.systematics_fraction)
 		if self.scoring=="chi2": 	self_name_CPV= self.name_CPV+ "_chi2scoring_" + str(self.optimisation_no_bins)
 		else:				self_name_CPV= self.name_CPV
 		classifier_content += '\twith open("{}_optimisation_values.txt", "a") as myfile: \n\t\tmyfile.write(str(params["{}"][0])+"\\t"+ str(params["{}"][0])+"\\t"+str(result)+"\\n") \n\treturn result'.format(nclf.name +"_"+ self_name_CPV.format(self.optimisation_dimension), nclf.param_list[0], nclf.param_list[1])
@@ -476,7 +486,7 @@ def classifier_eval(*args,**kwargs):
 	title		= kwargs.get('title','title')
 	sample1_name	= kwargs.get('sample1_name',"original")
 	sample2_name    = kwargs.get('sample2_name',"modified")
-	shuffling_seed	= kwargs.get('shuffling_seed',100)
+	shuffling_seed	= kwargs.get('shufflingle_no_bins_listng_seed',100)
 	comp_file_list	= kwargs.get('comp_file_list')
 	cv_n_iter	= kwargs.get('cv_n_iter',1)
 	clf		= kwargs.get('clf')
@@ -621,13 +631,13 @@ def classifier_eval(*args,**kwargs):
 				with open(name+"chi2scoring_{}_bins_p_values".format(no_bins),'w') as p_value_file:
 	                                for item in score_chi_list_list[no_bins_index]:
 						p_value_file.write(str(item)+'\n')
-					histo_plot_pvalue(score_chi_list_list[no_bins_index],50,"p value","Frequency","p value distribution",name)
+					histo_plot_pvalue(score_chi_list_list[no_bins_index],20,"p value","Frequency","p value distribution",name)
                 else:
 			if verbose: print("score_list : \n",score_list)
 			with open(name+"_p_values",'w') as p_value_file:
 				for item in score_list:
 					p_value_file.write(str(item)+'\n')
-			histo_plot_pvalue(score_list,50,"p value","Frequency","p value distribution",name)
+			histo_plot_pvalue(score_list,20,"p value","Frequency","p value distribution",name)
 
 
 
