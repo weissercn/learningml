@@ -1,0 +1,1101 @@
+Using database at localhost.
+Getting suggestion...
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        0           
+                dimof_middle  int        100         
+Submitted job 1 with local scheduler (process id: 80748).
+Status: 1 pending, 0 complete.
+
+Getting suggestion...
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        0           
+                dimof_middle  int        300         
+Submitted job 2 with local scheduler (process id: 81030).
+Status: 1 pending, 1 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is 0.00110 (+/- 0.06621), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        0           
+                dimof_middle  int        500         
+
+Minimum of observed values is 0.005637, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        0           
+                dimof_middle  int        300         
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        500         
+Submitted job 3 with local scheduler (process id: 81186).
+Status: 1 pending, 2 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00813 (+/- 0.07701), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        0           
+                dimof_middle  int        351         
+
+Minimum of observed values is 0.000039, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        500         
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        0           
+                dimof_middle  int        359         
+Submitted job 4 with local scheduler (process id: 81400).
+Status: 1 pending, 3 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.05545 (+/- 0.15330), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        233         
+
+Minimum of observed values is 0.000039, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        500         
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        214         
+Submitted job 5 with local scheduler (process id: 81518).
+Status: 1 pending, 4 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00940 (+/- 0.06238), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        265         
+
+Minimum of observed values is 0.000039, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        500         
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        0           
+                dimof_middle  int        487         
+Submitted job 6 with local scheduler (process id: 81631).
+Status: 1 pending, 5 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is 0.00004 (+/- 0.00008), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        500         
+
+Minimum of observed values is 0.000039, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        500         
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        0           
+                dimof_middle  int        276         
+Submitted job 7 with local scheduler (process id: 81819).
+Status: 1 pending, 6 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is 0.00004 (+/- 0.00007), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        500         
+
+Minimum of observed values is 0.000039, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        500         
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        237         
+Submitted job 8 with local scheduler (process id: 81900).
+Status: 1 pending, 7 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is 0.00004 (+/- 0.00007), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        500         
+
+Minimum of observed values is 0.000039, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        500         
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        192         
+Submitted job 9 with local scheduler (process id: 82056).
+Status: 1 pending, 8 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is 0.00004 (+/- 0.00007), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        500         
+
+Minimum of observed values is 0.000039, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        500         
+/Users/weisser/Documents/Spearmint-master/spearmint/transformations/beta_warp.py:206: UserWarning: BetaWarp encountered negative values: [ -1.38777878e-17]
+  warnings.warn('BetaWarp encountered negative values: %s' % inputs[inputs<0])
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        0           
+                dimof_middle  int        202         
+Submitted job 10 with local scheduler (process id: 82212).
+Status: 1 pending, 9 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00032 (+/- 0.00414), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        493         
+
+Minimum of observed values is 0.000039, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        500         
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        186         
+Submitted job 11 with local scheduler (process id: 82323).
+Status: 1 pending, 10 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00196 (+/- 0.01502), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        188         
+
+Minimum of observed values is 0.000001, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        186         
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        289         
+Submitted job 12 with local scheduler (process id: 82523).
+Status: 1 pending, 11 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is 0.00000 (+/- 0.00006), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        289         
+
+Minimum of observed values is 0.000001, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        289         
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        0           
+                dimof_middle  int        189         
+Submitted job 13 with local scheduler (process id: 82680).
+Status: 1 pending, 12 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00195 (+/- 0.00424), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        188         
+
+Minimum of observed values is 0.000001, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        289         
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        220         
+Submitted job 14 with local scheduler (process id: 82835).
+Status: 1 pending, 13 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00925 (+/- 0.04059), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        211         
+
+Minimum of observed values is 0.000001, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        289         
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        0           
+                dimof_middle  int        165         
+Submitted job 15 with local scheduler (process id: 82987).
+Status: 1 pending, 14 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00571 (+/- 0.02306), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        212         
+
+Minimum of observed values is 0.000001, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        289         
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        210         
+Submitted job 16 with local scheduler (process id: 83070).
+Status: 1 pending, 15 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00590 (+/- 0.01094), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        212         
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        210         
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        0           
+                dimof_middle  int        294         
+Submitted job 17 with local scheduler (process id: 83307).
+Status: 1 pending, 16 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00622 (+/- 0.00643), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        212         
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        210         
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        170         
+Submitted job 18 with local scheduler (process id: 83469).
+Status: 1 pending, 17 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00562 (+/- 0.01050), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        212         
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        210         
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        0           
+                dimof_middle  int        212         
+Submitted job 19 with local scheduler (process id: 83664).
+Status: 1 pending, 18 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00197 (+/- 0.00653), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        211         
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        210         
+/Users/weisser/Documents/Spearmint-master/spearmint/transformations/beta_warp.py:206: UserWarning: BetaWarp encountered negative values: [ -6.93889390e-18]
+  warnings.warn('BetaWarp encountered negative values: %s' % inputs[inputs<0])
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        0           
+                dimof_middle  int        180         
+Submitted job 20 with local scheduler (process id: 83863).
+Status: 1 pending, 19 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00371 (+/- 0.00886), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        211         
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        210         
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        158         
+Submitted job 21 with local scheduler (process id: 84019).
+Status: 1 pending, 20 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.01968 (+/- 0.02234), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        0           
+                dimof_middle  int        168         
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        210         
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        254         
+Submitted job 22 with local scheduler (process id: 84263).
+Status: 1 pending, 21 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.02006 (+/- 0.02302), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        0           
+                dimof_middle  int        167         
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        210         
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        0           
+                dimof_middle  int        167         
+Submitted job 23 with local scheduler (process id: 84419).
+Status: 1 pending, 22 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00318 (+/- 0.01184), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        0           
+                dimof_middle  int        166         
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        210         
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        262         
+Submitted job 24 with local scheduler (process id: 84618).
+Status: 1 pending, 23 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00395 (+/- 0.00555), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        211         
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        210         
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        108         
+Submitted job 25 with local scheduler (process id: 84774).
+Status: 1 pending, 24 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00404 (+/- 0.00504), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        211         
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        210         
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        0           
+                dimof_middle  int        106         
+Submitted job 26 with local scheduler (process id: 84929).
+Status: 1 pending, 25 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00442 (+/- 0.00355), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        211         
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        210         
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        106         
+Submitted job 27 with local scheduler (process id: 85039).
+Status: 1 pending, 26 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00337 (+/- 0.00633), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        0           
+                dimof_middle  int        166         
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        210         
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        0           
+                dimof_middle  int        106         
+Submitted job 28 with local scheduler (process id: 85239).
+Status: 1 pending, 27 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00473 (+/- 0.00418), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        211         
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        210         
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        0           
+                dimof_middle  int        119         
+Submitted job 29 with local scheduler (process id: 85394).
+Status: 1 pending, 28 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00418 (+/- 0.00332), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        211         
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        210         
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        0           
+                dimof_middle  int        112         
+Submitted job 30 with local scheduler (process id: 85550).
+Status: 1 pending, 29 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00340 (+/- 0.00553), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        0           
+                dimof_middle  int        166         
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        210         
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        0           
+                dimof_middle  int        133         
+Submitted job 31 with local scheduler (process id: 85705).
+Status: 1 pending, 30 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00312 (+/- 0.00959), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        0           
+                dimof_middle  int        166         
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        210         
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        0           
+                dimof_middle  int        106         
+Submitted job 32 with local scheduler (process id: 85907).
+Status: 1 pending, 31 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00381 (+/- 0.00342), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        211         
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        210         
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        114         
+Submitted job 33 with local scheduler (process id: 86009).
+Status: 1 pending, 32 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00452 (+/- 0.00490), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        211         
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        210         
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        124         
+Submitted job 34 with local scheduler (process id: 86173).
+Status: 1 pending, 33 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00396 (+/- 0.00427), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        211         
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        210         
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        0           
+                dimof_middle  int        103         
+Submitted job 35 with local scheduler (process id: 86331).
+Status: 1 pending, 34 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00566 (+/- 0.02702), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        0           
+                dimof_middle  int        104         
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        210         
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        0           
+                dimof_middle  int        104         
+Submitted job 36 with local scheduler (process id: 86560).
+Status: 1 pending, 35 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00313 (+/- 0.00553), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        0           
+                dimof_middle  int        166         
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        210         
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        422         
+Submitted job 37 with local scheduler (process id: 86686).
+Status: 1 pending, 36 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00360 (+/- 0.00617), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        211         
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        210         
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        0           
+                dimof_middle  int        115         
+Submitted job 38 with local scheduler (process id: 86891).
+Status: 1 pending, 37 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.01603 (+/- 0.02440), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        113         
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        210         
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        113         
+Submitted job 39 with local scheduler (process id: 87047).
+Status: 1 pending, 38 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00407 (+/- 0.00566), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        212         
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        210         
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        0           
+                dimof_middle  int        111         
+Submitted job 40 with local scheduler (process id: 87291).
+Status: 1 pending, 39 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00406 (+/- 0.03360), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        0           
+                dimof_middle  int        111         
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        210         
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        0           
+                dimof_middle  int        103         
+Submitted job 41 with local scheduler (process id: 87445).
+Status: 1 pending, 40 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00164 (+/- 0.00731), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        441         
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        210         
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        0           
+                dimof_middle  int        111         
+Submitted job 42 with local scheduler (process id: 87557).
+Status: 1 pending, 41 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00117 (+/- 0.02047), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        0           
+                dimof_middle  int        165         
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        210         
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        0           
+                dimof_middle  int        106         
+Submitted job 43 with local scheduler (process id: 87668).
+Status: 1 pending, 42 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00256 (+/- 0.01130), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        0           
+                dimof_middle  int        165         
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        210         
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        0           
+                dimof_middle  int        103         
+Submitted job 44 with local scheduler (process id: 87823).
+Status: 1 pending, 43 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00249 (+/- 0.01221), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        0           
+                dimof_middle  int        166         
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        210         
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        0           
+                dimof_middle  int        106         
+Submitted job 45 with local scheduler (process id: 87934).
+Status: 1 pending, 44 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00276 (+/- 0.00918), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        0           
+                dimof_middle  int        166         
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        210         
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        0           
+                dimof_middle  int        106         
+Submitted job 46 with local scheduler (process id: 88089).
+Status: 1 pending, 45 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00342 (+/- 0.00521), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        211         
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        210         
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        106         
+Submitted job 47 with local scheduler (process id: 88199).
+Status: 1 pending, 46 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00411 (+/- 0.00544), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        212         
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        210         
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        0           
+                dimof_middle  int        106         
+Submitted job 48 with local scheduler (process id: 88310).
+Status: 1 pending, 47 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00414 (+/- 0.00539), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        212         
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        210         
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        0           
+                dimof_middle  int        103         
+Submitted job 49 with local scheduler (process id: 88421).
+Status: 1 pending, 48 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00314 (+/- 0.00786), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        0           
+                dimof_middle  int        166         
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        210         
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        0           
+                dimof_middle  int        106         
+Submitted job 50 with local scheduler (process id: 88488).
+Status: 1 pending, 49 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00304 (+/- 0.01128), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        0           
+                dimof_middle  int        165         
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        1           
+                dimof_middle  int        210         
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_hidden_lay  int        0           
+                dimof_middle  int        107         
+Submitted job 51 with local scheduler (process id: 88598).
+Status: 1 pending, 50 complete.
+

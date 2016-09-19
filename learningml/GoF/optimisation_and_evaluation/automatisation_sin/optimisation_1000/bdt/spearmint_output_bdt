@@ -1,0 +1,1099 @@
+Using database at localhost.
+Getting suggestion...
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1           
+                learning_rat  float      0.010000    
+Submitted job 1 with local scheduler (process id: 74395).
+Status: 1 pending, 0 complete.
+
+Getting suggestion...
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        500         
+                learning_rat  float      1.005000    
+Submitted job 2 with local scheduler (process id: 74543).
+Status: 1 pending, 1 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00042 (+/- 0.00484), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        715         
+                learning_rat  float      1.050062    
+
+Minimum of observed values is 0.000401, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        500         
+                learning_rat  float      1.005000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        999         
+                learning_rat  float      1.813401    
+Submitted job 3 with local scheduler (process id: 74775).
+Status: 1 pending, 2 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00023 (+/- 0.00448), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        809         
+                learning_rat  float      1.268811    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        999         
+                learning_rat  float      1.813401    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1000        
+                learning_rat  float      0.010000    
+Submitted job 4 with local scheduler (process id: 74954).
+Status: 1 pending, 3 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00009 (+/- 0.00026), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1000        
+                learning_rat  float      1.297597    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1000        
+                learning_rat  float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        998         
+                learning_rat  float      2.000000    
+Submitted job 5 with local scheduler (process id: 75120).
+Status: 1 pending, 4 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00000 (+/- 0.00006), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        800         
+                learning_rat  float      0.010121    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1000        
+                learning_rat  float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        108         
+                learning_rat  float      2.000000    
+Submitted job 6 with local scheduler (process id: 75319).
+Status: 1 pending, 5 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00001 (+/- 0.00026), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        999         
+                learning_rat  float      1.016660    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1000        
+                learning_rat  float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        149         
+                learning_rat  float      0.135238    
+Submitted job 7 with local scheduler (process id: 75473).
+Status: 1 pending, 6 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00053 (+/- 0.00199), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        128         
+                learning_rat  float      1.846839    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1000        
+                learning_rat  float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        74          
+                learning_rat  float      0.010000    
+Submitted job 8 with local scheduler (process id: 75627).
+Status: 1 pending, 7 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00042 (+/- 0.00039), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        110         
+                learning_rat  float      0.015466    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1000        
+                learning_rat  float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        108         
+                learning_rat  float      0.010000    
+Submitted job 9 with local scheduler (process id: 75730).
+Status: 1 pending, 8 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00007 (+/- 0.00039), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        85          
+                learning_rat  float      0.164011    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1000        
+                learning_rat  float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        29          
+                learning_rat  float      2.000000    
+Submitted job 10 with local scheduler (process id: 75833).
+Status: 1 pending, 9 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00014 (+/- 0.00026), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        51          
+                learning_rat  float      1.994291    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1000        
+                learning_rat  float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        52          
+                learning_rat  float      1.999710    
+Submitted job 11 with local scheduler (process id: 76038).
+Status: 1 pending, 10 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00001 (+/- 0.00004), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        94          
+                learning_rat  float      0.020931    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1000        
+                learning_rat  float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        12          
+                learning_rat  float      0.010000    
+Submitted job 12 with local scheduler (process id: 76134).
+Status: 1 pending, 11 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00007 (+/- 0.00014), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        22          
+                learning_rat  float      0.065993    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1000        
+                learning_rat  float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        22          
+                learning_rat  float      0.013097    
+Submitted job 13 with local scheduler (process id: 76288).
+Status: 1 pending, 12 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00000 (+/- 0.00001), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        67          
+                learning_rat  float      1.999514    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1000        
+                learning_rat  float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        16          
+                learning_rat  float      0.872611    
+Submitted job 14 with local scheduler (process id: 76443).
+Status: 1 pending, 13 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00003 (+/- 0.00007), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        14          
+                learning_rat  float      0.733173    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1000        
+                learning_rat  float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1           
+                learning_rat  float      1.991858    
+Submitted job 15 with local scheduler (process id: 76597).
+Status: 1 pending, 14 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00138 (+/- 0.00707), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        43          
+                learning_rat  float      1.913217    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1000        
+                learning_rat  float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1           
+                learning_rat  float      0.010000    
+Submitted job 16 with local scheduler (process id: 76744).
+Status: 1 pending, 15 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00281 (+/- 0.01664), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        2           
+                learning_rat  float      0.103646    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1000        
+                learning_rat  float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1           
+                learning_rat  float      0.010000    
+Submitted job 17 with local scheduler (process id: 76907).
+Status: 1 pending, 16 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00310 (+/- 0.03155), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        30          
+                learning_rat  float      0.738881    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1000        
+                learning_rat  float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        946         
+                learning_rat  float      0.746647    
+Submitted job 18 with local scheduler (process id: 76952).
+Status: 1 pending, 17 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00686 (+/- 0.00537), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        334         
+                learning_rat  float      1.999879    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1000        
+                learning_rat  float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        985         
+                learning_rat  float      1.913601    
+Submitted job 19 with local scheduler (process id: 77151).
+Status: 1 pending, 18 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.05364 (+/- 0.04474), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        334         
+                learning_rat  float      1.999879    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1000        
+                learning_rat  float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        701         
+                learning_rat  float      1.999984    
+Submitted job 20 with local scheduler (process id: 77305).
+Status: 1 pending, 19 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.01852 (+/- 0.31288), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        760         
+                learning_rat  float      1.891901    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1000        
+                learning_rat  float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        927         
+                learning_rat  float      1.872654    
+Submitted job 21 with local scheduler (process id: 77522).
+Status: 1 pending, 20 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.04591 (+/- 0.07177), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        334         
+                learning_rat  float      1.999879    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1000        
+                learning_rat  float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        846         
+                learning_rat  float      1.999910    
+Submitted job 22 with local scheduler (process id: 77654).
+Status: 1 pending, 21 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.01138 (+/- 0.19006), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        791         
+                learning_rat  float      1.895544    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1000        
+                learning_rat  float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        983         
+                learning_rat  float      1.946445    
+Submitted job 23 with local scheduler (process id: 77843).
+Status: 1 pending, 22 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.01726 (+/- 0.04083), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        928         
+                learning_rat  float      1.935262    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1000        
+                learning_rat  float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1           
+                learning_rat  float      1.928355    
+Submitted job 24 with local scheduler (process id: 78061).
+Status: 1 pending, 23 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.02284 (+/- 0.06084), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        818         
+                learning_rat  float      1.935626    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1000        
+                learning_rat  float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        991         
+                learning_rat  float      1.933736    
+Submitted job 25 with local scheduler (process id: 78203).
+Status: 1 pending, 24 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00565 (+/- 0.05895), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        710         
+                learning_rat  float      1.837001    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1000        
+                learning_rat  float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        980         
+                learning_rat  float      1.742708    
+Submitted job 26 with local scheduler (process id: 78411).
+Status: 1 pending, 25 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00385 (+/- 0.00669), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        600         
+                learning_rat  float      1.999757    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1000        
+                learning_rat  float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1           
+                learning_rat  float      1.880289    
+Submitted job 27 with local scheduler (process id: 78570).
+Status: 1 pending, 26 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00694 (+/- 0.01031), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        600         
+                learning_rat  float      1.999757    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1000        
+                learning_rat  float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1           
+                learning_rat  float      1.999999    
+Submitted job 28 with local scheduler (process id: 78761).
+Status: 1 pending, 27 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00563 (+/- 0.01107), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        600         
+                learning_rat  float      1.999757    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1000        
+                learning_rat  float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1           
+                learning_rat  float      1.903567    
+Submitted job 29 with local scheduler (process id: 78926).
+Status: 1 pending, 28 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.01078 (+/- 0.05522), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        844         
+                learning_rat  float      1.921172    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1000        
+                learning_rat  float      0.010000    
+/Users/weisser/Documents/Spearmint-master/spearmint/transformations/beta_warp.py:206: UserWarning: BetaWarp encountered negative values: [ -5.55111512e-17]
+  warnings.warn('BetaWarp encountered negative values: %s' % inputs[inputs<0])
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1           
+                learning_rat  float      1.846450    
+Submitted job 30 with local scheduler (process id: 79110).
+Status: 1 pending, 29 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00851 (+/- 0.03596), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        647         
+                learning_rat  float      1.921476    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1000        
+                learning_rat  float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1           
+                learning_rat  float      1.781764    
+Submitted job 31 with local scheduler (process id: 79252).
+Status: 1 pending, 30 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.01081 (+/- 0.02253), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        3           
+                learning_rat  float      1.945343    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1000        
+                learning_rat  float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1           
+                learning_rat  float      1.945524    
+Submitted job 32 with local scheduler (process id: 79431).
+Status: 1 pending, 31 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00732 (+/- 0.01313), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        7           
+                learning_rat  float      1.775421    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1000        
+                learning_rat  float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        3           
+                learning_rat  float      1.782386    
+Submitted job 33 with local scheduler (process id: 79592).
+Status: 1 pending, 32 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00639 (+/- 0.01555), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        19          
+                learning_rat  float      1.939391    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1000        
+                learning_rat  float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1           
+                learning_rat  float      1.937758    
+Submitted job 34 with local scheduler (process id: 79784).
+Status: 1 pending, 33 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00745 (+/- 0.01254), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        761         
+                learning_rat  float      1.923116    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1000        
+                learning_rat  float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        996         
+                learning_rat  float      1.960371    
+Submitted job 35 with local scheduler (process id: 79941).
+Status: 1 pending, 34 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.01153 (+/- 0.01426), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        918         
+                learning_rat  float      1.955060    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1000        
+                learning_rat  float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        2           
+                learning_rat  float      1.954828    
+Submitted job 36 with local scheduler (process id: 80143).
+Status: 1 pending, 35 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.07963 (+/- 0.09207), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        817         
+                learning_rat  float      1.966599    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1000        
+                learning_rat  float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        958         
+                learning_rat  float      1.968127    
+Submitted job 37 with local scheduler (process id: 80313).
+Status: 1 pending, 36 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.03975 (+/- 0.04112), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        460         
+                learning_rat  float      1.963805    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1000        
+                learning_rat  float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        967         
+                learning_rat  float      1.669020    
+Submitted job 38 with local scheduler (process id: 80513).
+Status: 1 pending, 37 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.03435 (+/- 0.04501), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        607         
+                learning_rat  float      1.963744    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1000        
+                learning_rat  float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        990         
+                learning_rat  float      1.963941    
+Submitted job 39 with local scheduler (process id: 80767).
+Status: 1 pending, 38 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.03098 (+/- 0.03937), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        673         
+                learning_rat  float      1.942549    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1000        
+                learning_rat  float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        975         
+                learning_rat  float      1.592194    
+Submitted job 40 with local scheduler (process id: 80966).
+Status: 1 pending, 39 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.02920 (+/- 0.04342), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        673         
+                learning_rat  float      1.942549    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1000        
+                learning_rat  float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        959         
+                learning_rat  float      1.941905    
+Submitted job 41 with local scheduler (process id: 81133).
+Status: 1 pending, 40 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00554 (+/- 0.01523), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        839         
+                learning_rat  float      1.923237    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1000        
+                learning_rat  float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1           
+                learning_rat  float      1.697272    
+Submitted job 42 with local scheduler (process id: 81288).
+Status: 1 pending, 41 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00883 (+/- 0.03042), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1           
+                learning_rat  float      1.695621    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1000        
+                learning_rat  float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1           
+                learning_rat  float      1.689192    
+Submitted job 43 with local scheduler (process id: 81399).
+Status: 1 pending, 42 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.17750 (+/- 0.07507), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        6           
+                learning_rat  float      1.713476    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1000        
+                learning_rat  float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1           
+                learning_rat  float      1.722867    
+Submitted job 44 with local scheduler (process id: 81578).
+Status: 1 pending, 43 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.25249 (+/- 0.10943), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        853         
+                learning_rat  float      1.706796    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1000        
+                learning_rat  float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        984         
+                learning_rat  float      1.706947    
+Submitted job 45 with local scheduler (process id: 81736).
+Status: 1 pending, 44 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.10469 (+/- 0.16492), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        735         
+                learning_rat  float      1.641329    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1000        
+                learning_rat  float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        968         
+                learning_rat  float      1.637411    
+Submitted job 46 with local scheduler (process id: 81864).
+Status: 1 pending, 45 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.03490 (+/- 0.16918), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        533         
+                learning_rat  float      1.758295    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1000        
+                learning_rat  float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        982         
+                learning_rat  float      1.509817    
+Submitted job 47 with local scheduler (process id: 81974).
+Status: 1 pending, 46 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.02954 (+/- 0.12854), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        798         
+                learning_rat  float      1.758173    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1000        
+                learning_rat  float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        977         
+                learning_rat  float      1.762850    
+Submitted job 48 with local scheduler (process id: 82085).
+Status: 1 pending, 47 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.03200 (+/- 0.04776), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        958         
+                learning_rat  float      1.657483    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1000        
+                learning_rat  float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        954         
+                learning_rat  float      1.830799    
+Submitted job 49 with local scheduler (process id: 82196).
+Status: 1 pending, 48 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.03305 (+/- 0.04827), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        958         
+                learning_rat  float      1.657483    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1000        
+                learning_rat  float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        999         
+                learning_rat  float      1.859611    
+Submitted job 50 with local scheduler (process id: 82241).
+Status: 1 pending, 49 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.03006 (+/- 0.04893), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        958         
+                learning_rat  float      1.657483    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1000        
+                learning_rat  float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1000        
+                learning_rat  float      1.921315    
+Submitted job 51 with local scheduler (process id: 82286).
+Status: 1 pending, 50 complete.
+

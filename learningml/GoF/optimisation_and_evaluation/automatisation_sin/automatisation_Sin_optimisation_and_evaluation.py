@@ -23,6 +23,7 @@ import time
 #nclf_list = [name_to_nclf("svm")]
 
 nclf_list = [nclf('bdt',AdaBoostClassifier(base_estimator=tree.DecisionTreeClassifier(max_depth=2)), ['learning_rate','n_estimators'], [[0.01,2.0],[1,1000]], param_opt=[0.01, 1.0]),  nclf('xgb',XGBoostClassifier(), ['n_estimators','eta'], [[10,1000],[0.01,1.0]], param_opt=[999, 0.01]),  nclf('nn',"no classifier needed for nn", ['n_hidden_layers','dimof_middle'], [[0,1],[100,500]],param_opt=[1, 302]),nclf('svm',SVC(probability=True, cache_size=7000), ['C','gamma'], [[1.0,1000.0],[1E-6,0.1]], [500.5, 0.0500005 ] )]
+#nclf_list = [nclf('bdt',AdaBoostClassifier(base_estimator=tree.DecisionTreeClassifier(max_depth=2)), ['learning_rate','n_estimators'], [[0.01,2.0],[1,1000]], param_opt=[0.01, 1.0])]
 
 #nclf_list = [nclf()]
 
@@ -50,7 +51,7 @@ print(50*"-"+"\noptimisation took  ", (evaluation_start_time - start_time)/60. ,
 
 
 
-expt.evaluate(evaluation_dimensions = range(10,11), number_of_evaluations=100)
+expt.evaluate(evaluation_dimensions = range(1,11), number_of_evaluations=100)
 
 
 end_time = time.time()

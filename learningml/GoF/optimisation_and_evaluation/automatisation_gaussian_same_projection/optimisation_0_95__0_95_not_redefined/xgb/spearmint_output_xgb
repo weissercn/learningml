@@ -1,0 +1,1086 @@
+Using database at localhost.
+Getting suggestion...
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        10          
+                eta           float      0.010000    
+Submitted job 1 with local scheduler (process id: 80746).
+Status: 1 pending, 0 complete.
+
+Getting suggestion...
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        10          
+                eta           float      0.010000    
+Submitted job 2 with local scheduler (process id: 80890).
+Status: 1 pending, 0 complete.
+
+Getting suggestion...
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        505         
+                eta           float      0.505000    
+Submitted job 3 with local scheduler (process id: 80986).
+Status: 1 pending, 1 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is 0.68215 (+/- 0.07496), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        506         
+                eta           float      0.660292    
+
+Minimum of observed values is 0.689574, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        505         
+                eta           float      0.505000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        590         
+                eta           float      1.000000    
+Submitted job 4 with local scheduler (process id: 81098).
+Status: 1 pending, 2 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is 0.68933 (+/- 0.00774), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        505         
+                eta           float      0.306988    
+
+Minimum of observed values is 0.689574, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        505         
+                eta           float      0.505000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        425         
+                eta           float      0.010000    
+Submitted job 5 with local scheduler (process id: 81254).
+Status: 1 pending, 3 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is 0.49793 (+/- 0.15542), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        306         
+                eta           float      0.027402    
+
+Minimum of observed values is 0.537002, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        425         
+                eta           float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        215         
+                eta           float      0.071048    
+Submitted job 6 with local scheduler (process id: 81355).
+Status: 1 pending, 4 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is 0.53700 (+/- 0.00024), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        425         
+                eta           float      0.010000    
+
+Minimum of observed values is 0.537002, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        425         
+                eta           float      0.010000    
+/Users/weisser/Documents/Spearmint-master/spearmint/transformations/beta_warp.py:206: UserWarning: BetaWarp encountered negative values: [ -1.38777878e-17]
+  warnings.warn('BetaWarp encountered negative values: %s' % inputs[inputs<0])
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        1000        
+                eta           float      0.010000    
+Submitted job 7 with local scheduler (process id: 81473).
+Status: 1 pending, 5 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is 0.53700 (+/- 0.00024), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        425         
+                eta           float      0.010000    
+
+Minimum of observed values is 0.537002, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        425         
+                eta           float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        393         
+                eta           float      0.813565    
+Submitted job 8 with local scheduler (process id: 81639).
+Status: 1 pending, 6 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is 0.49057 (+/- 0.05740), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        494         
+                eta           float      0.022206    
+
+Minimum of observed values is 0.537002, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        425         
+                eta           float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        549         
+                eta           float      0.010263    
+Submitted job 9 with local scheduler (process id: 81787).
+Status: 1 pending, 7 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is 0.53145 (+/- 0.19661), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        445         
+                eta           float      0.012175    
+
+Minimum of observed values is 0.537002, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        425         
+                eta           float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        453         
+                eta           float      0.010000    
+Submitted job 10 with local scheduler (process id: 81965).
+Status: 1 pending, 8 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is 0.53700 (+/- 0.00021), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        425         
+                eta           float      0.010000    
+
+Minimum of observed values is 0.537002, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        425         
+                eta           float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        809         
+                eta           float      0.010000    
+Submitted job 11 with local scheduler (process id: 82113).
+Status: 1 pending, 9 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is 0.53700 (+/- 0.00021), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        425         
+                eta           float      0.010000    
+
+Minimum of observed values is 0.537002, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        425         
+                eta           float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        429         
+                eta           float      0.010000    
+Submitted job 12 with local scheduler (process id: 82278).
+Status: 1 pending, 10 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is 0.27253 (+/- 0.02335), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        429         
+                eta           float      0.010544    
+
+Minimum of observed values is 0.275631, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        429         
+                eta           float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        431         
+                eta           float      0.010000    
+Submitted job 13 with local scheduler (process id: 82478).
+Status: 1 pending, 11 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is 0.27563 (+/- 0.00031), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        429         
+                eta           float      0.010000    
+
+Minimum of observed values is 0.275631, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        429         
+                eta           float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        428         
+                eta           float      0.010000    
+Submitted job 14 with local scheduler (process id: 82635).
+Status: 1 pending, 12 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is 0.27563 (+/- 0.00030), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        429         
+                eta           float      0.010000    
+
+Minimum of observed values is 0.275631, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        429         
+                eta           float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        429         
+                eta           float      0.708268    
+Submitted job 15 with local scheduler (process id: 82791).
+Status: 1 pending, 13 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is 0.27563 (+/- 0.00029), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        429         
+                eta           float      0.010000    
+
+Minimum of observed values is 0.275631, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        429         
+                eta           float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        429         
+                eta           float      0.010000    
+Submitted job 16 with local scheduler (process id: 82950).
+Status: 1 pending, 14 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is 0.49578 (+/- 0.00025), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        429         
+                eta           float      0.010000    
+
+Minimum of observed values is 0.275631, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        429         
+                eta           float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        429         
+                eta           float      0.010000    
+Submitted job 17 with local scheduler (process id: 83063).
+Status: 1 pending, 15 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is 0.53700 (+/- 0.00028), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        425         
+                eta           float      0.010000    
+
+Minimum of observed values is 0.275631, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        429         
+                eta           float      0.010000    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        423         
+                eta           float      0.010357    
+Submitted job 18 with local scheduler (process id: 83262).
+Status: 1 pending, 16 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is 0.11291 (+/- 0.00036), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        423         
+                eta           float      0.010357    
+
+Minimum of observed values is 0.112914, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        423         
+                eta           float      0.010357    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        423         
+                eta           float      0.010090    
+Submitted job 19 with local scheduler (process id: 83425).
+Status: 1 pending, 17 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -9.46831 (+/- 2.16325), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        424         
+                eta           float      0.096347    
+
+Minimum of observed values is 0.112914, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        423         
+                eta           float      0.010357    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        85          
+                eta           float      0.524819    
+Submitted job 20 with local scheduler (process id: 83618).
+Status: 1 pending, 18 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -8.33104 (+/- 12.29689), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        418         
+                eta           float      0.984229    
+
+Minimum of observed values is 0.112914, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        423         
+                eta           float      0.010357    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        412         
+                eta           float      0.999160    
+Submitted job 21 with local scheduler (process id: 83774).
+Status: 1 pending, 19 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -4.99792 (+/- 4.53520), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        421         
+                eta           float      0.342880    
+
+Minimum of observed values is 0.112914, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        423         
+                eta           float      0.010357    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        369         
+                eta           float      0.010000    
+Submitted job 22 with local scheduler (process id: 83930).
+Status: 1 pending, 20 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -5.62678 (+/- 6.87653), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        422         
+                eta           float      0.824285    
+
+Minimum of observed values is 0.112914, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        423         
+                eta           float      0.010357    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        29          
+                eta           float      0.115018    
+Submitted job 23 with local scheduler (process id: 84129).
+Status: 1 pending, 21 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -7.56338 (+/- 4.68124), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        423         
+                eta           float      0.956343    
+
+Minimum of observed values is 0.112914, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        423         
+                eta           float      0.010357    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        54          
+                eta           float      0.218466    
+Submitted job 24 with local scheduler (process id: 84174).
+Status: 1 pending, 22 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -8.19999 (+/- 4.55290), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        423         
+                eta           float      0.839814    
+
+Minimum of observed values is 0.112914, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        423         
+                eta           float      0.010357    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        34          
+                eta           float      0.562645    
+Submitted job 25 with local scheduler (process id: 84329).
+Status: 1 pending, 23 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -7.49592 (+/- 5.14909), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        424         
+                eta           float      0.047524    
+
+Minimum of observed values is 0.112914, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        423         
+                eta           float      0.010357    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        44          
+                eta           float      0.877821    
+Submitted job 26 with local scheduler (process id: 84374).
+Status: 1 pending, 24 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -8.18487 (+/- 13.96942), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        422         
+                eta           float      0.026526    
+
+Minimum of observed values is 0.112914, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        423         
+                eta           float      0.010357    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        424         
+                eta           float      0.042133    
+Submitted job 27 with local scheduler (process id: 84549).
+Status: 1 pending, 25 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -3.58691 (+/- 7.03577), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        426         
+                eta           float      0.016707    
+
+Minimum of observed values is 0.112914, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        423         
+                eta           float      0.010357    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        44          
+                eta           float      0.074171    
+Submitted job 28 with local scheduler (process id: 84729).
+Status: 1 pending, 26 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -2.82864 (+/- 6.74324), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        426         
+                eta           float      0.016707    
+
+Minimum of observed values is 0.112914, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        423         
+                eta           float      0.010357    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        84          
+                eta           float      0.031754    
+Submitted job 29 with local scheduler (process id: 84839).
+Status: 1 pending, 27 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -2.51185 (+/- 2.88831), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        423         
+                eta           float      0.018701    
+
+Minimum of observed values is 0.112914, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        423         
+                eta           float      0.010357    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        86          
+                eta           float      0.465603    
+Submitted job 30 with local scheduler (process id: 84994).
+Status: 1 pending, 28 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -2.59487 (+/- 3.32835), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        426         
+                eta           float      0.016707    
+
+Minimum of observed values is 0.112914, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        423         
+                eta           float      0.010357    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        86          
+                eta           float      0.016376    
+Submitted job 31 with local scheduler (process id: 85150).
+Status: 1 pending, 29 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -2.27908 (+/- 1.96442), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        423         
+                eta           float      0.018701    
+
+Minimum of observed values is 0.112914, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        423         
+                eta           float      0.010357    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        87          
+                eta           float      0.223798    
+Submitted job 32 with local scheduler (process id: 85305).
+Status: 1 pending, 30 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -1.87429 (+/- 4.29309), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        426         
+                eta           float      0.016707    
+
+Minimum of observed values is 0.112914, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        423         
+                eta           float      0.010357    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        135         
+                eta           float      0.284178    
+Submitted job 33 with local scheduler (process id: 85452).
+Status: 1 pending, 31 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -1.82003 (+/- 4.20981), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        426         
+                eta           float      0.016707    
+
+Minimum of observed values is 0.112914, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        423         
+                eta           float      0.010357    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        44          
+                eta           float      0.994048    
+Submitted job 34 with local scheduler (process id: 85607).
+Status: 1 pending, 32 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -1.58503 (+/- 4.83514), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        426         
+                eta           float      0.016707    
+
+Minimum of observed values is 0.112914, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        423         
+                eta           float      0.010357    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        44          
+                eta           float      0.182627    
+Submitted job 35 with local scheduler (process id: 85765).
+Status: 1 pending, 33 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -1.56733 (+/- 2.20914), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        423         
+                eta           float      0.018701    
+
+Minimum of observed values is 0.112914, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        423         
+                eta           float      0.010357    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        223         
+                eta           float      0.958367    
+Submitted job 36 with local scheduler (process id: 85863).
+Status: 1 pending, 34 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -4.37602 (+/- 16.98671), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        406         
+                eta           float      0.010091    
+
+Minimum of observed values is 0.112914, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        423         
+                eta           float      0.010357    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        406         
+                eta           float      0.010000    
+Submitted job 37 with local scheduler (process id: 86075).
+Status: 1 pending, 35 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.37761 (+/- 14.26754), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        414         
+                eta           float      0.013505    
+
+Minimum of observed values is 0.112914, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        423         
+                eta           float      0.010357    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        208         
+                eta           float      0.867911    
+Submitted job 38 with local scheduler (process id: 86283).
+Status: 1 pending, 36 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.33944 (+/- 14.27770), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        414         
+                eta           float      0.013505    
+
+Minimum of observed values is 0.112914, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        423         
+                eta           float      0.010357    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        30          
+                eta           float      0.922052    
+Submitted job 39 with local scheduler (process id: 86428).
+Status: 1 pending, 37 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.82699 (+/- 11.89026), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        414         
+                eta           float      0.013505    
+
+Minimum of observed values is 0.112914, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        423         
+                eta           float      0.010357    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        274         
+                eta           float      0.235113    
+Submitted job 40 with local scheduler (process id: 86485).
+Status: 1 pending, 38 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.76705 (+/- 11.76376), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        414         
+                eta           float      0.013505    
+
+Minimum of observed values is 0.112914, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        423         
+                eta           float      0.010357    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        260         
+                eta           float      0.075017    
+Submitted job 41 with local scheduler (process id: 86641).
+Status: 1 pending, 39 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.78444 (+/- 11.52497), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        414         
+                eta           float      0.013505    
+
+Minimum of observed values is 0.112914, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        423         
+                eta           float      0.010357    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        289         
+                eta           float      0.832200    
+Submitted job 42 with local scheduler (process id: 86756).
+Status: 1 pending, 40 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.78444 (+/- 11.38438), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        414         
+                eta           float      0.013505    
+
+Minimum of observed values is 0.112914, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        423         
+                eta           float      0.010357    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        309         
+                eta           float      0.069760    
+Submitted job 43 with local scheduler (process id: 86923).
+Status: 1 pending, 41 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.82789 (+/- 10.53805), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        414         
+                eta           float      0.013505    
+
+Minimum of observed values is 0.112914, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        423         
+                eta           float      0.010357    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        26          
+                eta           float      0.290432    
+Submitted job 44 with local scheduler (process id: 87048).
+Status: 1 pending, 42 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.75838 (+/- 10.99434), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        414         
+                eta           float      0.013505    
+
+Minimum of observed values is 0.112914, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        423         
+                eta           float      0.010357    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        100         
+                eta           float      0.744101    
+Submitted job 45 with local scheduler (process id: 87202).
+Status: 1 pending, 43 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.48390 (+/- 12.51013), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        414         
+                eta           float      0.013505    
+
+Minimum of observed values is 0.112914, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        423         
+                eta           float      0.010357    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        27          
+                eta           float      0.043898    
+Submitted job 46 with local scheduler (process id: 87357).
+Status: 1 pending, 44 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.96401 (+/- 11.65511), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        414         
+                eta           float      0.013505    
+
+Minimum of observed values is 0.112914, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        423         
+                eta           float      0.010357    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        233         
+                eta           float      0.945225    
+Submitted job 47 with local scheduler (process id: 87511).
+Status: 1 pending, 45 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -1.30545 (+/- 9.41910), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        417         
+                eta           float      0.021904    
+
+Minimum of observed values is 0.112914, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        423         
+                eta           float      0.010357    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        120         
+                eta           float      0.769661    
+Submitted job 48 with local scheduler (process id: 87623).
+Status: 1 pending, 46 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -1.06675 (+/- 11.03518), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        414         
+                eta           float      0.013505    
+
+Minimum of observed values is 0.112914, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        423         
+                eta           float      0.010357    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        123         
+                eta           float      0.581740    
+Submitted job 49 with local scheduler (process id: 87778).
+Status: 1 pending, 47 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -1.09478 (+/- 11.59841), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        414         
+                eta           float      0.013505    
+
+Minimum of observed values is 0.112914, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        423         
+                eta           float      0.010357    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        125         
+                eta           float      0.126035    
+Submitted job 50 with local scheduler (process id: 87889).
+Status: 1 pending, 48 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -1.21063 (+/- 11.02346), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        414         
+                eta           float      0.013505    
+
+Minimum of observed values is 0.112914, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        423         
+                eta           float      0.010357    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                n_estimators  int        116         
+                eta           float      0.045350    
+Submitted job 51 with local scheduler (process id: 88000).
+Status: 1 pending, 49 complete.
+

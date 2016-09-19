@@ -1,0 +1,1099 @@
+Using database at localhost.
+Getting suggestion...
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      1.000000    
+                gamma         float      0.000001    
+Submitted job 1 with local scheduler (process id: 73636).
+Status: 1 pending, 0 complete.
+
+Getting suggestion...
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      500.500000  
+                gamma         float      0.050001    
+Submitted job 2 with local scheduler (process id: 73695).
+Status: 1 pending, 1 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.03725 (+/- 0.17942), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      757.627869  
+                gamma         float      0.057489    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      500.500000  
+                gamma         float      0.050001    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      988.873134  
+                gamma         float      0.065686    
+Submitted job 3 with local scheduler (process id: 73783).
+Status: 1 pending, 2 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00379 (+/- 0.02572), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      753.481628  
+                gamma         float      0.023627    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      500.500000  
+                gamma         float      0.050001    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      125.313788  
+                gamma         float      0.100000    
+Submitted job 4 with local scheduler (process id: 73882).
+Status: 1 pending, 3 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.01150 (+/- 0.03626), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      192.946533  
+                gamma         float      0.099731    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      500.500000  
+                gamma         float      0.050001    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      208.100402  
+                gamma         float      0.100000    
+Submitted job 5 with local scheduler (process id: 73954).
+Status: 1 pending, 4 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00010 (+/- 0.00061), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      218.860535  
+                gamma         float      0.070893    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      500.500000  
+                gamma         float      0.050001    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      1000.000000 
+                gamma         float      0.003810    
+Submitted job 6 with local scheduler (process id: 74030).
+Status: 1 pending, 5 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00013 (+/- 0.00058), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      301.236572  
+                gamma         float      0.057837    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      500.500000  
+                gamma         float      0.050001    
+/Users/weisser/Documents/Spearmint-master/spearmint/transformations/beta_warp.py:206: UserWarning: BetaWarp encountered negative values: [ -3.46944695e-18]
+  warnings.warn('BetaWarp encountered negative values: %s' % inputs[inputs<0])
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      1.000000    
+                gamma         float      0.018419    
+Submitted job 7 with local scheduler (process id: 74108).
+Status: 1 pending, 6 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00030 (+/- 0.00079), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      241.664856  
+                gamma         float      0.056012    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      500.500000  
+                gamma         float      0.050001    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      1.000000    
+                gamma         float      0.045632    
+Submitted job 8 with local scheduler (process id: 74164).
+Status: 1 pending, 7 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.03502 (+/- 0.16977), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      537.023499  
+                gamma         float      0.051349    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      500.500000  
+                gamma         float      0.050001    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      349.464470  
+                gamma         float      0.027122    
+Submitted job 9 with local scheduler (process id: 74221).
+Status: 1 pending, 8 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.16510 (+/- 0.39222), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      408.307129  
+                gamma         float      0.053272    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      500.500000  
+                gamma         float      0.050001    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      169.302049  
+                gamma         float      0.054396    
+Submitted job 10 with local scheduler (process id: 74290).
+Status: 1 pending, 9 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.05201 (+/- 0.14144), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      971.525085  
+                gamma         float      0.051606    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      500.500000  
+                gamma         float      0.050001    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      1000.000000 
+                gamma         float      0.023792    
+Submitted job 11 with local scheduler (process id: 74360).
+Status: 1 pending, 10 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.06700 (+/- 0.11752), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      638.880768  
+                gamma         float      0.051548    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      500.500000  
+                gamma         float      0.050001    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      1000.000000 
+                gamma         float      0.051846    
+Submitted job 12 with local scheduler (process id: 74435).
+Status: 1 pending, 11 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.02555 (+/- 0.07176), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      64.839905   
+                gamma         float      0.051740    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      500.500000  
+                gamma         float      0.050001    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      1.000000    
+                gamma         float      0.059337    
+Submitted job 13 with local scheduler (process id: 74517).
+Status: 1 pending, 12 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.03526 (+/- 0.09819), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      40.511230   
+                gamma         float      0.051026    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      500.500000  
+                gamma         float      0.050001    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      1000.000000 
+                gamma         float      0.068411    
+Submitted job 14 with local scheduler (process id: 74573).
+Status: 1 pending, 13 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.04761 (+/- 0.14661), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      5.268188    
+                gamma         float      0.052918    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      500.500000  
+                gamma         float      0.050001    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      1.129022    
+                gamma         float      0.052817    
+Submitted job 15 with local scheduler (process id: 74657).
+Status: 1 pending, 14 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00076 (+/- 0.02730), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      84.046753   
+                gamma         float      0.054407    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      500.500000  
+                gamma         float      0.050001    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      1000.000000 
+                gamma         float      0.051358    
+Submitted job 16 with local scheduler (process id: 74710).
+Status: 1 pending, 15 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00043 (+/- 0.01828), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      317.272766  
+                gamma         float      0.054401    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      500.500000  
+                gamma         float      0.050001    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      424.893189  
+                gamma         float      0.054900    
+Submitted job 17 with local scheduler (process id: 74788).
+Status: 1 pending, 16 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00906 (+/- 0.11771), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      940.428284  
+                gamma         float      0.051789    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      500.500000  
+                gamma         float      0.050001    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      226.271407  
+                gamma         float      0.051611    
+Submitted job 18 with local scheduler (process id: 74854).
+Status: 1 pending, 17 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.02105 (+/- 0.15764), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      348.369568  
+                gamma         float      0.054609    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      500.500000  
+                gamma         float      0.050001    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      946.281843  
+                gamma         float      0.067985    
+Submitted job 19 with local scheduler (process id: 74918).
+Status: 1 pending, 18 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.03255 (+/- 0.10494), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      395.990356  
+                gamma         float      0.054627    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      500.500000  
+                gamma         float      0.050001    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      1.000000    
+                gamma         float      0.025189    
+Submitted job 20 with local scheduler (process id: 74998).
+Status: 1 pending, 19 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.02907 (+/- 0.09943), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      664.215515  
+                gamma         float      0.054633    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      500.500000  
+                gamma         float      0.050001    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      1000.000000 
+                gamma         float      0.023225    
+Submitted job 21 with local scheduler (process id: 75049).
+Status: 1 pending, 20 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.02829 (+/- 0.05154), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      395.990356  
+                gamma         float      0.054627    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      500.500000  
+                gamma         float      0.050001    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      1000.000000 
+                gamma         float      0.050493    
+Submitted job 22 with local scheduler (process id: 75114).
+Status: 1 pending, 21 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.03035 (+/- 0.03446), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      955.976685  
+                gamma         float      0.051697    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      500.500000  
+                gamma         float      0.050001    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      32.645324   
+                gamma         float      0.023711    
+Submitted job 23 with local scheduler (process id: 75184).
+Status: 1 pending, 22 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.07224 (+/- 0.18366), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      918.050781  
+                gamma         float      0.023829    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      500.500000  
+                gamma         float      0.050001    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      1000.000000 
+                gamma         float      0.023840    
+Submitted job 24 with local scheduler (process id: 75239).
+Status: 1 pending, 23 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.05925 (+/- 0.13205), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      784.822327  
+                gamma         float      0.023811    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      500.500000  
+                gamma         float      0.050001    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      918.046809  
+                gamma         float      0.023815    
+Submitted job 25 with local scheduler (process id: 75301).
+Status: 1 pending, 24 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.02886 (+/- 0.03138), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      131.667542  
+                gamma         float      0.054621    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      500.500000  
+                gamma         float      0.050001    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      296.114726  
+                gamma         float      0.023876    
+Submitted job 26 with local scheduler (process id: 75362).
+Status: 1 pending, 25 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.02924 (+/- 0.03229), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      955.976685  
+                gamma         float      0.051697    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      500.500000  
+                gamma         float      0.050001    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      1000.000000 
+                gamma         float      0.049410    
+Submitted job 27 with local scheduler (process id: 75420).
+Status: 1 pending, 26 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00836 (+/- 0.01258), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      546.687897  
+                gamma         float      0.054624    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      500.500000  
+                gamma         float      0.050001    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      690.705603  
+                gamma         float      0.028779    
+Submitted job 28 with local scheduler (process id: 75489).
+Status: 1 pending, 27 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00533 (+/- 0.08718), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      622.082397  
+                gamma         float      0.028577    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      500.500000  
+                gamma         float      0.050001    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      174.852547  
+                gamma         float      0.028098    
+Submitted job 29 with local scheduler (process id: 75551).
+Status: 1 pending, 28 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.02242 (+/- 0.06315), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      407.331543  
+                gamma         float      0.028370    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      500.500000  
+                gamma         float      0.050001    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      258.977241  
+                gamma         float      0.029951    
+Submitted job 30 with local scheduler (process id: 75606).
+Status: 1 pending, 29 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.03686 (+/- 0.07940), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      493.518463  
+                gamma         float      0.028208    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      500.500000  
+                gamma         float      0.050001    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      498.722523  
+                gamma         float      0.028087    
+Submitted job 31 with local scheduler (process id: 75665).
+Status: 1 pending, 30 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.00279 (+/- 0.01866), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      730.921204  
+                gamma         float      0.028620    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      500.500000  
+                gamma         float      0.050001    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      1000.000000 
+                gamma         float      0.037776    
+Submitted job 32 with local scheduler (process id: 75725).
+Status: 1 pending, 31 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.01056 (+/- 0.04066), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      998.719543  
+                gamma         float      0.039606    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      500.500000  
+                gamma         float      0.050001    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      1.000000    
+                gamma         float      0.016858    
+Submitted job 33 with local scheduler (process id: 75792).
+Status: 1 pending, 32 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.01043 (+/- 0.03715), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      983.049194  
+                gamma         float      0.039710    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      500.500000  
+                gamma         float      0.050001    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      349.044669  
+                gamma         float      0.038589    
+Submitted job 34 with local scheduler (process id: 75843).
+Status: 1 pending, 33 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.02383 (+/- 0.05213), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      997.195190  
+                gamma         float      0.028626    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      500.500000  
+                gamma         float      0.050001    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      380.320007  
+                gamma         float      0.001411    
+Submitted job 35 with local scheduler (process id: 75901).
+Status: 1 pending, 34 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.01564 (+/- 0.03738), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      593.241638  
+                gamma         float      0.039667    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      500.500000  
+                gamma         float      0.050001    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      17.040276   
+                gamma         float      0.001411    
+Submitted job 36 with local scheduler (process id: 75957).
+Status: 1 pending, 35 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.05501 (+/- 0.11892), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      679.885864  
+                gamma         float      0.001405    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      500.500000  
+                gamma         float      0.050001    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      1000.000000 
+                gamma         float      0.001411    
+Submitted job 37 with local scheduler (process id: 76008).
+Status: 1 pending, 36 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.02959 (+/- 0.12842), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      286.297913  
+                gamma         float      0.001448    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      500.500000  
+                gamma         float      0.050001    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      236.680239  
+                gamma         float      0.001446    
+Submitted job 38 with local scheduler (process id: 76062).
+Status: 1 pending, 37 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.03498 (+/- 0.10309), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      442.513611  
+                gamma         float      0.001338    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      500.500000  
+                gamma         float      0.050001    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      426.976314  
+                gamma         float      0.001252    
+Submitted job 39 with local scheduler (process id: 76113).
+Status: 1 pending, 38 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.02784 (+/- 0.03601), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      643.667236  
+                gamma         float      0.023756    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      500.500000  
+                gamma         float      0.050001    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      1000.000000 
+                gamma         float      0.032093    
+Submitted job 40 with local scheduler (process id: 76166).
+Status: 1 pending, 39 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.08924 (+/- 0.15490), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      364.039917  
+                gamma         float      0.001380    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      500.500000  
+                gamma         float      0.050001    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      377.894653  
+                gamma         float      0.001374    
+Submitted job 41 with local scheduler (process id: 76229).
+Status: 1 pending, 40 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.02364 (+/- 0.06531), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      965.854492  
+                gamma         float      0.028809    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      500.500000  
+                gamma         float      0.050001    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      402.807154  
+                gamma         float      0.001172    
+Submitted job 42 with local scheduler (process id: 76283).
+Status: 1 pending, 41 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.01150 (+/- 0.09172), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      999.939026  
+                gamma         float      0.033332    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      500.500000  
+                gamma         float      0.050001    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      1000.000000 
+                gamma         float      0.034104    
+Submitted job 43 with local scheduler (process id: 76335).
+Status: 1 pending, 42 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.01144 (+/- 0.01354), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      690.312439  
+                gamma         float      0.023798    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      500.500000  
+                gamma         float      0.050001    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      252.175732  
+                gamma         float      0.001407    
+Submitted job 44 with local scheduler (process id: 76403).
+Status: 1 pending, 43 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.03559 (+/- 0.05406), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      458.062012  
+                gamma         float      0.001417    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      500.500000  
+                gamma         float      0.050001    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      974.085999  
+                gamma         float      0.007600    
+Submitted job 45 with local scheduler (process id: 76455).
+Status: 1 pending, 44 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.04162 (+/- 0.05443), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      458.062012  
+                gamma         float      0.001417    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      500.500000  
+                gamma         float      0.050001    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      996.097665  
+                gamma         float      0.000407    
+Submitted job 46 with local scheduler (process id: 76511).
+Status: 1 pending, 45 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.05783 (+/- 0.05062), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      572.784821  
+                gamma         float      0.023789    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      500.500000  
+                gamma         float      0.050001    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      579.259890  
+                gamma         float      0.023793    
+Submitted job 47 with local scheduler (process id: 76563).
+Status: 1 pending, 46 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.02150 (+/- 0.00655), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      690.312439  
+                gamma         float      0.023798    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      500.500000  
+                gamma         float      0.050001    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      152.087430  
+                gamma         float      0.026952    
+Submitted job 48 with local scheduler (process id: 76627).
+Status: 1 pending, 47 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.02228 (+/- 0.00716), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      690.312439  
+                gamma         float      0.023798    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      500.500000  
+                gamma         float      0.050001    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      508.655541  
+                gamma         float      0.035690    
+Submitted job 49 with local scheduler (process id: 76682).
+Status: 1 pending, 48 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.01953 (+/- 0.00678), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      690.312439  
+                gamma         float      0.023798    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      500.500000  
+                gamma         float      0.050001    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      108.220355  
+                gamma         float      0.027882    
+Submitted job 50 with local scheduler (process id: 76741).
+Status: 1 pending, 49 complete.
+
+Fitting GP for main task...
+Getting suggestion...
+
+Minimum expected objective value under model is -0.02726 (+/- 0.05289), at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      182.580933  
+                gamma         float      0.027357    
+
+Minimum of observed values is 0.000000, at location:
+                NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      500.500000  
+                gamma         float      0.050001    
+
+Suggestion:     NAME          TYPE       VALUE
+                ----          ----       -----
+                C             float      198.073203  
+                gamma         float      0.027365    
+Submitted job 51 with local scheduler (process id: 76797).
+Status: 1 pending, 50 complete.
+
