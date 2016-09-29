@@ -307,7 +307,7 @@ def evaluate_job(expt,nclf,out_q):
 				for no_bins in expt.single_no_bins_list:
 					classifier_eval_2files(name= nclf.name + "_" +expt.name_noCPV.format(dim) , comp_file_list=comp_file_list, clf =aclf, verbose=False, scoring=expt.scoring, no_bins=no_bins, systematics_fraction=expt.systematics_fraction, title=expt.title_noCPV+" "+ str(dim)+"D")
 			else:
-				classifier_eval_2files(name= nclf.name + "_" +expt.name_noCPV.format(dim) , comp_file_list=comp_file_list, clf =aclf, verbose=False, scoring=expt.scoring, title=expt.title+" "+ str(dim)+"D")
+				classifier_eval_2files(name= nclf.name + "_" +expt.name_noCPV.format(dim) , comp_file_list=comp_file_list, clf =aclf, verbose=False, scoring=expt.scoring, title=expt.title_noCPV+" "+ str(dim)+"D")
 
 	os.chdir("..")
 	print(multiprocessing.current_process().name, " : ",nclf.name ," Finishing")
@@ -556,7 +556,7 @@ def classifier_eval_2files(*args,**kwargs):
 
 	#Setting the allowed values for the different modes
 	mode_allowed=		["evaluation","spearmint_optimisation"]
-	scoring_allowed= 	["standard","AD","visualisation","accuracy","chi2","chi2_2bin","closure_test_delete"]
+	scoring_allowed= 	["standard","AD","visualisation","accuracy","chi2","chi2_2bin","chi2_old","chi2_crossval"]
 
 	#Setting all parameters
 	name		= kwargs.get('name',"name")
@@ -613,7 +613,10 @@ def classifier_eval_2files(*args,**kwargs):
         for comp_file_0,comp_file_1 in comp_file_list:
 		if counter == len(comp_file_list) -1: counter_test=0
 		else: counter_test=counter+1
+		#counter_test=counter
 		comp_file_0_test, comp_file_1_test = comp_file_list[counter_test] 
+		#assert comp_file_0_test == comp_file_0
+		#print(" comp_file_1 , comp_file_1_test : ", comp_file_1, comp_file_1_test)	
 		if counter in [10,20,30,40,50,60,70,80,90]: print(name, " iteration : ", counter)
 		
 		if not verbose: sys.stdout = open(os.devnull, "w")
@@ -624,6 +627,8 @@ def classifier_eval_2files(*args,**kwargs):
                 features_1=np.loadtxt(comp_file_1,dtype='d')
                 features_0_test=np.loadtxt(comp_file_0_test,dtype='d')
                 features_1_test=np.loadtxt(comp_file_1_test,dtype='d')
+		#assert np.all(features_0 == features_0_test)
+		#assert np.all(features_1 == features_1_test)
 
                 #determine how many data points are in each sample
                 no_0=features_0.shape[0]
@@ -632,7 +637,6 @@ def classifier_eval_2files(*args,**kwargs):
                 no_0_test=features_0_test.shape[0]
                 no_1_test=features_1_test.shape[0]
                 no_tot_test=no_0_test+no_1_test
-
 
 
                 #Give all samples in file 0 the label 0 and in file 1 the feature 1
@@ -655,12 +659,13 @@ def classifier_eval_2files(*args,**kwargs):
 
                 X=data[:,:-1]
                 y=data[:,-1]
-                print("X : ",X)
-                print("y : ",y)
+                #print("X : ",X)
+                #print("y : ",y)
 
 		X_test=data_test[:,:-1]
                 y_test=data_test[:,-1]
-
+		#X_test=data[:,:-1]
+                #y_test=data[:,-1]
 
 		atest_size=0.2
                 if cv_n_iter==1:
@@ -681,8 +686,12 @@ def classifier_eval_2files(*args,**kwargs):
                 # just applying it on the test set.
 
                 if not scoring=="visualisation":
-                        scaler = StandardScaler()
-                        X = scaler.fit_transform(X)
+			from sklearn import preprocessing
+                        #scaler = StandardScaler()
+                        #X = scaler.fit_transform(X)
+			scaler = preprocessing.StandardScaler().fit(X)
+			X = scaler.transform(X)
+			X_test = scaler.transform(X_test)
 
 		if scoring=="AD":
 			scores = (-1)*cross_validation.cross_val_score(clf,X,y,cv=acv,scoring=p_value_scoring_object.p_value_scoring_object_AD)
@@ -695,6 +704,18 @@ def classifier_eval_2files(*args,**kwargs):
 			scoring_function = p_value_scoring_object.make_p_value_scoring_object_binned_chisquared(no_bins,systematics_fraction,title,name,not counter )
 			scores = (-1)*cross_validation.cross_val_score(clf,X,y,cv=acv,scoring=scoring_function)
 			#if not counter:  os.rename("1D_" + str(no_bins)+"_bins" +"_bin_definitions_1D.png",name+"_bin_definitions_1D.png")
+		elif scoring=="chi2_crossval":
+			X_chi2_crossval=np.r_[X,X_test]
+			y_chi2_crossval=np.r_[y,y_test]
+			#X_chi2_crossval=np.r_[X,X]
+                        #y_chi2_crossval=np.r_[y,y]
+			#train_range = range(int(math.floor(no_tot*(1-atest_size))))
+                        #test_range  = range(int(math.ceil(no_tot*(1-atest_size))),no_tot)
+                        #test_range  = range(no_tot,2*no_tot)
+			#acv_2 = Counter(train_range,test_range)
+			scoring_function = p_value_scoring_object.make_p_value_scoring_object_binned_chisquared(no_bins,systematics_fraction,title,name,not counter )
+			scores = (-1)*cross_validation.cross_val_score(clf,X_chi2_crossval,y_chi2_crossval,cv=acv,scoring=scoring_function)
+	
 		elif scoring=="chi2":
                         #We have to use function closure
                         scoring_function = p_value_scoring_object.make_p_value_scoring_object_binned_chisquared(no_bins,systematics_fraction,title,name,not counter )
@@ -704,6 +725,7 @@ def classifier_eval_2files(*args,**kwargs):
 			scores = [-scoring_function(clf,X_test,y_test)]
 			#scores = [-scoring_function(clf,X[train_range_max:], y[train_range_max:])] 
 			#scores = (-1)*cross_validation.cross_val_score(clf,X,y,cv=acv,scoring=scoring_function)
+
 
 		elif scoring=="chi2_2bin":
                         scores_chi2_list=[]
@@ -716,8 +738,6 @@ def classifier_eval_2files(*args,**kwargs):
 			scores = cross_validation.cross_val_score(clf,X,y,cv=acv,scoring='accuracy')
 		elif scoring=="standard":
 			scores = (-1)*cross_validation.cross_val_score(clf,X,y,cv=acv,scoring=p_value_scoring_object.p_value_scoring_object)
-		elif scoring=="closure_test_delete":
-			scores = (-1)*cross_validation.cross_val_score(clf,X,y,cv=acv,scoring=p_value_scoring_object.make_p_value_scoring_object_test("hi"))
 		else:
 			print("No valid mode chosen")
 
