@@ -282,7 +282,7 @@ def evaluate_job(expt,nclf,out_q):
 		else:
 			#print("nclf.param_list :",nclf.param_list)
 			#print("nclf.param_opt :",nclf.param_opt)
-			setattr(nclf,param ,nclf.param_opt[param_index])
+			setattr(nclf.clf,param ,nclf.param_opt[param_index])
 	print("\n",nclf.name+" nclf.clf :",nclf.clf,"\n")
 	for dim in expt.evaluation_dimensions:
 		comp_file_list=[]
@@ -292,9 +292,9 @@ def evaluate_job(expt,nclf,out_q):
 		else: aclf=nclf.clf
 		if expt.scoring=='chi2':
 			for no_bins in expt.single_no_bins_list:
-				classifier_eval(name= nclf.name + "_" + expt.name_CPV.format(dim) , comp_file_list=comp_file_list, clf =aclf, verbose=False, scoring=expt.scoring, no_bins=no_bins, systematics_fraction=expt.systematics_fraction, title=expt.title_CPV+" "+ str(dim)+"D" )
+				classifier_eval_2files(name= nclf.name + "_" + expt.name_CPV.format(dim) , comp_file_list=comp_file_list, clf =aclf, verbose=False, scoring=expt.scoring, no_bins=no_bins, systematics_fraction=expt.systematics_fraction, title=expt.title_CPV+" "+ str(dim)+"D" )
 		else:
-			classifier_eval(name= nclf.name + "_" + expt.name_CPV.format(dim) , comp_file_list=comp_file_list, clf =aclf, verbose=False, scoring=expt.scoring, title=expt.title_noCPV+" "+ str(dim)+"D")
+			classifier_eval_2files(name= nclf.name + "_" + expt.name_CPV.format(dim) , comp_file_list=comp_file_list, clf =aclf, verbose=False, scoring=expt.scoring, title=expt.title_noCPV+" "+ str(dim)+"D")
 	if not expt.only_mod:
 		print(nclf.name,"Running NoCPV ")
 		for dim in expt.evaluation_dimensions:
@@ -305,12 +305,63 @@ def evaluate_job(expt,nclf,out_q):
 			else: aclf=nclf.clf
 			if expt.scoring=='chi2':
 				for no_bins in expt.single_no_bins_list:
-					classifier_eval(name= nclf.name + "_" +expt.name_noCPV.format(dim) , comp_file_list=comp_file_list, clf =aclf, verbose=False, scoring=expt.scoring, no_bins=no_bins, systematics_fraction=expt.systematics_fraction, title=expt.title_noCPV+" "+ str(dim)+"D")
+					classifier_eval_2files(name= nclf.name + "_" +expt.name_noCPV.format(dim) , comp_file_list=comp_file_list, clf =aclf, verbose=False, scoring=expt.scoring, no_bins=no_bins, systematics_fraction=expt.systematics_fraction, title=expt.title_noCPV+" "+ str(dim)+"D")
 			else:
-				classifier_eval(name= nclf.name + "_" +expt.name_noCPV.format(dim) , comp_file_list=comp_file_list, clf =aclf, verbose=False, scoring=expt.scoring, title=expt.title+" "+ str(dim)+"D")
+				classifier_eval_2files(name= nclf.name + "_" +expt.name_noCPV.format(dim) , comp_file_list=comp_file_list, clf =aclf, verbose=False, scoring=expt.scoring, title=expt.title+" "+ str(dim)+"D")
 
 	os.chdir("..")
 	print(multiprocessing.current_process().name, " : ",nclf.name ," Finishing")
+
+
+
+def plot_job(expt,nclf,out_q):
+
+        print("\n",multiprocessing.current_process().name, " : ",nclf.name ," Starting")
+
+        if not os.path.exists(nclf.name):
+                os.makedirs(nclf.name)
+        os.chdir(nclf.name)
+        for param_index, param in enumerate(nclf.param_list):
+                if nclf.name == "nn":
+                        for dim_index, dim in enumerate(expt.plot_dimensions):
+                                nclf.clf_nn_dict[str(dim)] = KerasClassifier(build_fn=make_keras_model,n_hidden_layers=nclf.param_opt[0],dimof_middle=nclf.param_opt[1],dimof_input=expt.keras_plot_dimensions[dim_index])
+                else:
+                        #print("nclf.param_list :",nclf.param_list)
+                        #print("nclf.param_opt :",nclf.param_opt)
+                        setattr(nclf.clf,param ,nclf.param_opt[param_index])
+        print("\n",nclf.name+" nclf.clf :",nclf.clf,"\n")
+        for dim_index, dim in enumerate(expt.plot_dimensions):
+                comp_file_list=[]
+                comp_file_list.append((expt.file_name_patterns[0].format(dim,expt.most_typical[dim_index]),expt.file_name_patterns[1].format(dim,expt.most_typical[dim_index])))
+		comp_file_list.append((expt.file_name_patterns[0].format(dim,1+expt.most_typical[dim_index]),expt.file_name_patterns[1].format(dim,1+expt.most_typical[dim_index])))
+                if nclf.name == "nn": aclf = nclf.clf_nn_dict[str(dim)]
+                else: aclf=nclf.clf
+                if expt.scoring=='chi2':
+                        for no_bins in expt.single_no_bins_list:
+                                classifier_eval_2files(name= nclf.name + "_" + expt.name_CPV.format(dim) , comp_file_list=comp_file_list, clf =aclf, verbose=False, scoring=expt.scoring, no_bins=no_bins, systematics_fraction=expt.systematics_fraction, title=expt.title_CPV+" "+ str(dim)+"D" )
+                else:
+                        classifier_eval_2files(name= nclf.name + "_" + expt.name_CPV.format(dim) , comp_file_list=comp_file_list, clf =aclf, verbose=False, scoring=expt.scoring, title=expt.title_noCPV+" "+ str(dim)+"D")
+        if not expt.only_mod:
+                print(nclf.name,"Running NoCPV ")
+                for dim_index, dim in enumerate(expt.plot_dimensions):
+                        comp_file_list=[]
+                        comp_file_list.append((expt.file_name_patterns[0].format(dim,expt.most_typical[dim_index]),expt.file_name_patterns[0].format(dim,100+expt.most_typical[dim_index])))
+			comp_file_list.append((expt.file_name_patterns[0].format(dim,1+expt.most_typical[dim_index]),expt.file_name_patterns[0].format(dim,101+expt.most_typical[dim_index])))
+                        if nclf.name == "nn": aclf = nclf.clf_nn_dict[str(dim)]
+                        else: aclf=nclf.clf
+                        if expt.scoring=='chi2':
+                                for no_bins in expt.single_no_bins_list:
+                                        classifier_eval_2files(name= nclf.name + "_" +expt.name_noCPV.format(dim) , comp_file_list=comp_file_list, clf =aclf, verbose=False, scoring=expt.scoring, no_bins=no_bins, systematics_fraction=expt.systematics_fraction, title=expt.title_noCPV+" "+ str(dim)+"D")
+                        else:
+                                classifier_eval_2files(name= nclf.name + "_" +expt.name_noCPV.format(dim) , comp_file_list=comp_file_list, clf =aclf, verbose=False, scoring=expt.scoring, title=expt.title+" "+ str(dim)+"D")
+
+        os.chdir("..")
+        print(multiprocessing.current_process().name, " : ",nclf.name ," Finishing")
+
+
+
+
+
 
 def worker(expt, nclf):
     """thread worker function"""
@@ -344,6 +395,7 @@ class experiment(object):
 		self.systematics_fraction= kwargs.get('systematics_fraction',0.01)
 
 		self.name_CPV		= self.name_CPV+ "_syst_"+str(self.systematics_fraction).replace(".","_") + "_"
+		self.name_noCPV           = self.name_noCPV+ "_syst_"+str(self.systematics_fraction).replace(".","_") + "_"
 
 		self.title_CPV		= self.title_CPV + " syst" + str(self.systematics_fraction)
 		self.title_noCPV        = self.title_noCPV + " syst" + str(self.systematics_fraction)	
@@ -352,7 +404,7 @@ class experiment(object):
 	def set_name_noCPV(self,name_noCPV): 			self.name_noCPV = name_noCPV
 	def set_nclf_list(self,nclf_list): 			self.nclf_list=nclf_list
 	def set_file_name_patterns(self,file_name_patterns): 	self.file_name_patterns = file_name_patterns
-
+	def set_only_mod(self, only_mod):			self.only_mod = only_mod
 
 	def optimise(self,**kwargs):
 
@@ -398,7 +450,7 @@ class experiment(object):
 
 		self.evaluation_dimensions = evaluation_dimensions
 		self.number_of_evaluations = number_of_evaluations
-		self.keras_evaluation_dimensions = kwargs.get('keras_evaluation_dimensions', self.number_of_evaluations)
+		self.keras_evaluation_dimensions = kwargs.get('keras_evaluation_dimensions', self.evaluation_dimensions)
 
 		eval_dir = "evaluation"+self.directory_name
 		if not os.path.exists(eval_dir):
@@ -420,6 +472,31 @@ class experiment(object):
 		os.chdir("..")
 
 
+        def plot(self,plot_dimensions=[2,6,10],most_typical=[0, 0, 0], **kwargs):
+
+                self.plot_dimensions = plot_dimensions
+                self.number_of_plots = 1 
+		self.most_typical = most_typical
+                self.keras_plot_dimensions = kwargs.get('keras_plot_dimensions', self.plot_dimensions)
+
+                plot_dir = "plot"+self.directory_name
+                if not os.path.exists(plot_dir):
+                        os.makedirs(plot_dir)
+                os.chdir(plot_dir)
+
+                out_q = multiprocessing.Queue()
+
+                print("operating on file_name_patterns :" , self.file_name_patterns)
+                jobs = []
+                for nclf in self.nclf_list:
+                        p = multiprocessing.Process(target=plot_job, args=(self,nclf,out_q,))
+                        jobs.append(p)
+                        p.start()
+
+                # Wait until jobs have finished
+                for j in jobs: j.join()
+                print("\n","/"*100,"All EVALUATION jobs finished running","/"*100)
+                os.chdir("..")
 
 
 
@@ -443,7 +520,7 @@ class experiment(object):
 						clf_repr_list[index] = rest
 		 
 			classifier_content += '\tclf = '+ ''.join(clf_repr_list)
-		classifier_content += '\n\n\tresult= classifier_eval.classifier_eval(name="{}",title="{}",comp_file_list=comp_file_list,clf=clf,mode="spearmint_optimisation",scoring="{}", no_bins={}, systematics_fraction={})\n\n'.format(nclf.name + "_" +self.name_CPV.format(self.optimisation_dimension),nclf.name+" "+self.title_CPV,self.scoring,self.optimisation_no_bins,self.systematics_fraction)
+		classifier_content += '\n\n\tresult= classifier_eval.classifier_eval_1file_old(name="{}",title="{}",comp_file_list=comp_file_list,clf=clf,mode="spearmint_optimisation",scoring="{}", no_bins={}, systematics_fraction={})\n\n'.format(nclf.name + "_" +self.name_CPV.format(self.optimisation_dimension),nclf.name+" "+self.title_CPV,self.scoring,self.optimisation_no_bins,self.systematics_fraction)
 		if self.scoring=="chi2": 	self_name_CPV= self.name_CPV+ "_chi2scoring_" + str(self.optimisation_no_bins)
 		else:				self_name_CPV= self.name_CPV
 		classifier_content += '\twith open("{}_optimisation_values.txt", "a") as myfile: \n\t\tmyfile.write(str(params["{}"][0])+"\\t"+ str(params["{}"][0])+"\\t"+str(result)+"\\n") \n\treturn result'.format(nclf.name +"_"+ self_name_CPV.format(self.optimisation_dimension), nclf.param_list[0], nclf.param_list[1])
@@ -470,7 +547,216 @@ class experiment(object):
 #######################################################################################################################################################################################################
 
 
-def classifier_eval(*args,**kwargs):
+def classifier_eval_2files(*args,**kwargs):
+#mode,keras_mode,args):
+        ##############################################################################
+        # Setting parameters
+        #
+
+
+	#Setting the allowed values for the different modes
+	mode_allowed=		["evaluation","spearmint_optimisation"]
+	scoring_allowed= 	["standard","AD","visualisation","accuracy","chi2","chi2_2bin","closure_test_delete"]
+
+	#Setting all parameters
+	name		= kwargs.get('name',"name")
+	title		= kwargs.get('title','title')
+	sample1_name    = kwargs.get('sample1_name',"sample1")
+	sample2_name    = kwargs.get('sample2_name',"sample2")
+	shuffling_seed	= kwargs.get('shufflingle_no_bins_listng_seed',100)
+	comp_file_list	= kwargs.get('comp_file_list')
+	cv_n_iter	= kwargs.get('cv_n_iter',1)
+	clf		= kwargs.get('clf')
+	systematics_fraction = kwargs.get('systematics_fraction',0.01)
+
+
+	mode		= kwargs.get('mode',"evaluation")
+	scoring         = kwargs.get('scoring',"standard")
+	verbose		= kwargs.get('verbose',True)
+	single_no_bins_list = kwargs.get('single_no_bins_list',[2])
+	no_bins		= kwargs.get('no_bins',2)
+
+	#verbose 	= True
+	#Testing if the parameters are as expected
+	assert (isinstance(name, str)),			"The name needs to be a string"
+	assert (isinstance(sample1_name, str)),         "The sample1_name needs to be a string"
+	assert (isinstance(sample2_name, str)),         "The sample2_name needs to be a string"
+	assert (isinstance(shuffling_seed, int)),       "The shuffling_seed needs to be an integer"	
+	assert (isinstance(cv_n_iter, int)),       	"The cv_n_iter needs to be an integer"
+
+	assert (mode in mode_allowed),                  "No valid mode chosen!"
+	assert (scoring in scoring_allowed),		"No valid scoring strategy chosen!"
+
+	assert (len(comp_file_list)>1), 		"Only one set of files. We need two!"
+
+	if verbose:
+		# Printing arguments supplied to this function
+		print("\nArguments")
+		for count, thing in enumerate(args):
+			print(count, thing)
+	    
+		print("\nKey word arguments")
+		for item_name, item_value in kwargs.items():
+			print(item_name, " = ", item_value)
+        	print("\n")
+
+	if scoring=="chi2": name = name + "_chi2scoring_{}".format(no_bins)
+
+	score_list=[]
+
+	if "chi2_2bin" in scoring: score_chi_list_list=[]
+
+        ##############################################################################
+        # Load and prepare data set
+        #
+	counter = 0
+        for comp_file_0,comp_file_1 in comp_file_list:
+		if counter == len(comp_file_list) -1: counter_test=0
+		else: counter_test=counter+1
+		comp_file_0_test, comp_file_1_test = comp_file_list[counter_test] 
+		if counter in [10,20,30,40,50,60,70,80,90]: print(name, " iteration : ", counter)
+		
+		if not verbose: sys.stdout = open(os.devnull, "w")
+                print("Operating of files :"+comp_file_0+"   "+comp_file_1)
+
+                #extracts data from the files
+                features_0=np.loadtxt(comp_file_0,dtype='d')
+                features_1=np.loadtxt(comp_file_1,dtype='d')
+                features_0_test=np.loadtxt(comp_file_0_test,dtype='d')
+                features_1_test=np.loadtxt(comp_file_1_test,dtype='d')
+
+                #determine how many data points are in each sample
+                no_0=features_0.shape[0]
+                no_1=features_1.shape[0]
+                no_tot=no_0+no_1
+                no_0_test=features_0_test.shape[0]
+                no_1_test=features_1_test.shape[0]
+                no_tot_test=no_0_test+no_1_test
+
+
+
+                #Give all samples in file 0 the label 0 and in file 1 the feature 1
+                label_0=np.zeros((no_0,1))
+                label_1=np.ones((no_1,1))
+                label_0_test=np.zeros((no_0_test,1))
+                label_1_test=np.ones((no_1_test,1))
+
+                #Create an array containing samples and features.
+                data_0=np.c_[features_0,label_0]
+                data_1=np.c_[features_1,label_1]
+                data=np.r_[data_0,data_1]
+                np.random.shuffle(data)
+
+                data_0_test=np.c_[features_0_test,label_0_test]
+                data_1_test=np.c_[features_1_test,label_1_test]
+                data_test=np.r_[data_0_test,data_1_test]
+                np.random.shuffle(data_test)
+
+
+                X=data[:,:-1]
+                y=data[:,-1]
+                print("X : ",X)
+                print("y : ",y)
+
+		X_test=data_test[:,:-1]
+                y_test=data_test[:,-1]
+
+
+		atest_size=0.2
+                if cv_n_iter==1:
+                        train_range = range(int(math.floor(no_tot*(1-atest_size))))
+                        test_range  = range(int(math.ceil(no_tot*(1-atest_size))),no_tot)
+                        #print("train_range : ", train_range)
+                        #print("test_range : ", test_range)
+                        acv = Counter(train_range,test_range)
+                        #print(acv)
+                else:
+                        acv = StratifiedShuffleSplit(y, n_iter=cv_n_iter, test_size=atest_size, random_state=42)
+
+                print("Finished with setting up samples")
+
+                # It is usually a good idea to scale the data for SVM training.
+                # We are cheating a bit in this example in scaling all of the data,
+                # instead of fitting the transformation on the training set and
+                # just applying it on the test set.
+
+                if not scoring=="visualisation":
+                        scaler = StandardScaler()
+                        X = scaler.fit_transform(X)
+
+		if scoring=="AD":
+			scores = (-1)*cross_validation.cross_val_score(clf,X,y,cv=acv,scoring=p_value_scoring_object.p_value_scoring_object_AD)
+		elif scoring=="visualisation":
+			print("X[:,0].min() , ", X[:,0].min(), "X[:,0].max() : ", X[:,0].max())
+			scores = (-1)*cross_validation.cross_val_score(clf,X,y,cv=acv,scoring=p_value_scoring_object.p_value_scoring_object_visualisation)
+			os.rename("visualisation.png",name+"_visualisation.png")
+		elif scoring=="chi2_old":
+			#We have to use function closure
+			scoring_function = p_value_scoring_object.make_p_value_scoring_object_binned_chisquared(no_bins,systematics_fraction,title,name,not counter )
+			scores = (-1)*cross_validation.cross_val_score(clf,X,y,cv=acv,scoring=scoring_function)
+			#if not counter:  os.rename("1D_" + str(no_bins)+"_bins" +"_bin_definitions_1D.png",name+"_bin_definitions_1D.png")
+		elif scoring=="chi2":
+                        #We have to use function closure
+                        scoring_function = p_value_scoring_object.make_p_value_scoring_object_binned_chisquared(no_bins,systematics_fraction,title,name,not counter )
+                        train_range_max = int(math.floor(no_tot*(1-atest_size)))
+			print("train_range_max : ", train_range_max)
+			clf.fit(X[:train_range_max],y[:train_range_max])
+			scores = [-scoring_function(clf,X_test,y_test)]
+			#scores = [-scoring_function(clf,X[train_range_max:], y[train_range_max:])] 
+			#scores = (-1)*cross_validation.cross_val_score(clf,X,y,cv=acv,scoring=scoring_function)
+
+		elif scoring=="chi2_2bin":
+                        scores_chi2_list=[]
+                        #We have to use function closure
+                        for no_bins in single_no_bins_list:
+                                scores = (-1)*cross_validation.cross_val_score(clf,X,y,cv=acv,scoring=p_value_scoring_object.p_value_scoring_object_binned_chisquared_2bin)
+                                scores_chi2_list.append(np.mean(scores))
+			
+		elif scoring=="accuracy":
+			scores = cross_validation.cross_val_score(clf,X,y,cv=acv,scoring='accuracy')
+		elif scoring=="standard":
+			scores = (-1)*cross_validation.cross_val_score(clf,X,y,cv=acv,scoring=p_value_scoring_object.p_value_scoring_object)
+		elif scoring=="closure_test_delete":
+			scores = (-1)*cross_validation.cross_val_score(clf,X,y,cv=acv,scoring=p_value_scoring_object.make_p_value_scoring_object_test("hi"))
+		else:
+			print("No valid mode chosen")
+
+		if "chi2_2bin" in scoring:
+			score_chi_list_list.append(scores_chi2_list)
+		else:
+			print("scores : ",scores)
+			score_list.append(np.mean(scores))
+		print("\n",'#'*200,"\n")
+		
+		counter += 1
+		if not verbose: sys.stdout = sys.__stdout__
+		if mode=="spearmint_optimisation":
+			return np.mean(scores)
+
+        if mode=="evaluation":
+                # The score list has been computed. Let's plot the distribution
+
+		if scoring=="chi2_2bin":
+			score_chi_list_list=np.array(score_chi_list_list).T.tolist()
+			if verbose: print("score_chi_list_list : \n",score_chi_list_list)
+			for no_bins_index, no_bins in enumerate(single_no_bins_list):
+				with open(name+"chi2scoring_{}_bins_p_values".format(no_bins),'w') as p_value_file:
+	                                for item in score_chi_list_list[no_bins_index]:
+						p_value_file.write(str(item)+'\n')
+					histo_plot_pvalue(score_chi_list_list[no_bins_index],20,"p value","Frequency","p value distribution",name)
+                else:
+			if verbose: print("score_list : \n",score_list)
+			with open(name+"_p_values",'w') as p_value_file:
+				for item in score_list:
+					p_value_file.write(str(item)+'\n')
+			histo_plot_pvalue(score_list,20,"p value","Frequency","p value distribution",name)
+
+#######################################################################################################################################################################################################
+#######################################################################################################################################################################################################
+#######################################################################################################################################################################################################
+
+
+def classifier_eval_1file_old(*args,**kwargs):
 #mode,keras_mode,args):
         ##############################################################################
         # Setting parameters

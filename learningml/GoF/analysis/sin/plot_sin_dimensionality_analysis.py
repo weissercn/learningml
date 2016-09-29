@@ -8,8 +8,8 @@ import time
 
 
 # Options for mode 'Sin','Sin_noCPV' 
-MODE = 'Sin'
-#MODE = 'Sin_noCPV'
+#MODE = 'Sin'
+MODE = 'Sin_noCPV'
 
 label_size = 28
 
@@ -49,7 +49,7 @@ def binomial_error(l1):
 
 
 if MODE == 'Sin':
-        dimensions              = [2,3,4,5,6,7,8,9,10]
+        dimensions              = [1,2,3,4,5,6,7,8,9,10]
         #dimensions             = [1,2,3,4,5]
 
         ml_classifiers          = ['nn','bdt','xgb','svm']
@@ -60,7 +60,7 @@ if MODE == 'Sin':
         chi2_color              = 'red'
         chi2_splits             = [1,2,3,4,5,6,7,8,9,10]
 
-        ml_folder_name          = "automatisation_sin/evaluation10000"
+        ml_folder_name          = "automatisation_sin/evaluation10000_2files"
         chi2_folder_name        = "sin"
 
         ml_file_name            = "{1}_{0}Dsin_5_6_10000_CPV_syst_0_01__chi2scoring_{2}_p_values"
@@ -86,13 +86,13 @@ if MODE == 'Sin':
                 ml_classifiers_dict[ml_classifier]= np.divide(ml_classifiers_dict[ml_classifier],100.)
 
 
-        ax.errorbar(dimensions,ml_classifiers_dict['nn'], xerr=xwidth, yerr=binomial_error(ml_classifiers_dict['nn']), linestyle='', marker='s', markersize=15, color='green', ecolor='blue', label=r'$ANN$')
+        ax.errorbar(dimensions,ml_classifiers_dict['nn'], xerr=xwidth, yerr=binomial_error(ml_classifiers_dict['nn']), linestyle='', marker='s', markersize=15, color='green', ecolor='blue', label=r'$ANN$', clip_on=False)
         print("bdt : ", ml_classifiers_dict['bdt'])
         print("xgb : ", ml_classifiers_dict['xgb'])
         ml_classifiers_dict['BDT_best']= [max(item1,item2) for item1, item2 in zip(ml_classifiers_dict['bdt'],ml_classifiers_dict['xgb'])]
         print("BDT : ", ml_classifiers_dict['BDT_best'])
-        ax.errorbar(dimensions,ml_classifiers_dict['BDT_best'], xerr=xwidth, yerr=binomial_error(ml_classifiers_dict['BDT_best']), linestyle='', marker='o', markersize=15, color='green', ecolor='blue', label=r'$BDT$')
-        ax.errorbar(dimensions,ml_classifiers_dict['svm'], xerr=xwidth, yerr=binomial_error(ml_classifiers_dict['svm']),  linestyle='', marker='^', markersize=15, color='green', ecolor='blue', label=r'$SVM$')
+        ax.errorbar(dimensions,ml_classifiers_dict['BDT_best'], xerr=xwidth, yerr=binomial_error(ml_classifiers_dict['BDT_best']), linestyle='', marker='o', markersize=15, color='green', ecolor='blue', label=r'$BDT$', clip_on=False)
+        ax.errorbar(dimensions,ml_classifiers_dict['svm'], xerr=xwidth, yerr=binomial_error(ml_classifiers_dict['svm']),  linestyle='', marker='^', markersize=15, color='green', ecolor='blue', label=r'$SVM$', clip_on=False)
 
         for chi2_split_index, chi2_split in enumerate(chi2_splits):
                 chi2_splits_dict[str(chi2_split)]=[]
@@ -112,7 +112,7 @@ if MODE == 'Sin':
                 chi2_best.append(temp_best)
                 #print("chi2_best : ",chi2_best)
 
-        ax.errorbar(dimensions,chi2_best, xerr=xwidth, yerr=binomial_error(chi2_best), linestyle='', marker='x', markersize=15, color='magenta', ecolor='blue', label=r'$\chi^2$')
+        ax.errorbar(dimensions,chi2_best, xerr=xwidth, yerr=binomial_error(chi2_best), linestyle='', marker='x', markersize=15, color='magenta', ecolor='blue', label=r'$\chi^2$', clip_on=False)
         print("ml_classifiers_dict : ",ml_classifiers_dict)
         print("chi2_best : ", chi2_best)
 
@@ -139,7 +139,7 @@ if MODE == 'Sin':
 
 
 if MODE == 'Sin_noCPV':
-        dimensions              = [2,3,4,5,6,7,8,9,10]
+        dimensions              = [1,2,3,4,5,6,7,8,9,10]
         #dimensions             = [1,2,3,4,5]
 
         ml_classifiers          = ['nn','bdt','xgb','svm']
@@ -150,7 +150,7 @@ if MODE == 'Sin_noCPV':
         chi2_color              = 'red'
         chi2_splits             = [1,2,3,4,5,6,7,8,9,10]
 
-        ml_folder_name          = "automatisation_sin/evaluation10000"
+        ml_folder_name          = "automatisation_sin/evaluation10000_2files"
         chi2_folder_name        = "sin"
 
         ml_file_name            = "{1}_{0}Dsin_5_5_10000_noCPV_syst_0_01__chi2scoring_{2}_p_values"
@@ -176,13 +176,13 @@ if MODE == 'Sin_noCPV':
                 ml_classifiers_dict[ml_classifier]= np.divide(ml_classifiers_dict[ml_classifier],100.)
 
 
-        ax.errorbar(dimensions,ml_classifiers_dict['nn'], xerr=xwidth, yerr=binomial_error(ml_classifiers_dict['nn']), linestyle='', marker='s', markersize=15, color='green', ecolor='red', label=r'$ANN$')
+        ax.errorbar(dimensions,ml_classifiers_dict['nn'], xerr=xwidth, yerr=binomial_error(ml_classifiers_dict['nn']), linestyle='', marker='s', markersize=15, color='green', ecolor='red', label=r'$ANN$', clip_on=False)
         print("bdt : ", ml_classifiers_dict['bdt'])
         print("xgb : ", ml_classifiers_dict['xgb'])
         ml_classifiers_dict['BDT_best']= [max(item1,item2) for item1, item2 in zip(ml_classifiers_dict['bdt'],ml_classifiers_dict['xgb'])]
         print("BDT : ", ml_classifiers_dict['BDT_best'])
-        ax.errorbar(dimensions,ml_classifiers_dict['BDT_best'], xerr=xwidth, yerr=binomial_error(ml_classifiers_dict['BDT_best']), linestyle='', marker='o', markersize=15, color='green', ecolor='red', label=r'$BDT$')
-        ax.errorbar(dimensions,ml_classifiers_dict['svm'], xerr=xwidth, yerr=binomial_error(ml_classifiers_dict['svm']),  linestyle='', marker='^', markersize=15, color='green', ecolor='red', label=r'$SVM$')
+        ax.errorbar(dimensions,ml_classifiers_dict['BDT_best'], xerr=xwidth, yerr=binomial_error(ml_classifiers_dict['BDT_best']), linestyle='', marker='o', markersize=15, color='green', ecolor='red', label=r'$BDT$', clip_on=False)
+        ax.errorbar(dimensions,ml_classifiers_dict['svm'], xerr=xwidth, yerr=binomial_error(ml_classifiers_dict['svm']),  linestyle='', marker='^', markersize=15, color='green', ecolor='red', label=r'$SVM$', clip_on=False)
 
         for chi2_split_index, chi2_split in enumerate(chi2_splits):
                 chi2_splits_dict[str(chi2_split)]=[]
@@ -202,7 +202,7 @@ if MODE == 'Sin_noCPV':
                 chi2_best.append(temp_best)
                 #print("chi2_best : ",chi2_best)
 
-        ax.errorbar(dimensions,chi2_best, xerr=xwidth, yerr=binomial_error(chi2_best), linestyle='', marker='x', markersize=15, color='magenta', ecolor='red', label=r'$\chi^2$')
+        ax.errorbar(dimensions,chi2_best, xerr=xwidth, yerr=binomial_error(chi2_best), linestyle='', marker='x', markersize=15, color='magenta', ecolor='red', label=r'$\chi^2$', clip_on=False)
         print("ml_classifiers_dict : ",ml_classifiers_dict)
         print("chi2_best : ", chi2_best)
 

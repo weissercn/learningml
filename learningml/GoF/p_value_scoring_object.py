@@ -5,6 +5,29 @@ import numpy as np
 from scipy import stats
 import adaptive_binning_chisquared_2sam
 
+def weisser_searchsorted(l_test1, l_test2):
+        l_test1, l_test2 = np.array(l_test1), np.array(l_test2)
+        print("l_test1 : ", l_test1)
+        l_tot = np.sort(np.append(l_test1, l_test2))
+        print("l_tot : ", l_tot)
+        l_tot_cp, l_test1_cp, l_test2_cp  = l_tot.tolist(), l_test1.tolist(), l_test2.tolist()
+        pos1, pos2 = [],[]
+        print("l_tot_cp : ",l_tot_cp)
+        for item_number, item in enumerate(l_tot_cp):
+                n1 = l_test1_cp.count(item)
+                n2 = l_test2_cp.count(item)
+                if np.random.choice(2, 1, p=[n1/float(n1+n2),n2/float(n1+n2) ]):
+                        l_test2_cp.remove(item)
+                        pos2.append(item_number)
+                else:
+                        l_test1_cp.remove(item)
+                        pos1.append(item_number)
+
+        pos1 = np.array(pos1)
+        pos2 = np.array(pos2)
+        return (pos1,pos2)
+
+
 def p_value_scoring_object(clf, X, y):
 	"""
 	p_value_getter is a scoring callable that returns the negative p value from the KS test on the prediction probabilities for the particle and antiparticle samples.  
@@ -93,25 +116,32 @@ def make_p_value_scoring_object_binned_chisquared(no_bins,systematics_fraction,t
 		y         = np.reshape(y,(1,y.shape[0]))
 		prob_pred = np.reshape(prob_pred,(1,prob_pred.shape[0]))
 		y = y[0]
-		print("prob_pred : ", prob_pred)
 		prob_pred = prob_pred[0]
+		print("prob_pred : ", prob_pred)
 		#print("\ny : ",y)
 		#print("\nprob_pred : ",prob_pred )
 
 		#Separate prob into particle and antiparticle samples
 		prob_0    = prob_pred[np.logical_or.reduce([y==0])]
 		prob_1    = prob_pred[np.logical_or.reduce([y==1])]
-		#print("prob_0 : ",prob_0)
+		print("prob_0 : ",prob_0)
+		print("prob_1 : ",prob_1)
 		total_no  = len(prob_0)+len(prob_1)
 		print("\ntotal_no : ",total_no)
+		assert total_no == prob_pred.shape[0]
 
-		prob_0, prob_1, prob_pred = list(prob_0), list(prob_1), list(prob_pred)
+		#new
+		prob_pred = np.append(prob_0, prob_1) 
+
+		#prob_0, prob_1, prob_pred = list(prob_0), list(prob_1), list(prob_pred)
 		#print("prob_0 : ",prob_0)
 		# Create transformation to turn distributions into uniform distributions if they aren't different
 		prob_pred_sorted = np.sort(prob_pred)
 		# Create cumulative distribution. Make every element a bin
-		prob_0_pos = np.searchsorted(prob_pred_sorted,prob_0)
-		prob_1_pos = np.searchsorted(prob_pred_sorted,prob_1)
+		#prob_0_pos = np.searchsorted(prob_pred_sorted,prob_0)
+		#prob_1_pos = np.searchsorted(prob_pred_sorted,prob_1)
+		prob_0_pos, prob_1_pos = weisser_searchsorted(prob_0, prob_1)
+
 		print("prob_0_pos : ", prob_0_pos)
 		prob_0_pos_float = [float(i) for i in prob_0_pos]
 		prob_1_pos_float = [float(i) for i in prob_1_pos]
@@ -120,9 +150,22 @@ def make_p_value_scoring_object_binned_chisquared(no_bins,systematics_fraction,t
 		prob_1_pos_scaled = np.divide(prob_1_pos_float,float(total_no-1))
 
 		print("prob_0_pos_scaled : ",prob_0_pos_scaled)
-		prob_0_pos_scaled = prob_0_pos_scaled[:,None]
-		prob_1_pos_scaled = prob_1_pos_scaled[:,None]
-		print("prob_0_pos_scaled : ",prob_0_pos_scaled)
+		#prob_0_pos_scaled = prob_0_pos_scaled[:,None]
+		#prob_1_pos_scaled = prob_1_pos_scaled[:,None]
+		#print("prob_0_pos_scaled : ",prob_0_pos_scaled)
+		bin_boundaries = np.linspace(0.0,1.0,20)
+		hist0, hist0_edges = np.histogram(prob_0_pos_scaled, bins=bin_boundaries)
+		hist1, hist1_edges = np.histogram(prob_1_pos_scaled, bins=bin_boundaries)
+		hist_comb=np.add(hist0,hist1)
+		
+		print("hist0 : ", hist0)
+		print("hist1 : ", hist1)
+		print("hist_comb : ", hist_comb)
+
+		for item_number, item in enumerate(hist_comb):
+			assert item >= np.floor(np.sum(hist_comb)/float(hist_comb.shape[0]))
+			assert item <= np.ceil(np.sum(hist_comb)/float(hist_comb.shape[0]))
+		
 
 		p_miranda = adaptive_binning_chisquared_2sam.chi2_regular_binning(prob_0_pos_scaled,prob_1_pos_scaled,no_bins,systematics_fraction,title,name,PLOT)
 

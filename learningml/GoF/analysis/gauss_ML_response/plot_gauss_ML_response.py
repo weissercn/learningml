@@ -37,12 +37,12 @@ mpl.rcParams['lines.linewidth'] = 2
 
 
 ################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################
-
+SCALING = False
 
 
 if MODE == 'Gauss1':
-        dimensions              = [2,3,4,5,6,7,8,9,10]
-        #dimensions             = [4]
+        #dimensions              = [2,3,4,5,6,7,8,9,10]
+        dimensions             = [2,6,10]
 
         ml_classifiers_colors   = ['blue','black','green','slategrey']
         #ml_classifiers          = ['nn','bdt','xgb','svm']
@@ -54,7 +54,8 @@ if MODE == 'Gauss1':
         ml_classifiers_bins     = [5,5,5,5]
 
 
-        ml_folder_name          = "automatisation_gaussian_same_projection/evaluation_0_95__0_95_not_redefined"
+        #ml_folder_name          = "automatisation_gaussian_same_projection/evaluation_0_95__0_95_not_redefined"
+	ml_folder_name          = "automatisation_gaussian_same_projection/plot_gauss_final_2files_plot"
 
         ml_file_name            = "{1}_{0}Dgauss__0_95__0_95_CPV_not_redefined_syst_0_01__chi2scoring_{2}_bin_definitions_1D_features_boundaries.txt"
 
@@ -71,6 +72,7 @@ if MODE == 'Gauss1':
 		for ml_classifier_index, ml_classifier in enumerate(ml_classifiers):
 			fname = os.environ['learningml']+"/GoF/optimisation_and_evaluation/"+ml_folder_name+"/"+ml_classifier+"/"+ml_file_name.format(dim,ml_classifier,ml_classifiers_bins[ml_classifier_index])
 			print("fname : ", fname)
+			print("ml_classifier : ", ml_classifier)
 			with open(fname) as f:
 				features_0 = f.readline()
 				features_1 = f.readline()
@@ -90,6 +92,7 @@ if MODE == 'Gauss1':
 			hist0, hist0_edges = np.histogram(features_0, bins=bin_boundaries)
 			hist1, hist1_edges = np.histogram(features_1, bins=bin_boundaries)
 			print("hist0 : ",hist0)
+			print("hist1 : ",hist1)
 			bin_middle = (hist0_edges[1:] + hist0_edges[:-1]) / 2
 			xwidths = (hist0_edges[1:]-hist0_edges[:-1])/2.
 			no_bins = hist0.shape[0]
@@ -97,15 +100,16 @@ if MODE == 'Gauss1':
 			hist0_sqrt = np.sqrt(hist0)
 			hist1_sqrt = np.sqrt(hist1)
 
-			scaling0 = float(xwidths.shape[0])/sum(hist0)
-			scaling1 = float(xwidths.shape[0])/sum(hist1)
+			if SCALING:
+				scaling0 = float(xwidths.shape[0])/sum(hist0)
+				scaling1 = float(xwidths.shape[0])/sum(hist1)
 
-			hist0 = np.multiply(hist0,scaling0)
-			hist1 = np.multiply(hist1,scaling1)
-			hist0_sqrt = np.multiply(hist0_sqrt,scaling0)
-			hist1_sqrt = np.multiply(hist1_sqrt,scaling1)
-
-			ax.plot((0.,1.),(1.,1.),c="grey",linestyle="--")
+				hist0 = np.multiply(hist0,scaling0)
+				hist1 = np.multiply(hist1,scaling1)
+				hist0_sqrt = np.multiply(hist0_sqrt,scaling0)
+				hist1_sqrt = np.multiply(hist1_sqrt,scaling1)
+				ax.plot((0.,1.),(1.,1.),c="grey",linestyle="--")
+			else:	ax.plot((0.,1.),(10000./len(bin_middle),10000./len(bin_middle)),c="grey",linestyle="--")
 
 			#ax.plot((0., 1.), (float(no_entries)/float(no_bins), float(no_entries)/float(no_bins)), c="grey", linestyle='--')
 			ax.errorbar(bin_middle, hist0, xerr=xwidths, yerr=hist0_sqrt, linestyle='', marker=markers[ml_classifier_index], markersize=15, color='green', ecolor='blue', label=ml_classifiers_labels[ml_classifier_index])
@@ -113,13 +117,13 @@ if MODE == 'Gauss1':
 
 		ax.text(0.5, 0.1,'{}D'.format(dim), ha='center', va='center', transform=ax.transAxes)
 		ax.set_xlim(0.,1.)
-		#ax.set_ylim(0,700)
-		ax.set_ylim(0.8,1.2)
+		ax.set_ylim(1000,3500)
+		#ax.set_ylim(0.8,1.2)
 		#plt.gca().set_ylim(bottom=0)
 		ax.set_xlabel("ML response")
 		ax.set_ylabel("normalised entries")
 		#plt.title(title + " bin definitions" )
-		ax.legend(loc='upper center',frameon=False, numpoints=1)
+		#ax.legend(loc='upper center',frameon=False, numpoints=1)
 
 		fig.savefig(name+"_{}D_ML_response.pdf".format(dim))
 		plt.close(fig)

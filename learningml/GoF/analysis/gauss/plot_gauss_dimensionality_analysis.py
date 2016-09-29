@@ -60,8 +60,9 @@ if MODE == 'Gauss1':
         chi2_splits             = [1,2,3,4,5,6,7,8,9,10]
 
 	#ml_folder_name          = "automatisation_gaussian_same_projection/evaluation_0_95__0_95_not_redefined"
-        ml_folder_name          = "automatisation_gaussian_same_projection/evaluation_gauss_final"
-        chi2_folder_name        = "gauss"
+        ml_folder_name          = "automatisation_gaussian_same_projection/evaluation_gauss_final_2files"
+        #ml_folder_name          = "automatisation_gaussian_same_projection/evaluation_gauss_final"
+	chi2_folder_name        = "gauss"
 
         ml_file_name            = "{1}_{0}Dgauss__0_95__0_95_CPV_not_redefined_syst_0_01__chi2scoring_{2}_p_values"
         chi2_file_name          = "chi2_gauss__0_95__0_95_CPV_not_redefined_syst_0_01__{0}D_chi2_{1}_splits_p_values"
@@ -86,13 +87,13 @@ if MODE == 'Gauss1':
 		ml_classifiers_dict[ml_classifier]= np.divide(ml_classifiers_dict[ml_classifier],100.)
 	
 
-	ax.errorbar(dimensions,ml_classifiers_dict['nn'], xerr=xwidth, yerr=binomial_error(ml_classifiers_dict['nn']), linestyle='', marker='s', markersize=15, color='green', ecolor='blue', label=r'$ANN$')
+	ax.errorbar(dimensions,ml_classifiers_dict['nn'], xerr=xwidth, yerr=binomial_error(ml_classifiers_dict['nn']), linestyle='', marker='s', markersize=15, color='green', ecolor='blue', label=r'$ANN$',clip_on=False)
 	print("bdt : ", ml_classifiers_dict['bdt'])
 	print("xgb : ", ml_classifiers_dict['xgb'])
 	ml_classifiers_dict['BDT_best']= [max(item1,item2) for item1, item2 in zip(ml_classifiers_dict['bdt'],ml_classifiers_dict['xgb'])]
 	print("BDT : ", ml_classifiers_dict['BDT_best'])
-	ax.errorbar(dimensions,ml_classifiers_dict['BDT_best'], xerr=xwidth, yerr=binomial_error(ml_classifiers_dict['BDT_best']), linestyle='', marker='o', markersize=15, color='green', ecolor='blue', label=r'$BDT$')
-	ax.errorbar(dimensions,ml_classifiers_dict['svm'], xerr=xwidth, yerr=binomial_error(ml_classifiers_dict['svm']),  linestyle='', marker='^', markersize=15, color='green', ecolor='blue', label=r'$SVM$')
+	ax.errorbar(dimensions,ml_classifiers_dict['BDT_best'], xerr=xwidth, yerr=binomial_error(ml_classifiers_dict['BDT_best']), linestyle='', marker='o', markersize=15, color='green', ecolor='blue', label=r'$BDT$', clip_on=False)
+	ax.errorbar(dimensions,ml_classifiers_dict['svm'], xerr=xwidth, yerr=binomial_error(ml_classifiers_dict['svm']),  linestyle='', marker='^', markersize=15, color='green', ecolor='blue', label=r'$SVM$', clip_on=False)
 
         for chi2_split_index, chi2_split in enumerate(chi2_splits):
                 chi2_splits_dict[str(chi2_split)]=[]
@@ -112,7 +113,7 @@ if MODE == 'Gauss1':
 		chi2_best.append(temp_best)
 		#print("chi2_best : ",chi2_best)
 
-	ax.errorbar(dimensions,chi2_best, xerr=xwidth, yerr=binomial_error(chi2_best), linestyle='', marker='x', markersize=15, color='magenta', ecolor='blue', label=r'$\chi^2$')
+	ax.errorbar(dimensions,chi2_best, xerr=xwidth, yerr=binomial_error(chi2_best), linestyle='', marker='x', markersize=15, color='magenta', ecolor='blue', label=r'$\chi^2$', clip_on=False)
         print("ml_classifiers_dict : ",ml_classifiers_dict)
 	print("chi2_best : ", chi2_best)
 
@@ -120,7 +121,7 @@ if MODE == 'Gauss1':
         ax.set_ylim([0.,1.])
         ax.set_xlabel("Number of dimensions")
         ax.set_ylabel("Fraction rejected")
-        ax.legend(loc='best', frameon=False, numpoints=1)
+        #ax.legend(loc='best', frameon=False, numpoints=1)
         fig_name=name+"dimensionality_analysis"
         fig.savefig(fig_name+".pdf")
         fig.savefig(fig_name+"_"+time.strftime("%b_%d_%Y")+".pdf")
@@ -202,7 +203,7 @@ if MODE == 'Gauss1_euclidean':
                 chi2_best.append(temp_best)
                 #print("chi2_best : ",chi2_best)
 
-	ax.errorbar(dimensions,chi2_best, xerr=xwidth, yerr=binomial_error(chi2_best), linestyle='', marker='x', markersize=15, color='magenta', ecolor='blue', label=r'$\chi^2$')
+	ax.errorbar(dimensions,chi2_best, xerr=xwidth, yerr=binomial_error(chi2_best), linestyle='', marker='x', markersize=15, color='magenta', ecolor='blue', label=r'$\chi^2$', clip_on=False)
         print("ml_classifiers_dict : ",ml_classifiers_dict)
         print("chi2_best : ", chi2_best)
 
@@ -231,7 +232,7 @@ if MODE == 'Gauss1_euclidean':
 
 if MODE == 'Gauss1_noCPV':
         dimensions              = [2,3,4,5,6,7,8,9,10]
-        #dimensions             = [1,2,3,4,5]
+        #dimensions             = [2,3,4,5,6,7,8]
 
         ml_classifiers          = ['nn','bdt','xgb','svm']
 	
@@ -241,7 +242,9 @@ if MODE == 'Gauss1_noCPV':
         chi2_color              = 'red'
         chi2_splits             = [1,2,3,4,5,6,7,8,9,10]
 
-        ml_folder_name          = "automatisation_gaussian_same_projection/evaluation_gauss_final"
+        #ml_folder_name          = "automatisation_gaussian_same_projection/evaluation_0_95__0_95_not_redefined"
+        ml_folder_name          = "automatisation_gaussian_same_projection/evaluation_gauss_final_2files"
+        #ml_folder_name          = "automatisation_gaussian_same_projection/evaluation_gauss_final"
         chi2_folder_name        = "gauss"
 
         ml_file_name            = "{1}_{0}Dgauss__1_0__1_0_noCPV_not_redefined_syst_0_01__chi2scoring_{2}_p_values"
