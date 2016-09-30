@@ -50,7 +50,7 @@ def binomial_error(l1):
 if MODE == 'lower_level':
         #dimensions              = [2,3,4,5,6,7,8,9,10]
         #dimensions             = [1,2,3,4,5]
-	param_list 		= [0.125,0.130,0.132,0.133,0.134,0.135,0.1365,0.14]
+	param_list 		= [0.130,0.132,0.133,0.134,0.135,0.1365,0.14]
 
         ml_classifiers          = ['nn','bdt','xgb','svm']
 	
@@ -61,10 +61,10 @@ if MODE == 'lower_level':
         chi2_splits             = [1,2,3,4,5,6,7,8,9,10]
 	#chi2_splits		= [8]
 
-        ml_folder_name          = "automatisation_monash_alphaSvalue_lower_level/evaluation_monash_lower_level_2files_attempt0"
+        ml_folder_name          = "automatisation_monash_alphaSvalue_lower_level/evaluation_monash_lower_level_2files_attempt3"
         chi2_folder_name        = "event_shapes_lower_level"
 
-        ml_file_name            = "{1}_monash_{0}_alphaSvalue_lower_level_chi2scoring_{2}_p_values"
+        ml_file_name            = "{1}_monash_{0}_alphaSvalue_lower_level_syst_0_01__p_values"
         chi2_file_name          = "event_shapes_lower_level_syst_0_01__{0}D_chi2_{1}_splits_p_values"
         
 	title                   = "Event shapes lower level"
@@ -127,7 +127,7 @@ if MODE == 'lower_level':
         print("chi2_best : ", chi2_best)
 	ax.plot((0.1365,0.1365),(0.,1.),c="grey",linestyle="--")
 
-        ax.set_xlim([0.12,0.145])
+        ax.set_xlim([0.128,0.142])
         ax.set_ylim([0.,1.])
         ax.set_xlabel(r"$\alpha_{S}$")
         ax.set_ylabel("Fraction rejected")
