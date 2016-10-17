@@ -7,12 +7,12 @@ import adaptive_binning_chisquared_2sam
 
 def weisser_searchsorted(l_test1, l_test2):
         l_test1, l_test2 = np.array(l_test1), np.array(l_test2)
-        print("l_test1 : ", l_test1)
+        #print("l_test1 : ", l_test1)
         l_tot = np.sort(np.append(l_test1, l_test2))
-        print("l_tot : ", l_tot)
+        #print("l_tot : ", l_tot)
         l_tot_cp, l_test1_cp, l_test2_cp  = l_tot.tolist(), l_test1.tolist(), l_test2.tolist()
         pos1, pos2 = [],[]
-        print("l_tot_cp : ",l_tot_cp)
+        #print("l_tot_cp : ",l_tot_cp)
         for item_number, item in enumerate(l_tot_cp):
                 n1 = l_test1_cp.count(item)
                 n2 = l_test2_cp.count(item)

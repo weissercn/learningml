@@ -284,18 +284,19 @@ def evaluate_job(expt,nclf,out_q):
 			#print("nclf.param_opt :",nclf.param_opt)
 			setattr(nclf.clf,param ,nclf.param_opt[param_index])
 	print("\n",nclf.name+" nclf.clf :",nclf.clf,"\n")
-	for dim in expt.evaluation_dimensions:
-		comp_file_list=[]
-		for i in range(expt.number_of_evaluations):
-			comp_file_list.append((expt.file_name_patterns[0].format(dim,i),expt.file_name_patterns[1].format(dim,i)))
-		if nclf.name == "nn": aclf = nclf.clf_nn_dict[str(dim)]
-		else: aclf=nclf.clf
-		if expt.scoring=='chi2':
-			for no_bins in expt.single_no_bins_list:
-				classifier_eval_2files(name= nclf.name + "_" + expt.name_CPV.format(dim) , comp_file_list=comp_file_list, clf =aclf, verbose=False, scoring=expt.scoring, no_bins=no_bins, systematics_fraction=expt.systematics_fraction, title=expt.title_CPV+" "+ str(dim)+"D" )
-		else:
-			classifier_eval_2files(name= nclf.name + "_" + expt.name_CPV.format(dim) , comp_file_list=comp_file_list, clf =aclf, verbose=False, scoring=expt.scoring, title=expt.title_noCPV+" "+ str(dim)+"D")
-	if not expt.only_mod:
+	if not expt.only_mod==2:
+		for dim in expt.evaluation_dimensions:
+			comp_file_list=[]
+			for i in range(expt.number_of_evaluations):
+				comp_file_list.append((expt.file_name_patterns[0].format(dim,i),expt.file_name_patterns[1].format(dim,i)))
+			if nclf.name == "nn": aclf = nclf.clf_nn_dict[str(dim)]
+			else: aclf=nclf.clf
+			if expt.scoring=='chi2':
+				for no_bins in expt.single_no_bins_list:
+					classifier_eval_2files(name= nclf.name + "_" + expt.name_CPV.format(dim) , comp_file_list=comp_file_list, clf =aclf, verbose=False, scoring=expt.scoring, no_bins=no_bins, systematics_fraction=expt.systematics_fraction, title=expt.title_CPV+" "+ str(dim)+"D" )
+			else:
+				classifier_eval_2files(name= nclf.name + "_" + expt.name_CPV.format(dim) , comp_file_list=comp_file_list, clf =aclf, verbose=False, scoring=expt.scoring, title=expt.title_noCPV+" "+ str(dim)+"D")
+	if not expt.only_mod or 2==expt.only_mod:
 		print(nclf.name,"Running NoCPV ")
 		for dim in expt.evaluation_dimensions:
 			comp_file_list=[]

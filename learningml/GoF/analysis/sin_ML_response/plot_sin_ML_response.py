@@ -41,13 +41,17 @@ SCALING = False
 
 
 if MODE == 'sin':
-        dimensions             = [2,6,10]
+        dimensions             = [10]
 
         ml_classifiers_colors   = ['blue','black','green','slategrey']
         #ml_classifiers          = ['nn','bdt','xgb','svm']
         ml_classifiers          = ['nn','bdt','svm']
 	#ml_classifiers          = ['nn']
-	markers			= ['s','o','^']
+	col_f1                  = ['darkblue', 'blue', 'deepskyblue']
+        col_f2                  = ['maroon' , 'red' , 'deeppink' ]
+        marker_f1               = 's'
+        marker_f2               = 'o'
+
 	ml_classifiers_labels   = ['ANN','BDT','SVM']
 	#ml_classifiers          = ['nn']
         ml_classifiers_bins     = [5,5,5,5]
@@ -70,6 +74,7 @@ if MODE == 'sin':
 	for dim in dimensions:
 		fig = plt.figure()
 		ax = fig.add_axes([0.2,0.15,0.75,0.8])
+		p1s, p2s = [], []
 		for ml_classifier_index, ml_classifier in enumerate(ml_classifiers):
 			fname = os.environ['learningml']+"/GoF/optimisation_and_evaluation/"+ml_folder_name+"/"+ml_classifier+"/"+ml_file_name.format(dim,ml_classifier,ml_classifiers_bins[ml_classifier_index])
 			print("fname : ", fname)
@@ -113,12 +118,18 @@ if MODE == 'sin':
 			else:	ax.plot((0.,1.),(10000./len(bin_middle),10000./len(bin_middle)),c="grey",linestyle="--")
 
 			#ax.plot((0., 1.), (float(no_entries)/float(no_bins), float(no_entries)/float(no_bins)), c="grey", linestyle='--')
-			ax.errorbar(bin_middle, hist0, xerr=xwidths, yerr=hist0_sqrt, linestyle='', marker=markers[ml_classifier_index], markersize=15, color='green', ecolor='blue', label=ml_classifiers_labels[ml_classifier_index])
-			ax.errorbar(bin_middle, hist1, xerr=xwidths, yerr=hist1_sqrt, linestyle='', marker=markers[ml_classifier_index], markersize=15, color='green', ecolor='red')
+			#ax.errorbar(bin_middle, hist0, xerr=xwidths, yerr=hist0_sqrt, linestyle='', marker=markers[ml_classifier_index], markersize=15, color='green', ecolor='blue', label=ml_classifiers_labels[ml_classifier_index])
+			#ax.errorbar(bin_middle, hist1, xerr=xwidths, yerr=hist1_sqrt, linestyle='', marker=markers[ml_classifier_index], markersize=15, color='green', ecolor='red')
+                        p1 = ax.errorbar(bin_middle, hist0, xerr=xwidths, yerr=hist0_sqrt, linestyle='', marker=marker_f1, markersize=10, markeredgewidth=0.0, color=col_f1[ml_classifier_index], ecolor=col_f1[ml_classifier_index], label=ml_classifiers_labels[ml_classifier_index])
+                        p2 = ax.errorbar(bin_middle, hist1, xerr=xwidths, yerr=hist1_sqrt, linestyle='', marker=marker_f2, markersize=10, markeredgewidth=0.0, color=col_f2[ml_classifier_index], ecolor=col_f2[ml_classifier_index])
+                        p1s.append(p1)
+                        p2s.append(p2)
 
-		ax.text(0.5, 0.1,'{}D'.format(dim), ha='center', va='center', transform=ax.transAxes)
+		#ax.text(0.5, 0.1,'{}D'.format(dim), ha='center', va='center', transform=ax.transAxes)
+		ax.text(0.40, 0.95,'d = {}'.format(dim), horizontalalignment='left', verticalalignment='top', transform=ax.transAxes)
 		ax.set_xlim(0.,1.)
-		ax.set_ylim(1000,3500)
+		#ax.set_ylim(1000,3500)
+		ax.set_ylim(1500,2500)
 		#ax.set_ylim(0.8,1.2)
 		#plt.gca().set_ylim(bottom=0)
 		ax.set_xlabel("ML response")
@@ -126,7 +137,16 @@ if MODE == 'sin':
 		#plt.title(title + " bin definitions" )
 		#ax.legend(loc='upper center',frameon=False, numpoints=1)
 
-		fig.savefig(name+"_{}D_ML_response.pdf".format(dim))
+		if dim ==2:
+                        ax.legend(loc=(0.,0.),frameon=False, numpoints=1, ncol=2)
+                        #ax.errorbar(0.0,1500,xerr=0.035, yerr=35, linestyle='--', marker=marker_f2, markersize=10, markeredgewidth=0.0, color=col_f2[1],ecolor=col_f2[1])
+                        ax.errorbar(0.2,1734,xerr=0.04, yerr=50, linestyle='--', marker=marker_f2, markersize=10, markeredgewidth=0.0, color=col_f2[0],ecolor=col_f2[0])
+                        ax.errorbar(0.2,1595,xerr=0.04, yerr=50, linestyle='--', marker=marker_f2, markersize=10, markeredgewidth=0.0, color=col_f2[1],ecolor=col_f2[1])
+                        ax.errorbar(0.748,1734,xerr=0.04, yerr=50, linestyle='--', marker=marker_f2, markersize=10, markeredgewidth=0.0, color=col_f2[2],ecolor=col_f2[2])
+
+
+		#fig.savefig(name+"_{}D_ML_response.pdf".format(dim))
+		fig.savefig("sin_MLresponse_{}D.pdf".format(dim))
 		plt.close(fig)
 		print("The plot {}_{}D_ML_response.pdf has been made\n\n".format(name,dim))
 

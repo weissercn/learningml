@@ -8,8 +8,8 @@ import time
 
 
 # Options for mode 'Sin','Sin_noCPV' 
-#MODE = 'Sin'
-MODE = 'Sin_noCPV'
+MODE = 'Sin'
+#MODE = 'Sin_noCPV'
 
 label_size = 28
 
@@ -113,7 +113,7 @@ if MODE == 'Sin':
                 chi2_best.append(temp_best)
                 #print("chi2_best : ",chi2_best)
 
-        ax.errorbar(dimensions,chi2_best, xerr=xwidth, yerr=binomial_error(chi2_best), linestyle='', marker='x', markersize=15, color='magenta', ecolor='blue', label=r'$\chi^2$', clip_on=False)
+        ax.errorbar(dimensions,chi2_best, xerr=xwidth, yerr=binomial_error(chi2_best), linestyle='', marker='$\chi$', markeredgecolor='none', markersize=15, color='magenta', ecolor='blue', label=r'$\chi^2$', clip_on=False)
         print("ml_classifiers_dict : ",ml_classifiers_dict)
         print("chi2_best : ", chi2_best)
 
@@ -121,7 +121,7 @@ if MODE == 'Sin':
         ax.set_ylim([0.,1.])
         ax.set_xlabel("Number of dimensions")
         ax.set_ylabel("Fraction rejected")
-        ax.legend(loc='best', frameon=False, numpoints=1)
+        #ax.legend(loc='best', frameon=False, numpoints=1)
         fig_name=name+"dimensionality_analysis"
         fig.savefig(fig_name+".pdf")
         fig.savefig(fig_name+"_"+time.strftime("%b_%d_%Y")+".pdf")
@@ -204,7 +204,7 @@ if MODE == 'Sin_noCPV':
                 chi2_best.append(temp_best)
                 #print("chi2_best : ",chi2_best)
 
-        ax.errorbar(dimensions,chi2_best, xerr=xwidth, yerr=binomial_error(chi2_best), linestyle='', marker='x', markersize=15, color='magenta', ecolor='red', label=r'$\chi^2$', clip_on=False)
+        ax.errorbar(dimensions,chi2_best, xerr=xwidth, yerr=binomial_error(chi2_best), linestyle='', marker='$\chi$', markeredgecolor='none', markersize=15, color='magenta', ecolor='red', label=r'$\chi^2$', clip_on=False)
         print("ml_classifiers_dict : ",ml_classifiers_dict)
         print("chi2_best : ", chi2_best)
 
@@ -212,7 +212,7 @@ if MODE == 'Sin_noCPV':
         ax.set_ylim([0.,1.])
         ax.set_xlabel("Number of dimensions")
         ax.set_ylabel("Fraction rejected")
-        ax.legend(loc='best', frameon=False, numpoints=1)
+        #ax.legend(loc='best', frameon=False, numpoints=1)
         fig_name=name+"dimensionality_analysis"
         fig.savefig(fig_name+".pdf")
         fig.savefig(fig_name+"_"+time.strftime("%b_%d_%Y")+".pdf")

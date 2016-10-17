@@ -50,7 +50,9 @@ def binomial_error(l1):
 if MODE == 'thrust':
         #dimensions              = [2,3,4,5,6,7,8,9,10]
         #dimensions             = [1,2,3,4,5]
-	param_list 		= [0.125,0.130,0.132,0.133,0.134,0.135,0.1365,0.14]
+	#param_list 		= [0.125,0.130,0.132,0.133,0.134,0.135,0.1365,0.14]
+	#param_list             = [0.130,0.132,0.133,0.134,0.135,0.1365,0.14]
+	param_list 		= [0.130, 0.132,0.133,0.134,0.1345,0.135,0.1355,0.136,0.1365,0.137,0.1375,0.138,0.139,0.14]
 
         ml_classifiers          = ['nn','bdt','xgb','svm']
 	
@@ -64,7 +66,7 @@ if MODE == 'thrust':
         chi2_folder_name        = "event_shapes_thrust"
 
         ml_file_name            = "{1}_monash_{0}_alphaSvalue_lower_level_chi2scoring_{2}_p_values"
-        chi2_file_name          = "event_shapes_thrust_syst_0_01__{0}D_chi2_{1}_splits_p_values"
+        chi2_file_name          = "event_shapes_thrust_syst_0_01_attempt4__{0}D_chi2_{1}_splits_p_values"
         
 	title                   = "Event shapes thrust"
         name                    = "event_shapes_thrust"
@@ -121,18 +123,27 @@ if MODE == 'thrust':
 
 	print("param_list : ",param_list)
 	print("chi2_best : ", chi2_best)
-	plt.errorbar(param_list,chi2_best, xerr=(xwidth_left,xwidth_right), yerr=binomial_error(chi2_best), linestyle='', marker='x', markersize=15, color='magenta', ecolor='blue', label=r'$\chi^2$', clip_on=False)
+	#plt.errorbar(param_list,chi2_best, xerr=(xwidth_left,xwidth_right), yerr=binomial_error(chi2_best), linestyle='', marker='$\chi$', markeredgecolor='none', markersize=15, color='magenta', ecolor='blue', label=r'$\chi^2$', clip_on=False)
+	ax.errorbar(param_list,chi2_best, yerr=binomial_error(chi2_best), linestyle='--', marker='$\chi$', markeredgecolor='none', markersize=18, color='black', label=r'$\chi^2$', clip_on=False)
 	print("ml_classifiers_dict : ",ml_classifiers_dict)
         print("chi2_best : ", chi2_best)
 	ax.plot((0.1365,0.1365),(0.,1.),c="grey",linestyle="--")
 
-        ax.set_xlim([0.12,0.145])
-        ax.set_ylim([0.,1.])
+        #ax.set_xlim([0.12,0.145])
+        ax.set_xlim([0.129,0.1405])
+	ax.set_ylim([0.,1.])
         ax.set_xlabel(r"$\alpha_{S}$")
         ax.set_ylabel("Fraction rejected")
-        ax.legend(loc='lower left', frameon=False, numpoints=1)
-        fig_name=name+"_alphaSvalue_analysis"
-        fig.savefig(fig_name+".pdf")
+        a, b, c  = [0.130,0.133], [0.1365],[0.14]
+        ax.set_xticks(a+b+c)
+        xx, locs = plt.xticks()
+        ll = ['%.3f' % y for y in a] + ['%.4f' % y for y in b] + ['%.3f' % y for y in c]
+        plt.xticks(xx, ll)
+
+        #ax.legend(loc='lower left', frameon=False, numpoints=1)
+        #fig_name=name+"_alphaSvalue_analysis"
+        fig_name= "event_shapes_thrust_analysis"
+	fig.savefig(fig_name+".pdf")
         fig.savefig(fig_name+"_"+time.strftime("%b_%d_%Y")+".pdf")
         print("Saved the figure as" , fig_name+".pdf")
 
