@@ -40,4 +40,3 @@ if adaptive_binning==True:
 else:
 	single_no_bins_list=[2,3,5]
 	adaptive_binning_chisquared_2sam.chi2_regular_binning_wrapper(orig_title, orig_name, param_list, comp_file_list_list,single_no_bins_list,systematics_fraction)
-
