@@ -1,0 +1,21 @@
+Optimise Hyperparameters using spearmint
+
+1. Download rep (Follow guide on https://github.com/yandex/rep)
+
+1. Download Spearmint and set it up (Follow guide on https://github.com/HIPS/Spearmint)
+
+2. Start up MongoDB
+mongod --fork --logpath <path/to/logfile\> --dbpath <path/to/dbfolder\>
+
+3. Run spearmint
+python main.py \</path/to/experiment/directory\>
+
+
+
+
+
+Optional
+1. Write new Keras model
+
+
+
