@@ -248,8 +248,9 @@ if MODE == 'Gauss1_noCPV':
         chi2_splits             = [1,2,3,4,5,6,7,8,9,10]
 
         #ml_folder_name          = "automatisation_gaussian_same_projection/evaluation_0_95__0_95_not_redefined"
-        ml_folder_name          = "automatisation_gaussian_same_projection/evaluation_gauss_final_2files"
-        #ml_folder_name          = "automatisation_gaussian_same_projection/evaluation_gauss_final"
+        #ml_folder_name          = "automatisation_gaussian_same_projection/evaluation_gauss_final_2files"
+        ml_folder_name          = "automatisation_gaussian_same_projection/evaluation_gauss_final_2files_check"
+	#ml_folder_name          = "automatisation_gaussian_same_projection/evaluation_gauss_final"
         chi2_folder_name        = "gauss"
 
         ml_file_name            = "{1}_{0}Dgauss__1_0__1_0_noCPV_not_redefined_syst_0_01__chi2scoring_{2}_p_values"

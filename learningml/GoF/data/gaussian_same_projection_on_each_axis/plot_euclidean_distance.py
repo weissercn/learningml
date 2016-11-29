@@ -35,5 +35,3 @@ for dim in dimensions:
 	plt.savefig(name+"_1D_euclidean_proj_comp.png")
 	print("plotting "+name+"_1D_euclidean_proj_comp.png")
 
-
-

@@ -63,12 +63,12 @@ if MODE == 'lower_level':
 	#chi2_splits		= [8]
 
         ml_folder_name          = "automatisation_monash_alphaSvalue_lower_level/evaluation_monash_lower_level_2files_attempt4"
-        #chi2_folder_name        = "event_shapes_lower_level"
-	chi2_folder_name        = "event_shapes_lower_level_without_Mult"
+        chi2_folder_name        = "event_shapes_lower_level"
+	#chi2_folder_name        = "event_shapes_lower_level_without_Mult"
 
         ml_file_name            = "{1}_monash_{0}_alphaSvalue_lower_level_syst_0_01__p_values"
-        #chi2_file_name          = "event_shapes_lower_level_syst_0_01_attempt4__{0}D_chi2_{1}_splits_p_values"
-	chi2_file_name          = "event_shapes_lower_level_syst_0_01_attempt4_without_Mult__{0}D_chi2_{1}_splits_p_values"
+        chi2_file_name          = "event_shapes_lower_level_syst_0_01_attempt4__{0}D_chi2_{1}_splits_p_values"
+	#chi2_file_name          = "event_shapes_lower_level_syst_0_01_attempt4_without_Mult__{0}D_chi2_{1}_splits_p_values"
 
 	chi2_thrust_folder_name = "event_shapes_thrust"
 	chi2_thrust_file_name   = "event_shapes_thrust_syst_0_01_attempt4__{0}D_chi2_{1}_splits_p_values"        

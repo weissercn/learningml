@@ -208,7 +208,7 @@ def name_to_nclf(name):
         if name=="dt":
         	anclf = nclf('dt',tree.DecisionTreeClassifier(),['max_depth','min_samples_split'], [[1, 60],[2,100]])
 	if name=="bdt":
-		anclf = nclf('bdt',AdaBoostClassifier(base_estimator=tree.DecisionTreeClassifier(max_depth=2)), ['learning_rate','n_estimators'], [[0.01,2.0],[1,1000]])
+		anclf = nclf('bdt',AdaBoostClassifier(base_estimator=tree.DecisionTreeClassifier(max_depth=2)), ['learning_rate','n_estimators'], [[0.01,2.0],[100,1000]])
 	if name=="xgb":
 		anclf = nclf('xgb',XGBoostClassifier(), ['n_estimators','eta'], [[10,1000],[0.01,1.0]])
 	if name=="svm":
@@ -293,9 +293,9 @@ def evaluate_job(expt,nclf,out_q):
 			else: aclf=nclf.clf
 			if expt.scoring=='chi2':
 				for no_bins in expt.single_no_bins_list:
-					classifier_eval_2files(name= nclf.name + "_" + expt.name_CPV.format(dim) , comp_file_list=comp_file_list, clf =aclf, verbose=False, scoring=expt.scoring, no_bins=no_bins, systematics_fraction=expt.systematics_fraction, title=expt.title_CPV+" "+ str(dim)+"D" )
+					classifier_eval_2files(name= nclf.name + "_" + expt.name_CPV.format(dim) , comp_file_list=comp_file_list, clf =aclf, verbose=False, scoring=expt.scoring, no_bins=no_bins, systematics_fraction=expt.systematics_fraction, title=expt.title_CPV+" "+ str(dim)+"D" , transform = expt.transform)
 			else:
-				classifier_eval_2files(name= nclf.name + "_" + expt.name_CPV.format(dim) , comp_file_list=comp_file_list, clf =aclf, verbose=False, scoring=expt.scoring, title=expt.title_noCPV+" "+ str(dim)+"D")
+				classifier_eval_2files(name= nclf.name + "_" + expt.name_CPV.format(dim) , comp_file_list=comp_file_list, clf =aclf, verbose=False, scoring=expt.scoring, title=expt.title_noCPV+" "+ str(dim)+"D",  transform= expt.transform)
 	if not expt.only_mod or 2==expt.only_mod:
 		print(nclf.name,"Running NoCPV ")
 		for dim in expt.evaluation_dimensions:
@@ -306,9 +306,9 @@ def evaluate_job(expt,nclf,out_q):
 			else: aclf=nclf.clf
 			if expt.scoring=='chi2':
 				for no_bins in expt.single_no_bins_list:
-					classifier_eval_2files(name= nclf.name + "_" +expt.name_noCPV.format(dim) , comp_file_list=comp_file_list, clf =aclf, verbose=False, scoring=expt.scoring, no_bins=no_bins, systematics_fraction=expt.systematics_fraction, title=expt.title_noCPV+" "+ str(dim)+"D")
+					classifier_eval_2files(name= nclf.name + "_" +expt.name_noCPV.format(dim) , comp_file_list=comp_file_list, clf =aclf, verbose=False, scoring=expt.scoring, no_bins=no_bins, systematics_fraction=expt.systematics_fraction, title=expt.title_noCPV+" "+ str(dim)+"D", transform = expt.transform)
 			else:
-				classifier_eval_2files(name= nclf.name + "_" +expt.name_noCPV.format(dim) , comp_file_list=comp_file_list, clf =aclf, verbose=False, scoring=expt.scoring, title=expt.title_noCPV+" "+ str(dim)+"D")
+				classifier_eval_2files(name= nclf.name + "_" +expt.name_noCPV.format(dim) , comp_file_list=comp_file_list, clf =aclf, verbose=False, scoring=expt.scoring, title=expt.title_noCPV+" "+ str(dim)+"D",  transform= expt.transform)
 
 	os.chdir("..")
 	print(multiprocessing.current_process().name, " : ",nclf.name ," Finishing")
@@ -394,6 +394,7 @@ class experiment(object):
 		self.scoring		= kwargs.get('scoring',"standard")
 		self.single_no_bins_list= kwargs.get('single_no_bins_list',[2])
 		self.systematics_fraction= kwargs.get('systematics_fraction',0.01)
+		self.transform		= kwargs.get('transform','StandardScalar')
 
 		self.name_CPV		= self.name_CPV+ "_syst_"+str(self.systematics_fraction).replace(".","_") + "_"
 		self.name_noCPV           = self.name_noCPV+ "_syst_"+str(self.systematics_fraction).replace(".","_") + "_"
@@ -546,7 +547,12 @@ class experiment(object):
 #######################################################################################################################################################################################################
 #######################################################################################################################################################################################################
 #######################################################################################################################################################################################################
-
+def uniform_argsort(l_test):
+        rdm = np.array(l_test)
+        result_argsort = np.zeros(rdm.shape[0])
+        result_argsort[np.argsort(rdm)]=np.linspace(0.,1.,rdm.shape[0])
+        assert (result_argsort >= 0.).all() and (result_argsort <= 1.).all()
+        return result_argsort
 
 def classifier_eval_2files(*args,**kwargs):
 #mode,keras_mode,args):
@@ -569,7 +575,7 @@ def classifier_eval_2files(*args,**kwargs):
 	cv_n_iter	= kwargs.get('cv_n_iter',1)
 	clf		= kwargs.get('clf')
 	systematics_fraction = kwargs.get('systematics_fraction',0.01)
-
+	transform	= kwargs.get('transform','StandardScalar')
 
 	mode		= kwargs.get('mode',"evaluation")
 	scoring         = kwargs.get('scoring',"standard")
@@ -630,6 +636,7 @@ def classifier_eval_2files(*args,**kwargs):
                 features_1_test=np.loadtxt(comp_file_1_test,dtype='d')
 		#assert np.all(features_0 == features_0_test)
 		#assert np.all(features_1 == features_1_test)
+		no_dim = features_0.shape[1]
 
                 #determine how many data points are in each sample
                 no_0=features_0.shape[0]
@@ -687,12 +694,27 @@ def classifier_eval_2files(*args,**kwargs):
                 # just applying it on the test set.
 
                 if not scoring=="visualisation":
-			from sklearn import preprocessing
-                        #scaler = StandardScaler()
-                        #X = scaler.fit_transform(X)
-			scaler = preprocessing.StandardScaler().fit(X)
-			X = scaler.transform(X)
-			X_test = scaler.transform(X_test)
+			if transform=='uniform':
+				X_new  = uniform_argsort(X[:,0])
+				for D in range(1,no_dim):
+					temp = uniform_argsort(X[:,D])
+					X_new = np.c_[X_new,temp]
+				X  = X_new
+	
+				X_test_new  = uniform_argsort(X_test[:,0])
+                                for D in range(1,no_dim):
+                                        temp = uniform_argsort(X_test[:,D])
+                                        X_test_new = np.c_[X_test_new,temp]
+                                X_test  = X_test_new
+
+			elif transform=='StandardScalar':
+				from sklearn import preprocessing
+				#scaler = StandardScaler()
+				#X = scaler.fit_transform(X)
+				scaler = preprocessing.StandardScaler().fit(X)
+				X = scaler.transform(X)
+				X_test = scaler.transform(X_test)
+			else: assert 1==0
 
 		if scoring=="AD":
 			scores = (-1)*cross_validation.cross_val_score(clf,X,y,cv=acv,scoring=p_value_scoring_object.p_value_scoring_object_AD)

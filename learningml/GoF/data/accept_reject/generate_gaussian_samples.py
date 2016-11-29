@@ -93,7 +93,7 @@ def B_decay_K_mu_mu(tk,tl,p,dict_of_changes):
 
 	
 
-nsam=200
+nsam=100
 
 optimisation_mode=0 #if it is on nsam=1 and "optimisation" gets appended to the name
 
@@ -102,8 +102,8 @@ if optimisation_mode==1:
 
 points_per_sample=10000
 
-dimensions=[2,3,4,5,6,7,8,9,10]
-#dimensions=[4]
+#dimensions=[1,2,3,4,5,6,7,8,9,10]
+dimensions=[1]
 n_maxvalue_too_low_all_samples=0
 coefficients=[1,0.5,2,0.7]
 
@@ -117,7 +117,7 @@ function_mode='sin1diff'
 SinSqu_periods=39
 #if 'sin1diff' or 'sinplusone'
 Sin1diff_normal_period = 5
-Sin1diff_diff_period   = 5
+Sin1diff_diff_period   = 6
 
 #if 'B_decay_K_mu_mu'
 adict_of_changes = {'AFB': -0.03}

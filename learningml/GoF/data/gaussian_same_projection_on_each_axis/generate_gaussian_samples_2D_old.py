@@ -74,4 +74,3 @@ plt.xlim(0,1)
 plt.savefig(name+"_1Dhist.png")
 print("plotting "+name+"_1Dhist.png")
 
-

@@ -150,7 +150,7 @@ if MODE == 'Sin_noCPV':
         chi2_color              = 'red'
         chi2_splits             = [1,2,3,4,5,6,7,8,9,10]
 
-        ml_folder_name          = "automatisation_sin/evaluation10000_2files"
+        ml_folder_name          = "automatisation_sin/evaluation10000_2files_check"
         chi2_folder_name        = "sin"
 
         ml_file_name            = "{1}_{0}Dsin_5_5_10000_noCPV_syst_0_01__chi2scoring_{2}_p_values"

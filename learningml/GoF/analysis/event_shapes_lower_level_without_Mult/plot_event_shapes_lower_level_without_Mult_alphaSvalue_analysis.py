@@ -51,10 +51,12 @@ if MODE == 'lower_level':
         #dimensions              = [2,3,4,5,6,7,8,9,10]
         #dimensions             = [1,2,3,4,5]
 	#param_list 		= [0.130,0.132,0.133,0.134,0.135,0.1365,0.14]
-	param_list 		= [0.130, 0.132,0.133,0.134,0.1345,0.135,0.1355,0.136,0.137,0.1375,0.138,0.139,0.14]
+	#param_list             = [0.130, 0.132,0.133,0.134,0.1345,0.135,0.1355,0.136,0.137,0.1375,0.138,0.139,0.14]
+	param_list             = [0.130, 0.132,0.133,0.134,0.1345,0.135,0.1355,0.1375,0.138,0.139,0.14]
 
-        ml_classifiers          = ['nn','bdt','xgb','svm']
-	
+        #ml_classifiers          = ['nn','bdt','xgb','svm']
+	ml_classifiers		= ['bdt']	
+
 	ml_classifiers_colors   = ['green','magenta','cyan']
         ml_classifiers_bin      = 5
 
@@ -62,14 +64,15 @@ if MODE == 'lower_level':
         chi2_splits             = [1,2,3,4,5,6,7,8,9,10]
 	#chi2_splits		= [8]
 
-        #ml_folder_name          = "automatisation_monash_alphaSvalue_lower_level/evaluation_monash_lower_level_2files_attempt4"
-        ml_folder_name          = "automatisation_monash_alphaSvalue_lower_level_without_multi/evaluation_monash_lower_level_without_Mult_2files_attempt4"
-	#chi2_folder_name        = "event_shapes_lower_level"
-	chi2_folder_name        = "event_shapes_lower_level_without_Mult"
+        ml_folder_name          = "automatisation_monash_alphaSvalue_lower_level/evaluation_monash_lower_level_2files_attempt4"
+        ml_without_Mult_folder_name          = "automatisation_monash_alphaSvalue_lower_level_without_multi/evaluation_monash_lower_level_without_Mult_2files_attempt4"
+	chi2_folder_name        = "event_shapes_lower_level"
+	chi2_without_Mult_folder_name        = "event_shapes_lower_level_without_Mult"
 
-        ml_file_name            = "{1}_monash_{0}_alphaSvalue_lower_level_syst_0_01__p_values"
-        #chi2_file_name          = "event_shapes_lower_level_syst_0_01_attempt4__{0}D_chi2_{1}_splits_p_values"
-	chi2_file_name          = "event_shapes_lower_level_syst_0_01_attempt4_without_Mult__{0}D_chi2_{1}_splits_p_values"
+	ml_file_name            = "{1}_monash_{0}_alphaSvalue_lower_level_syst_0_01__p_values"
+        ml_without_Mult_file_name            = "{1}_monash_{0}_alphaSvalue_lower_level_without_Mult_syst_0_01__p_values"
+        chi2_file_name          = "event_shapes_lower_level_syst_0_01_attempt4__{0}D_chi2_{1}_splits_p_values"
+	chi2_without_Mult_file_name          = "event_shapes_lower_level_syst_0_01_attempt4_without_Mult__{0}D_chi2_{1}_splits_p_values"
 
 	chi2_thrust_folder_name = "event_shapes_thrust"
 	chi2_thrust_file_name   = "event_shapes_thrust_syst_0_01_attempt4__{0}D_chi2_{1}_splits_p_values"        
@@ -79,8 +82,10 @@ if MODE == 'lower_level':
 	CL 			= 0.95  
 
         ml_classifiers_dict={}
+	ml_without_Mult_classifiers_dict={}
         chi2_splits_dict={}
 	chi2_thrust_splits_dict={}
+	chi2_without_Mult_splits_dict={}
 
         #xwidth = [0.5]*len(param_list)
         xwidth = np.subtract(param_list[1:],param_list[:-1])/2.
@@ -100,13 +105,26 @@ if MODE == 'lower_level':
 			ml_classifiers_dict[ml_classifier]= np.divide(ml_classifiers_dict[ml_classifier],100.)
 
 
-		ax.errorbar(param_list,ml_classifiers_dict['nn'], yerr=binomial_error(ml_classifiers_dict['nn']), linestyle='-', marker='s', markeredgewidth=0.0, markersize=12, color=ml_classifiers_colors[0], label=r'$ANN$',clip_on=False)
+		#ax.errorbar(param_list,ml_classifiers_dict['nn'], yerr=binomial_error(ml_classifiers_dict['nn']), linestyle='-', marker='s', markeredgewidth=0.0, markersize=12, color=ml_classifiers_colors[0], label=r'$ANN$',clip_on=False)
 		print("bdt : ", ml_classifiers_dict['bdt'])
-		print("xgb : ", ml_classifiers_dict['xgb'])
-		ml_classifiers_dict['BDT_best']= [max(item1,item2) for item1, item2 in zip(ml_classifiers_dict['bdt'],ml_classifiers_dict['xgb'])]
-		print("BDT : ", ml_classifiers_dict['BDT_best'])
-		ax.errorbar(param_list,ml_classifiers_dict['BDT_best'], yerr=binomial_error(ml_classifiers_dict['BDT_best']), linestyle='-', marker='o', markeredgewidth=0.0, markersize=12, color=ml_classifiers_colors[1], label=r'$BDT$', clip_on=False)
-		ax.errorbar(param_list,ml_classifiers_dict['svm'], yerr=binomial_error(ml_classifiers_dict['svm']),  linestyle='-', marker='^', markeredgewidth=0.0, markersize=12, color=ml_classifiers_colors[2], label=r'$SVM$', clip_on=False)
+		#print("xgb : ", ml_classifiers_dict['xgb'])
+		#ml_classifiers_dict['BDT_best']= [max(item1,item2) for item1, item2 in zip(ml_classifiers_dict['bdt'],ml_classifiers_dict['xgb'])]
+		#print("BDT : ", ml_classifiers_dict['BDT_best'])
+		ax.errorbar(param_list,ml_classifiers_dict['bdt'], yerr=binomial_error(ml_classifiers_dict['bdt']), linestyle='-', marker='o', markeredgewidth=0.0, markersize=12, color=ml_classifiers_colors[1], label=r'$bdt$', clip_on=False)
+		#ax.errorbar(param_list,ml_classifiers_dict['BDT_best'], yerr=binomial_error(ml_classifiers_dict['BDT_best']), linestyle='-', marker='o', markeredgewidth=0.0, markersize=12, color=ml_classifiers_colors[1], label=r'$BDT$', clip_on=False)
+		#ax.errorbar(param_list,ml_classifiers_dict['svm'], yerr=binomial_error(ml_classifiers_dict['svm']),  linestyle='-', marker='^', markeredgewidth=0.0, markersize=12, color=ml_classifiers_colors[2], label=r'$SVM$', clip_on=False)
+
+                for ml_classifier_index, ml_classifier in enumerate(ml_classifiers):
+                        ml_without_Mult_classifiers_dict[ml_classifier]= []
+                        for param in param_list:
+                                p_values = np.loadtxt(os.environ['learningml']+"/GoF/optimisation_and_evaluation/"+ml_without_Mult_folder_name+"/"+ml_classifier+"/"+ml_without_Mult_file_name.format(param,ml_classifier,ml_classifiers_bin)).tolist()
+                                p_values_in_CL = sum(i < (1-CL) for i in p_values)
+                                ml_without_Mult_classifiers_dict[ml_classifier].append(p_values_in_CL)
+                        ml_without_Mult_classifiers_dict[ml_classifier]= np.divide(ml_without_Mult_classifiers_dict[ml_classifier],100.)
+
+
+                print("bdt : ", ml_classifiers_dict['bdt'])
+                ax.errorbar(param_list,ml_without_Mult_classifiers_dict['bdt'], yerr=binomial_error(ml_without_Mult_classifiers_dict['bdt']), linestyle='-', marker='o', markeredgewidth=0.0, markersize=12, color=ml_classifiers_colors[0], label=r'$bdt noMult$', clip_on=False)
 
 
 	for chi2_split_index, chi2_split in enumerate(chi2_splits):
@@ -146,12 +164,30 @@ if MODE == 'lower_level':
                 chi2_thrust_best.append(temp_best)
                 #print("chi2_thrust_best : ",chi2_thrust_best)
 
+	for chi2_without_Mult_split_index, chi2_without_Mult_split in enumerate(chi2_splits):
+		chi2_without_Mult_splits_dict[str(chi2_without_Mult_split)]=[]
+
+        chi2_without_Mult_best = []
+        for param in param_list:
+                chi2_without_Mult_best_dim = []
+                for chi2_without_Mult_split_index, chi2_without_Mult_split in enumerate(chi2_splits):
+                        p_values = np.loadtxt(os.environ['learningml']+"/GoF/chi2/"+chi2_without_Mult_folder_name+"/"+chi2_without_Mult_file_name.format(param,chi2_without_Mult_split)).tolist()
+                        p_values_in_CL = sum(i < (1-CL) for i in p_values)
+                        temp = float(p_values_in_CL) /100.
+                        chi2_without_Mult_splits_dict[str(chi2_without_Mult_split)].append(temp)
+                        chi2_without_Mult_best_dim.append(temp)
+                temp_best = np.max(chi2_without_Mult_best_dim)
+                #print(str(dim)+"D chi2_without_Mult_best_dim : ", chi2_without_Mult_best_dim)    
+                #print(str(dim)+"D temp_best : ",np.max(temp_best))
+                chi2_without_Mult_best.append(temp_best)
+                #print("chi2_without_Mult_best : ",chi2_without_Mult_best)
 
 	print("param_list : ",param_list)
 	print("chi2_best : ", chi2_best)
 	print("chi2_splits_dict : ", chi2_splits_dict)
 	ax.errorbar(param_list,chi2_best, yerr=binomial_error(chi2_best), linestyle='--', marker='$\chi$', markeredgecolor='none', markersize=18, color='black', label=r'$\chi^2$', clip_on=False)
-	ax.errorbar(param_list,chi2_thrust_best, yerr=binomial_error(chi2_thrust_best), linestyle='--', marker='$\chi$', markeredgecolor='none', markersize=18, color='grey', label=r'$\chi^2 Thrust$', clip_on=False)
+	#ax.errorbar(param_list,chi2_thrust_best, yerr=binomial_error(chi2_thrust_best), linestyle='--', marker='$\chi$', markeredgecolor='none', markersize=18, color='grey', label=r'$\chi^2 Thrust$', clip_on=False)
+	ax.errorbar(param_list,chi2_without_Mult_best, yerr=binomial_error(chi2_without_Mult_best), linestyle='--', marker='$\chi$', markeredgecolor='none', markersize=18, color='grey', label=r'$\chi^2 noMult$',     clip_on=False)
 	print("ml_classifiers_dict : ",ml_classifiers_dict)
         print("chi2_best : ", chi2_best)
 	ax.plot((0.1365,0.1365),(0.,1.),c="grey",linestyle="--")
