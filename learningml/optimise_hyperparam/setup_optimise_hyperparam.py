@@ -1,8 +1,8 @@
+#import importantant libraries
 from __future__ import print_function
 import os
 import sys
 import numpy as np
-import matplotlib.pyplot as plt
 from sklearn import tree
 from sklearn import cross_validation
 from sklearn.ensemble import AdaBoostClassifier
@@ -11,7 +11,6 @@ from rep.estimators import SklearnClassifier
 from sklearn.svm import SVC
 from keras.wrappers.scikit_learn import KerasClassifier
 from keras.utils import np_utils, visualize_util
-import shutil
 import subprocess
 import multiprocessing
 import shutil

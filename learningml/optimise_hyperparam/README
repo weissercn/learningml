@@ -12,6 +12,10 @@ python main.py \</path/to/experiment/directory\>
 
 
 
+Check
+child process started successfully, parent exiting
+ERROR: child process failed, exited with error number
+
 
 
 Optional
