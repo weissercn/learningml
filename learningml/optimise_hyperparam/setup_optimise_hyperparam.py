@@ -59,7 +59,7 @@ class nclf(object):
                 self.param_opt   = param_opt
                 self.clf_nn_dict = clf_nn_dict
 
-                assert(len(param_list)==2), "only 2 parameters can be varied for now"
+                #assert(len(param_list)==2), "only 2 parameters can be varied for now"
 
         def __str__(self):
                 print("\nname : ", self.name, "\nclf : ", self.clf, "\nparam_list : ", self.param_list, "\nrange_list : ", self.range_list, "\nparam_opt : ", self.param_opt)
@@ -107,7 +107,7 @@ def optimise_job(expt,nclf,out_q):
         print("\n"+nclf.name, "nclf.param_list : ",nclf.param_list)
         print(nclf.name, "param_opt : ", param_opt)
         nclf.param_opt = []
-        for i in range(2):
+        for i in range(len(nclf.param_list)):
                 limits = nclf.range_list[i]
                 lower_lim, upper_lim = limits
                 if isinstance( lower_lim, ( int, long ) ) and isinstance( upper_lim, ( int, long ) ):
@@ -149,8 +149,8 @@ class experiment(object):
                 os.chdir(opt_dir)
 
                 print(os.getcwd())
-                os.system(os.environ['learningml']+"/GoF/reinitialise_spearmint.sh")
-
+                #os.system(os.environ['learningml']+"/GoF/reinitialise_spearmint.sh")
+		os.system("../reinitialise_spearmint.sh")
 
                 if os.path.exists("MongoDB_bookkeeping"):
                         shutil.rmtree("MongoDB_bookkeeping")
@@ -176,7 +176,10 @@ class experiment(object):
                 return self.nclf_list
 
         def write_classifier_eval_wrapper(self, nclf):
-                classifier_content = 'import os \nimport signal \nimport numpy as np \nimport math \nimport sys \nsys.path.insert(0,os.environ["learningml"]+"/GoF")\nsys.path.insert(0,os.environ["learningml"]+"/optimise_hyperparam") \nimport os \nimport setup_optimise_hyperparam \nfrom sklearn.tree import DecisionTreeClassifier \nfrom sklearn.ensemble import AdaBoostClassifier \nfrom sklearn.svm import SVC \nfrom keras.wrappers.scikit_learn import KerasClassifier \nfrom rep.estimators import XGBoostClassifier \n# Write a function like this called "main" \ndef main(job_id, params): \n\tprint "Anything printed here will end up in the output directory for job ", job_id \n\tprint params \n\n'
+                classifier_content = 'import os \nimport signal \nimport numpy as np \nimport math \nimport sys \n'
+		#classifier_content += 'sys.path.insert(0,os.environ["learningml"]+"/optimise_hyperparam") \n'
+		classifier_content += 'sys.path.insert(0,"../..") \n'
+		classifier_content += 'import os \nimport setup_optimise_hyperparam \nfrom sklearn.tree import DecisionTreeClassifier \nfrom sklearn.ensemble import AdaBoostClassifier \nfrom sklearn.svm import SVC \nfrom keras.wrappers.scikit_learn import KerasClassifier \nfrom rep.estimators import XGBoostClassifier \n# Write a function like this called "main" \ndef main(job_id, params): \n\tprint "Anything printed here will end up in the output directory for job ", job_id \n\tprint params \n\n'
                 classifier_content += '\tif job_id>{}:file = open("optimisation_done_flag", "a").close()\n\n'.format(self.number_of_iterations)
                 #classifier_content += '\tassert (job_id<{}), "Final number of iterations reached" \n\n'.format(1+self.number_of_iterations)
                 #classifier_content += '\tif job_id>{}: \n\t\tprint("Killing parent process : ", os.getppid(),"\\n"*3) \n\t\tos.kill(os.getppid(), signal.SIGTERM) \n\n'.format(self.number_of_iterations)

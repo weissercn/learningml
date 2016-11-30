@@ -1,25 +1,28 @@
 Optimise Hyperparameters using spearmint
 
-1. Download rep (Follow guide on https://github.com/yandex/rep)
+1. Download numpy
 
-1. Download Spearmint and set it up (Follow guide on https://github.com/HIPS/Spearmint)
+2. Download whatever machine learning libraries you need: sklearn(bdt, svm, ...), keras(neural nets) rep (xgboost, Follow guide on https://github.com/yandex/rep)
+Whatever libraries you don't download, you need to comment out the corresponding import statements in 'optimise_hyperparam.py' and 'setup_optimise_hyperparam.py'
 
-2. Start up MongoDB
-mongod --fork --logpath <path/to/logfile\> --dbpath <path/to/dbfolder\>
+3. Download Spearmint and set it up (Follow guide on https://github.com/HIPS/Spearmint)
 
-3. Run spearmint
-python main.py \</path/to/experiment/directory\>
+4. Download this package
 
+5. Run optimise_hyperparam (python optimise_hyperparam.py)
 
-
-Check
-child process started successfully, parent exiting
-ERROR: child process failed, exited with error number
+Toubleshooting
+1. When running optimise_hyperparam make sure that MongoDB has been set up properly. If it works it will display:
+'child process started successfully, parent exiting'
+If it displays:
+'ERROR: child process failed, exited with error number'
+then just cancel optimise_hyperparam and run it again
 
 
 
 Optional
-1. Write new Keras model
-
+1. Supply your own data sets as tab separated text files and update their names in optimise_hyperparam. The first file contains data points of class 1. The second file contains data points of class 2. The machine learning algorithms try to learn the difference between these two classes.
+2. Write customised Keras model by updating make_keras_model in setup_optimise_hyperparam.py
+3. Write customised score function (this is the criterion that determines when the machine learning algorithms have done well) by updating classifier_eval in setup_optimise_hyperparam.py
 
 
